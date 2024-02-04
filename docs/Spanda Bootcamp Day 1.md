@@ -60,7 +60,7 @@ selecting LLMs
 
 
 
-![alt_text](images/image3.png "image_tooltip")
+
 
 
 specific model information

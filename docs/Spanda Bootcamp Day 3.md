@@ -217,7 +217,7 @@ Overview\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_]{.underline}**
     comprise *data protection*, as shown in the following diagram:
 
 ![Figure 1.2 -- Data security versus data privacy
-](media/media/image80.jpg){width="6.268055555555556in"
+](.\\images\\/media/image80.jpg){width="6.268055555555556in"
 height="2.182638888888889in"}
 
 Figure 1.2 -- Data security versus data privacy
@@ -824,7 +824,7 @@ The FL Solution Approach
     traditional big data ML system and an FL system:
 
 ![Figure 1.3 -- Comparison between traditional big data ML system and FL
-system ](media/media/image72.jpg){width="6.268055555555556in"
+system ](.\\images\\/media/image72.jpg){width="6.268055555555556in"
 height="3.716666666666667in"}
 
 Figure 1.3 -- Comparison between traditional big data ML system and FL
@@ -1098,7 +1098,7 @@ Automating Model Creation
     output value):
 
 ![Figure 2.1 -- ML determining model parameters
-](media/media/image76.jpg){width="6.268055555555556in"
+](.\\images\\/media/image76.jpg){width="6.268055555555556in"
 height="4.7034722222222225in"}
 
 Figure 2.1 -- ML determining model parameters
@@ -1470,7 +1470,7 @@ ML at the Edge
 -   The following figure reflects this scenario:
 
 ![Figure 2.3 -- Centralized inference scenario
-](media/media/image78.jpg){width="6.268055555555556in"
+](.\\images\\/media/image78.jpg){width="6.268055555555556in"
 height="2.5076388888888888in"}
 
 Figure 2.3 -- Centralized inference scenario
@@ -1502,7 +1502,7 @@ Figure 2.3 -- Centralized inference scenario
     following figure reflects this scenario:
 
 ![Figure 2.4 -- Edge inference scenario
-](media/media/image70.jpg){width="6.268055555555556in"
+](.\\images\\/media/image70.jpg){width="6.268055555555556in"
 height="2.704861111111111in"}
 
 Figure 2.4 -- Edge inference scenario
@@ -1639,7 +1639,7 @@ The steps for a round can be described as follows:
 These steps are depicted in *Figure 2.5*:
 
 ![Figure 2.5 -- FL steps
-](media/media/image77.jpg){width="6.268055555555556in"
+](.\\images\\/media/image77.jpg){width="6.268055555555556in"
 height="4.667361111111111in"}
 
 Figure 2.5 -- FL steps
@@ -2155,7 +2155,7 @@ The System Architecture
     distributed agents:
 
 ![Figure 3.1 -- Overall architecture of an FL system
-](media/media/image81.jpg){width="6.268055555555556in"
+](.\\images\\/media/image81.jpg){width="6.268055555555556in"
 height="4.414583333333334in"}
 
 Figure 3.1 -- Overall architecture of an FL system
@@ -2434,7 +2434,7 @@ Low Computational Capacity Agent Devices and Intermediate servers
 intermediate servers, and user devices:
 
 ![Figure 3.2 -- An FL system with intermediate servers
-](media/media/image79.jpg){width="6.268055555555556in"
+](.\\images\\/media/image79.jpg){width="6.268055555555556in"
 height="3.623611111111111in"}
 
 Figure 3.2 -- An FL system with intermediate servers
@@ -2478,7 +2478,8 @@ Database, Aggregator, and Agent initialization
     a database is depicted in *Figure 3.3* as follows:
 
 ![Figure 3.3 -- The process of aggregator and agent registration in the
-database server ](media/media/image14.jpg){width="6.268055555555556in"
+database server
+](.\\images\\/media/image14.jpg){width="6.268055555555556in"
 height="6.290972222222222in"}
 
 Figure 3.3 -- The process of aggregator and agent registration in the
@@ -2546,7 +2547,7 @@ in the FL system:
     side is depicted in *Figure 3.4*:
 
 ![Figure 3.4 -- The registration process of an agent by an aggregator
-](media/media/image8.jpg){width="6.268055555555556in"
+](.\\images\\/media/image8.jpg){width="6.268055555555556in"
 height="6.81875in"}
 
 Figure 3.4 -- The registration process of an agent by an aggregator
@@ -2580,7 +2581,7 @@ Initial model upload process by initial agent
     seen in *Figure 3.5*:
 
 ![Figure 3.5 -- Base model upload process for the initial agent
-](media/media/image3.jpg){width="6.268055555555556in"
+](.\\images\\/media/image3.jpg){width="6.268055555555556in"
 height="5.909722222222222in"}
 
 Figure 3.5 -- Base model upload process for the initial agent
@@ -2644,7 +2645,7 @@ Overall FL System Process Sequence
 conducted between an agent, an aggregator, and a database typically:
 
 ![Figure 3.6 -- Overview of the continuous FL cycle
-](media/media/image7.jpg){width="6.268055555555556in"
+](.\\images\\/media/image7.jpg){width="6.268055555555556in"
 height="6.572222222222222in"}
 
 Figure 3.6 -- Overview of the continuous FL cycle
@@ -2756,7 +2757,7 @@ Accepting and caching local ML models
     local ML models:
 
 ![Figure 3.7 -- Procedure for accepting and caching local ML models
-](media/media/image2.jpg){width="6.268055555555556in"
+](.\\images\\/media/image2.jpg){width="6.268055555555556in"
 height="6.972916666666666in"}
 
 Figure 3.7 -- Procedure for accepting and caching local ML models
@@ -2813,7 +2814,7 @@ Aggregating local ML models
     models are collected:
 
 ![Figure 3.8 -- Model synthesis routine: aggregating local ML models
-](media/media/image13.jpg){width="6.268055555555556in"
+](.\\images\\/media/image13.jpg){width="6.268055555555556in"
 height="8.41388888888889in"}
 
 Figure 3.8 -- Model synthesis routine: aggregating local ML models
@@ -2862,7 +2863,7 @@ Local Retraining Cycle - The agent-perspective
     update the ML model:
 
 ![Figure 3.9 -- Agent-side state transition to adapt and update the ML
-model ](media/media/image52.jpg){width="5.709722222222222in"
+model ](.\\images\\/media/image52.jpg){width="5.709722222222222in"
 height="7.125in"}
 
 Figure 3.9 -- Agent-side state transition to adapt and update the ML
@@ -2954,19 +2955,20 @@ FedAvg -- Federated averaging
     look into one of the most well-known and straightforward aggregation
     strategies, known as **Federated Averaging** (**FedAvg**). The
     FedAvg algorithm is performed as follows:
-    let ![](media/media/image23.png){width="1.2670089676290464in"
+    let ![](.\\images\\/media/image23.png){width="1.2670089676290464in"
     height="0.2487379702537183in"} be the parameters of the models
-    from ![](media/media/image35.png){width="0.20833333333333334in"
+    from ![](.\\images\\/media/image35.png){width="0.20833333333333334in"
     height="0.20833333333333334in"} agents, each with a local dataset
-    size of ![](media/media/image6.png){width="1.1828608923884514in"
+    size
+    of ![](.\\images\\/media/image6.png){width="1.1828608923884514in"
     height="0.2213538932633421in"}.
-    Also, ![](media/media/image12.png){width="0.20833333333333334in"
+    Also, ![](.\\images\\/media/image12.png){width="0.20833333333333334in"
     height="0.20833333333333334in"} is the total dataset size defined
-    as ![](media/media/image9.png){width="2.617024278215223in"
+    as ![](.\\images\\/media/image9.png){width="2.617024278215223in"
     height="0.29885826771653545in"}. Then, FedAvg returns the following
     ML model as the aggregated model:
 
-![](media/media/image1.jpg){width="4.697647637795275in"
+![](.\\images\\/media/image1.jpg){width="4.697647637795275in"
 height="0.54582239720035in"}
 
 -   Essentially, we perform FedAvg over a set of models by taking the
@@ -2989,7 +2991,7 @@ height="0.54582239720035in"}
 
 ![Figure 3.10 -- Two-dimensional parameter space with local models from
 two agents (the circle and square) and a target model (the black x)
-](media/media/image5.jpg){width="6.268055555555556in"
+](.\\images\\/media/image5.jpg){width="6.268055555555556in"
 height="4.636111111111111in"}
 
 Figure 3.10 -- Two-dimensional parameter space with local models from
@@ -3007,7 +3009,7 @@ two agents (the circle and square) and a target model (the black x)
     trained model:
 
 ![Figure 3.11 -- Change in local model parameters without aggregation
-](media/media/image57.jpg){width="6.268055555555556in"
+](.\\images\\/media/image57.jpg){width="6.268055555555556in"
 height="4.461111111111111in"}
 
 Figure 3.11 -- Change in local model parameters without aggregation
@@ -3025,7 +3027,7 @@ Figure 3.11 -- Change in local model parameters without aggregation
 
 ![Figure 3.12 -- Adding aggregation moves the local model parameters to
 the average for both models at each step, leading to convergence at the
-target model ](media/media/image4.jpg){width="6.268055555555556in"
+target model ](.\\images\\/media/image4.jpg){width="6.268055555555556in"
 height="4.631944444444445in"}
 
 Figure 3.12 -- Adding aggregation moves the local model parameters to
@@ -3154,7 +3156,7 @@ horizontal design of a multi-aggregator FL system:
 
 ![Figure 3.13 -- Architecture of a decentralized FL system with multiple
 aggregators (horizontal design)
-](media/media/image20.jpg){width="6.268055555555556in"
+](.\\images\\/media/image20.jpg){width="6.268055555555556in"
 height="2.0625in"}
 
 Figure 3.13 -- Architecture of a decentralized FL system with multiple
@@ -3233,7 +3235,7 @@ Asynchronous agent participation in a multiple-aggregator scenario
 
 ![Figure 3.14 -- The sequence of an agent joining one of the cluster
 aggregators in an FL system
-](media/media/image46.jpg){width="6.268055555555556in"
+](.\\images\\/media/image46.jpg){width="6.268055555555556in"
 height="7.308333333333334in"}
 
 Figure 3.14 -- The sequence of an agent joining one of the cluster
@@ -3261,7 +3263,7 @@ Semi-global model synthesis
 
 ![Figure 3.15 -- The sequence of the semi-global model synthesis
 processes from uploading local models to pulling semi-global models
-](media/media/image10.jpg){width="6.268055555555556in"
+](.\\images\\/media/image10.jpg){width="6.268055555555556in"
 height="3.134027777777778in"}
 
 Figure 3.15 -- The sequence of the semi-global model synthesis processes
@@ -3294,7 +3296,7 @@ from uploading local models to pulling semi-global models
     and semi-global model synthesis using a distributed database:
 
 ![Figure 3.16 -- The procedure and flow of semi-global model synthesis
-](media/media/image43.jpg){width="6.268055555555556in"
+](.\\images\\/media/image43.jpg){width="6.268055555555556in"
 height="8.567361111111111in"}
 
 Figure 3.16 -- The procedure and flow of semi-global model synthesis
@@ -3396,7 +3398,7 @@ Main software components of the aggregator  and database
 
 ![Figure 4.1 -- Python software components for the aggregator as well as
 internal libraries and pseudo database
-](media/media/image19.jpg){width="3.407120516185477in"
+](.\\images\\/media/image19.jpg){width="3.407120516185477in"
 height="3.9518897637795276in"}
 
 Figure 4.1 -- Python software components for the aggregator as well as
@@ -5424,7 +5426,7 @@ An overview of FL client-side components
     5.1*:
 
 ![Figure 5.1 -- Python software components for an FL client as an agent
-](media/media/image24.jpg){width="3.751388888888889in"
+](.\\images\\/media/image24.jpg){width="3.751388888888889in"
 height="3.3020833333333335in"}
 
 Figure 5.1 -- Python software components for an FL client as an agent
@@ -6375,7 +6377,7 @@ Local ML engine integration into an FL system
     client-side libraries into a minimal ML engine package:
 
 ![Figure 5.2 -- The minimal ML engine package
-](media/media/image42.jpg){width="6.268055555555556in"
+](.\\images\\/media/image42.jpg){width="6.268055555555556in"
 height="1.1395833333333334in"}
 
 Figure 5.2 -- The minimal ML engine package
@@ -6679,7 +6681,7 @@ An example of integrating image classification  into an FL system
     as shown in *Figure 5.3*:
 
 ![Figure 5.3 -- The image classification package
-](media/media/image47.jpg){width="4.041666666666667in"
+](.\\images\\/media/image47.jpg){width="4.041666666666667in"
 height="2.627083333333333in"}
 
 Figure 5.3 -- The image classification package
@@ -7215,7 +7217,7 @@ CopyExplain
 database server:
 
 ![Figure 6.1 -- Example of a database-side console
-](media/media/image39.jpg){width="6.268055555555556in"
+](.\\images\\/media/image39.jpg){width="6.268055555555556in"
 height="4.277777777777778in"}
 
 Figure 6.1 -- Example of a database-side console
@@ -7224,7 +7226,7 @@ Figure 6.1 -- Example of a database-side console
 aggregator:
 
 ![Figure 6.2 -- Example of an aggregator-side console
-](media/media/image29.jpg){width="6.268055555555556in"
+](.\\images\\/media/image29.jpg){width="6.268055555555556in"
 height="4.104861111111111in"}
 
 Figure 6.2 -- Example of an aggregator-side console
@@ -7233,7 +7235,7 @@ Figure 6.2 -- Example of an aggregator-side console
 agent:
 
 ![Figure 6.3 -- Example of an agent-side console
-](media/media/image34.jpg){width="6.268055555555556in"
+](.\\images\\/media/image34.jpg){width="6.268055555555556in"
 height="4.260416666666667in"}
 
 Figure 6.3 -- Example of an agent-side console
@@ -7263,7 +7265,7 @@ Data and database folders
 
 ![Figure 6.4 -- The SQLite database and ML model files in a binary file
 format stored in the db folder
-](media/media/image75.jpg){width="6.268055555555556in"
+](.\\images\\/media/image75.jpg){width="6.268055555555556in"
 height="2.6215277777777777in"}
 
 Figure 6.4 -- The SQLite database and ML model files in a binary file
@@ -7295,7 +7297,7 @@ format stored in the db folder
 
 ![Figure 6.5 -- Data of the agents including global and local ML models
 with a binary file format as well as the client state
-](media/media/image50.jpg){width="6.268055555555556in"
+](.\\images\\/media/image50.jpg){width="6.268055555555556in"
 height="1.9270833333333333in"}
 
 Figure 6.5 -- Data of the agents including global and local ML models
@@ -7321,7 +7323,7 @@ Local models in a database
     data samples:
 
 ![Figure 6.6 -- Sample database entries related to uploaded local models
-](media/media/image31.jpg){width="6.268055555555556in"
+](.\\images\\/media/image31.jpg){width="6.268055555555556in"
 height="1.5618055555555554in"}
 
 Figure 6.6 -- Sample database entries related to uploaded local models
@@ -7335,7 +7337,7 @@ Cluster models in a database
     samples:
 
 ![Figure 6.7 -- Sample database entries related to uploaded cluster
-models ](media/media/image11.jpg){width="6.268055555555556in"
+models ](.\\images\\/media/image11.jpg){width="6.268055555555556in"
 height="1.7402777777777778in"}
 
 Figure 6.7 -- Sample database entries related to uploaded cluster models
@@ -7742,7 +7744,7 @@ CopyExplain
 
 ![Figure 6.8 -- Example of an aggregator-side console running a minimal
 example connecting two agents
-](media/media/image15.jpg){width="6.268055555555556in"
+](.\\images\\/media/image15.jpg){width="6.268055555555556in"
 height="4.104861111111111in"}
 
 Figure 6.8 -- Example of an aggregator-side console running a minimal
@@ -7753,7 +7755,7 @@ example connecting two agents
 
 ![Figure 6.9 -- Example of agent 1's console running a minimal example
 using dummy ML models
-](media/media/image16.jpg){width="6.268055555555556in"
+](.\\images\\/media/image16.jpg){width="6.268055555555556in"
 height="4.509027777777778in"}
 
 Figure 6.9 -- Example of agent 1's console running a minimal example
@@ -7764,7 +7766,7 @@ using dummy ML models
 
 ![Figure 6.10 -- Example of agent 2's console running a minimal example
 using dummy ML models
-](media/media/image25.jpg){width="6.268055555555556in"
+](.\\images\\/media/image25.jpg){width="6.268055555555556in"
 height="4.522222222222222in"}
 
 Figure 6.10 -- Example of agent 2's console running a minimal example
@@ -7985,7 +7987,7 @@ Preparing the CIFAR-10 dataset
 -   *Figure 6.11* shows a collection of sample pictures of 10 different
     classes in the dataset with 10 random images for each:
 
-![](media/media/image26.jpg){width="6.268055555555556in"
+![](.\\images\\/media/image26.jpg){width="6.268055555555556in"
 height="4.816666666666666in"}
 
 Figure 6.11 -- The classes in the dataset as well as 10 random images
@@ -8100,7 +8102,7 @@ Evaluation of running the image classification with CNN
 
 ![Figure 6.12 -- Plot of the learning performance from the experimental
 runs for FL using CNN for image classification
-](media/media/image27.jpg){width="6.268055555555556in"
+](.\\images\\/media/image27.jpg){width="6.268055555555556in"
 height="3.204861111111111in"}
 
 Figure 6.12 -- Plot of the learning performance from the experimental
@@ -8127,7 +8129,7 @@ Running five agents
     like in *Figure 6.13*:
 
 ![Figure 6.13 -- Results to be stored in each folder with the agent's
-unique name ](media/media/image18.jpg){width="6.268055555555556in"
+unique name ](.\\images\\/media/image18.jpg){width="6.268055555555556in"
 height="3.6479166666666667in"}
 
 Figure 6.13 -- Results to be stored in each folder with the agent's
@@ -8139,7 +8141,7 @@ unique name
     performance metrics, and round information:
 
 ![Figure 6.14 -- Information about the local models in the database 
-](media/media/image17.jpg){width="6.268055555555556in"
+](.\\images\\/media/image17.jpg){width="6.268055555555556in"
 height="4.133333333333334in"}
 
 Figure 6.14 -- Information about the local models in the database 
@@ -8156,7 +8158,7 @@ Figure 6.14 -- Information about the local models in the database 
     aggregator that created the cluster model, and round information:
 
 ![Figure 6.15 -- Information about the cluster models in the database
-](media/media/image22.jpg){width="6.268055555555556in"
+](.\\images\\/media/image22.jpg){width="6.268055555555556in"
 height="1.6520833333333333in"}
 
 Figure 6.15 -- Information about the cluster models in the database
@@ -8362,13 +8364,13 @@ Understanding FedAvg
     sections that have built upon or, otherwise, improved on FedAvg.
 
 -   Previously, FedAvg was only presented as an algorithm that takes
-    models ![](media/media/image21.png){width="1.4427088801399826in"
+    models ![](.\\images\\/media/image21.png){width="1.4427088801399826in"
     height="0.23811679790026247in"}with a respective local dataset size
-    of ![](media/media/image37.png){width="1.3452384076990376in"
+    of ![](.\\images\\/media/image37.png){width="1.3452384076990376in"
     height="0.20833333333333334in"}, where the sum equals *N* and
     returns:
 
-![](media/media/image56.jpg){width="2.026042213473316in"
+![](.\\images\\/media/image56.jpg){width="2.026042213473316in"
 height="0.9540912073490814in"}
 
 As shown in the *Aggregating local models* section of *section
@@ -8565,7 +8567,7 @@ IID case
     the parameter space can be depicted:
 
 ![Figure 7.1 -- Models with the same initialization and IID datasets
-](media/media/image44.jpg){width="6.268055555555556in"
+](.\\images\\/media/image44.jpg){width="6.268055555555556in"
 height="4.855555555555555in"}
 
 Figure 7.1 -- Models with the same initialization and IID datasets
@@ -8591,7 +8593,7 @@ Figure 7.1 -- Models with the same initialization and IID datasets
     is initialized separately:
 
 ![Figure 7.2 -- Models with different initializations and IID datasets
-](media/media/image55.jpg){width="6.268055555555556in"
+](.\\images\\/media/image55.jpg){width="6.268055555555556in"
 height="4.747222222222222in"}
 
 Figure 7.2 -- Models with different initializations and IID datasets
@@ -8629,7 +8631,7 @@ Non-IID Case
     follows, with both models having the same initialization:
 
 ![Figure 7.3 -- Models with different initializations and non-IID
-datasets ](media/media/image49.jpg){width="6.268055555555556in"
+datasets ](.\\images\\/media/image49.jpg){width="6.268055555555556in"
 height="4.8597222222222225in"}
 
 Figure 7.3 -- Models with different initializations and non-IID datasets
@@ -8917,10 +8919,10 @@ Automatic adjustment -- FedProx
 -   To combat this, FedProx adds a proximal term to the objective
     function being minimized equal to the following:
 
-![](media/media/image45.jpg){width="1.1302088801399826in"
+![](.\\images\\/media/image45.jpg){width="1.1302088801399826in"
 height="0.40687554680664917in"}
 
-Here, ![](media/media/image64.png){width="0.5311986001749781in"
+Here, ![](.\\images\\/media/image64.png){width="0.5311986001749781in"
 height="0.26833770778652666in"} represents the received aggregate model
 weights.
 
@@ -9809,7 +9811,7 @@ OpenFL
 -   The following diagram depicts the architecture and users for the
     director-based workflow:
 
-![](media/media/image69.jpg){width="6.268055555555556in"
+![](.\\images\\/media/image69.jpg){width="6.268055555555556in"
 height="3.473611111111111in"}
 
 Figure 8.1 -- Architecture of director-based workflow (adapted from
@@ -9868,7 +9870,7 @@ STADLE
     following figure depicts the high-level architecture:
 
 ![Figure 8.2 -- STADLE multi-aggregator architecture
-](media/media/image74.jpg){width="6.268055555555556in"
+](.\\images\\/media/image74.jpg){width="6.268055555555556in"
 height="4.026388888888889in"}
 
 Figure 8.2 -- STADLE multi-aggregator architecture
@@ -11539,7 +11541,7 @@ CopyExplain
     Ops:
 
 ![Figure 8.3 -- Project information page in STADLE Ops
-](media/media/image67.jpg){width="6.268055555555556in"
+](.\\images\\/media/image67.jpg){width="6.268055555555556in"
 height="2.0034722222222223in"}
 
 Figure 8.3 -- Project information page in STADLE Ops
@@ -11549,7 +11551,7 @@ Figure 8.3 -- Project information page in STADLE Ops
     page should have changed to show the following:
 
 ![Figure 8.4 -- New project added to the project information page
-](media/media/image51.jpg){width="6.268055555555556in"
+](.\\images\\/media/image51.jpg){width="6.268055555555556in"
 height="1.8298611111111112in"}
 
 Figure 8.4 -- New project added to the project information page
@@ -11560,7 +11562,7 @@ Figure 8.4 -- New project added to the project information page
     side, resulting in a page that looks like the following:
 
 ![Figure 8.5 -- Dashboard page of STADLE Ops
-](media/media/image30.jpg){width="6.268055555555556in"
+](.\\images\\/media/image30.jpg){width="6.268055555555556in"
 height="3.50625in"}
 
 Figure 8.5 -- Dashboard page of STADLE Ops
@@ -12330,7 +12332,7 @@ Medical imaging
     using medical imaging:
 
 ![Figure 9.1 -- Tumor classification with a neural network
-](media/media/image33.jpg){width="6.268055555555556in"
+](.\\images\\/media/image33.jpg){width="6.268055555555556in"
 height="3.765277777777778in"}
 
 Figure 9.1 -- Tumor classification with a neural network
@@ -12380,7 +12382,7 @@ Figure 9.1 -- Tumor classification with a neural network
     the following diagram:
 
 ![Figure 9.2 -- Hospitals sharing ML models for FL
-](media/media/image32.jpg){width="6.268055555555556in"
+](.\\images\\/media/image32.jpg){width="6.268055555555556in"
 height="5.235416666666667in"}
 
 Figure 9.2 -- Hospitals sharing ML models for FL
@@ -12435,7 +12437,7 @@ Drug discovery
     will have an immediate impact:
 
 ![Figure 9.3 -- Precision medicine impacting many areas
-](media/media/image41.jpg){width="6.268055555555556in"
+](.\\images\\/media/image41.jpg){width="6.268055555555556in"
 height="6.09375in"}
 
 Figure 9.3 -- Precision medicine impacting many areas
@@ -12489,7 +12491,7 @@ Figure 9.3 -- Precision medicine impacting many areas
     data to the model* approach:
 
 ![Figure 9.4 -- Precision medicine now
-](media/media/image38.jpg){width="5.467361111111111in"
+](.\\images\\/media/image38.jpg){width="5.467361111111111in"
 height="4.206944444444445in"}
 
 Figure 9.4 -- Precision medicine now
@@ -12510,7 +12512,7 @@ Figure 9.4 -- Precision medicine now
     the global model:
 
 ![Figure 9.5 -- Precision medicine with FL
-](media/media/image54.jpg){width="5.177777777777778in"
+](.\\images\\/media/image54.jpg){width="5.177777777777778in"
 height="3.7395833333333335in"}
 
 Figure 9.5 -- Precision medicine with FL
@@ -12535,7 +12537,7 @@ Figure 9.5 -- Precision medicine with FL
     training data through the training process:
 
 ![Figure 9.6 -- An IfD diagram
-](media/media/image53.jpg){width="6.268055555555556in"
+](.\\images\\/media/image53.jpg){width="6.268055555555556in"
 height="1.8090277777777777in"}
 
 Figure 9.6 -- An IfD diagram
@@ -12590,7 +12592,7 @@ Figure 9.6 -- An IfD diagram
     how FL collects IfD:
 
 ![Figure 9.7 -- A generalized view of how FL collects IfD
-](media/media/image40.jpg){width="6.268055555555556in"
+](.\\images\\/media/image40.jpg){width="6.268055555555556in"
 height="4.642361111111111in"}
 
 Figure 9.7 -- A generalized view of how FL collects IfD
@@ -12617,7 +12619,7 @@ EHRs
     Health Records** (**PHRs**):
 
 ![Figure 9.8 -- EHRs
-](media/media/image48.jpg){width="6.268055555555556in"
+](.\\images\\/media/image48.jpg){width="6.268055555555556in"
 height="4.810416666666667in"}
 
 Figure 9.8 -- EHRs
@@ -12644,7 +12646,7 @@ Figure 9.8 -- EHRs
     model.
 
 ![Figure 9.9 -- A centralized data mining method
-](media/media/image36.jpg){width="6.268055555555556in"
+](.\\images\\/media/image36.jpg){width="6.268055555555556in"
 height="2.834722222222222in"}
 
 Figure 9.9 -- A centralized data mining method
@@ -12870,7 +12872,7 @@ Proposed solutions to the existing AML approach
     with illicit activities:
 
 ![Figure 9.10 -- Institutional reporting of suspected illicit activity
-](media/media/image28.jpg){width="6.268055555555556in"
+](.\\images\\/media/image28.jpg){width="6.268055555555556in"
 height="4.373611111111111in"}
 
 Figure 9.10 -- Institutional reporting of suspected illicit activity
@@ -12900,7 +12902,7 @@ Figure 9.10 -- Institutional reporting of suspected illicit activity
 -   This is depicted in *Figure 9.11*:
 
 ![Figure 9.11 -- The data and intelligence flow within a banking
-ecosystem ](media/media/image73.jpg){width="6.268055555555556in"
+ecosystem ](.\\images\\/media/image73.jpg){width="6.268055555555556in"
 height="4.429861111111111in"}
 
 Figure 9.11 -- The data and intelligence flow within a banking ecosystem
@@ -12941,7 +12943,7 @@ Demo of FL in the AML space
 
 ![Figure 9.12 -- Outcome of applying FL to AML (thicker line: aggregated
 model, thin lines: individual agent training separately)
-](media/media/image58.jpg){width="6.268055555555556in"
+](.\\images\\/media/image58.jpg){width="6.268055555555556in"
 height="3.0034722222222223in"}
 
 Figure 9.12 -- Outcome of applying FL to AML (thicker line: aggregated
@@ -13035,7 +13037,7 @@ Edge computing with IoT over 5G
     framework:
 
 ![Figure 9.13 -- Edge computing and the Internet
-](media/media/image65.jpg){width="6.268055555555556in"
+](.\\images\\/media/image65.jpg){width="6.268055555555556in"
 height="4.565277777777778in"}
 
 Figure 9.13 -- Edge computing and the Internet
@@ -13103,7 +13105,7 @@ How it works
 
 ![Figure 9.14 -- Demo of detecting tomatoes, eggplants, and leeks using
 FL where the distribution of the datasets is different on each machine
-](media/media/image59.jpg){width="6.268055555555556in"
+](.\\images\\/media/image59.jpg){width="6.268055555555556in"
 height="3.2736111111111112in"}
 
 Figure 9.14 -- Demo of detecting tomatoes, eggplants, and leeks using FL
@@ -13128,7 +13130,7 @@ Examining the results
     example of the power of FL in terms of bias elimination:
 
 ![Figure 9.15 -- Results of the demo using three edge devices
-](media/media/image62.jpg){width="6.268055555555556in"
+](.\\images\\/media/image62.jpg){width="6.268055555555556in"
 height="3.8965277777777776in"}
 
 Figure 9.15 -- Results of the demo using three edge devices
@@ -13188,7 +13190,7 @@ Making autonomous driving happen with FL
 
 ![Figure 9.16 -- Decentralized FL with multiple aggregators to improve
 ADASs for safe driving
-](media/media/image61.jpg){width="6.268055555555556in"
+](.\\images\\/media/image61.jpg){width="6.268055555555556in"
 height="4.0777777777777775in"}
 
 Figure 9.16 -- Decentralized FL with multiple aggregators to improve
@@ -13270,7 +13272,7 @@ Applying FL to robotics
 
 ![Figure 9.17 -- Architecture of the federated crowdsourced global
 manipulation framework for robotics
-](media/media/image63.jpg){width="6.268055555555556in"
+](.\\images\\/media/image63.jpg){width="6.268055555555556in"
 height="5.684027777777778in"}
 
 Figure 9.17 -- Architecture of the federated crowdsourced global
@@ -13289,7 +13291,7 @@ manipulation framework for robotics
 
 ![Figure 9.18 -- Arm robots can cross-train with different tasks for
 accuracy and efficiency
-](media/media/image71.jpg){width="6.268055555555556in"
+](.\\images\\/media/image71.jpg){width="6.268055555555556in"
 height="3.0875in"}
 
 Figure 9.18 -- Arm robots can cross-train with different tasks for
@@ -13335,7 +13337,7 @@ Introducing the IoFT
     data over time:
 
 ![Figure 9.19 -- A current IoT system
-](media/media/image66.jpg){width="6.268055555555556in"
+](.\\images\\/media/image66.jpg){width="6.268055555555556in"
 height="3.9027777777777777in"}
 
 Figure 9.19 -- A current IoT system
@@ -13385,7 +13387,7 @@ Figure 9.19 -- A current IoT system
 -   Let's take a look at an example of the IoFT shown in *Figure 9.20*.
 
 ![Figure 9.20 -- An example of the IoFT
-](media/media/image68.jpg){width="6.268055555555556in"
+](.\\images\\/media/image68.jpg){width="6.268055555555556in"
 height="5.33125in"}
 
 Figure 9.20 -- An example of the IoFT
@@ -13451,7 +13453,7 @@ Applying FL to distributed learning for big data
     depicted in *Figure 9.21*.
 
 ![Figure 9.21 -- Distributed learning integration into big data
-](media/media/image60.jpg){width="6.268055555555556in"
+](.\\images\\/media/image60.jpg){width="6.268055555555556in"
 height="3.6145833333333335in"}
 
 Figure 9.21 -- Distributed learning integration into big data
