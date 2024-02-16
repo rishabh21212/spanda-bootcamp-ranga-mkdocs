@@ -1,4 +1,3 @@
-Testing some changes AGAIN AND AGAIN AND AGAIN
 
 **<span style="text-decoration:underline;">Spanda Bootcamp Day One</span>**
 
