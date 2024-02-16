@@ -303,14 +303,7 @@ This course was only possible with the support of our amazing Staff (in no parti
 - [Sayak Paul](https://sayak.dev) is as a Machine Learning Engineer at Carted on NLP and representation learning from HTML webpages. Besides work, he contributes to various open-source projects.
 - [Vishnu Rachakonda](https://www.linkedin.com/in/vrachakonda/) is a Data Scientist at firsthand.
 
-[lab0]: lab-0-overview/index.md
-[labs1-3]: labs-1-3-cnns-transformers-pytorch-lightning/index.md
-[lab4]: lab-4-experiment-management/index.md
-[lab5]: lab-5-troubleshooting-and-testing/index.md
-[lab6]: lab-6-data-annotation/index.md
-[lab7]: lab-7-web-deployment/index.md
-[lab8]: lab-8-model-monitoring/index.md
-[proj]: project-showcase/index.md
+
 
 [lec1]: Lecturewise_mkdocs/01_Course_Vision_and_Running_a_Local_LLM.md
 [lec2]: Lecturewise_mkdocs/02_Software_Engineering_for_AI.md
@@ -335,3 +328,15 @@ This course was only possible with the support of our amazing Staff (in no parti
 [lec21]: Lecturewise_mkdocs/21_RAG_Pipeline_Implementation.md
 [lec22]: Lecturewise_mkdocs/22_From_Simple_to_Advanced_RAG.md
 [lec23]: Lecturewise_mkdocs/23_RAG_Observability.md
+
+
+
+[lab0]: lab-0-overview/index.md
+[labs1-3]: labs-1-3-cnns-transformers-pytorch-lightning/index.md
+[lab4]: lab-4-experiment-management/index.md
+[lab5]: lab-5-troubleshooting-and-testing/index.md
+[lab6]: lab-6-data-annotation/index.md
+[lab7]: lab-7-web-deployment/index.md
+[lab8]: lab-8-model-monitoring/index.md
+[proj]: project-showcase/index.md
+
