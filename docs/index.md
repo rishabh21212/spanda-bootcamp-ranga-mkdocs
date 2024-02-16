@@ -48,34 +48,34 @@ We release lecture videos on Mondays at 6pm Pacific and lab videos on Wednesdays
 | **2024.09.26** | [Lecture 8: Workflow Patterns][lec8]      |                                                                    
 | Work on project      |
 | **2024.10.03** | [Lecture 9: Scheduling & Metadata Patterns][lec9]                               |                                                   
-| **2024.10.10** | [Lecture 10: Data Lakes & Intro to Federated Learning] 
+| **2024.10.10** | [Lecture 10: Data Lakes & Intro to Federated Learning] [lec10] 
 [lec10]       | 
-| **2024.10.03** | [Lecture 11: Federated Learning]
+| **2024.10.03** | [Lecture 11: Federated Learning][lec11] 
 [lec11]           | 
-| **2024.10.03** | [Lecture 12: Federated Learning System Details]
+| **2024.10.03** | [Lecture 12: Federated Learning System Details][lec12] 
 [lec12]        |
-| **2024.10.03** | [Lecture 13: Federated Learning Implementation - Server Side]
+| **2024.10.03** | [Lecture 13: Federated Learning Implementation - Server Side][lec13] 
  [Lab 8: Experiment Management][lab8]                               | -                
 [lec13]        |
-| **2024.10.03** | [Lecture 14: Federated Learning Implementation - Client Side]
+| **2024.10.03** | [Lecture 14: Federated Learning Implementation - Client Side][lec14] 
 [lec14]        |
-| **2024.10.03** | [Lecture 15: Federated Learning Running the System & Analyzing Results]
+| **2024.10.03** | [Lecture 15: Federated Learning Running the System & Analyzing Results][lec15] 
 [lec16] 
-| **2024.10.03** | [Lecture 16: Introducing Existing Federated Learning Frameworks]
+| **2024.10.03** | [Lecture 16: Introducing Existing Federated Learning Frameworks][lec16] 
 [lec17] 
-| **2024.10.03** | [Lecture 17: Federated Learning Use Cases and Case Studies]
+| **2024.10.03** | [Lecture 17: Federated Learning Use Cases and Case Studies][lec17] 
 [lec18] 
-| **2024.10.03** | [Lecture 18: Federated Learning Future Directions]
+| **2024.10.03** | [Lecture 18: Federated Learning Future Directions][lec18] 
 [lec19] 
-| **2024.10.03** | [Lecture 19: LLMs and NLP Introduction]
+| **2024.10.03** | [Lecture 19: LLMs and NLP Introduction][lec19] 
 [lec20] 
-| **2024.10.03** | [Lecture 20:Retrieval Augmented Generation]
+| **2024.10.03** | [Lecture 20:Retrieval Augmented Generation][lec20] 
 [lec21] 
-| **2024.10.03** | [Lecture 21:RAG Pipeline Implementation]
+| **2024.10.03** | [Lecture 21:RAG Pipeline Implementation][lec21] 
 [lec22] 
-| **2024.10.03** | [Lecture 22:From Simple to Advanced RAG]
+| **2024.10.03** | [Lecture 22:From Simple to Advanced RAG][lec22] 
 [lec23]
-| **2024.10.03** | [Lecture 23:RAG Observability]
+| **2024.10.03** | [Lecture 23:RAG Observability][lec23] 
 [lec24]
 | Work on project      |
 | Project due          |
@@ -304,19 +304,34 @@ This course was only possible with the support of our amazing Staff (in no parti
 - [Vishnu Rachakonda](https://www.linkedin.com/in/vrachakonda/) is a Data Scientist at firsthand.
 
 [lab0]: lab-0-overview/index.md
-[lec1]: 1.md
 [labs1-3]: labs-1-3-cnns-transformers-pytorch-lightning/index.md
-[lec2]: 2.md
 [lab4]: lab-4-experiment-management/index.md
-[lec3]: 3.md
 [lab5]: lab-5-troubleshooting-and-testing/index.md
-[lec4]: 4.md
 [lab6]: lab-6-data-annotation/index.md
-[lec5]: 5.md
 [lab7]: lab-7-web-deployment/index.md
-[lec6]: 6.md
 [lab8]: lab-8-model-monitoring/index.md
-[lec7]: 7.md
-[lec8]: 8.md
-[lec9]: 9.md
 [proj]: project-showcase/index.md
+
+[lec1]: Lecturewise_mkdocs/01.md
+[lec2]: Lecturewise_mkdocs/02.md
+[lec3]: Lecturewise_mkdocs/03.md
+[lec4]: Lecturewise_mkdocs/04.md
+[lec5]: Lecturewise_mkdocs/05.md
+[lec6]: Lecturewise_mkdocs/06.md
+[lec7]: Lecturewise_mkdocs/07.md
+[lec8]: Lecturewise_mkdocs/08.md
+[lec9]: Lecturewise_mkdocs/09.md
+[lec10]: Lecturewise_mkdocs/10.md
+[lec11]: Lecturewise_mkdocs/11.md
+[lec12]: Lecturewise_mkdocs/12.md
+[lec13]: Lecturewise_mkdocs/13.md
+[lec14]: Lecturewise_mkdocs/14.md
+[lec15]: Lecturewise_mkdocs/15.md
+[lec16]: Lecturewise_mkdocs/16.md
+[lec17]: Lecturewise_mkdocs/17.md
+[lec18]: Lecturewise_mkdocs/18.md
+[lec19]: Lecturewise_mkdocs/19.md
+[lec20]: Lecturewise_mkdocs/20.md
+[lec21]: Lecturewise_mkdocs/21.md
+[lec22]: Lecturewise_mkdocs/22.md
+[lec23]: Lecturewise_mkdocs/23.md
