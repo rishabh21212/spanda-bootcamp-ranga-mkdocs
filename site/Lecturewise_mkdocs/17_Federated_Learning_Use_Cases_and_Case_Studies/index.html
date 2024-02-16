@@ -1,0 +1,2374 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../16_Introducing_Existing_Federated_Learning_Frameworks/">
+      
+      
+        <link rel="next" href="../18_Federated_Learning_Future_Directions/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.7">
+    
+    
+      
+        <title>17 Federated Learning Use Cases and Case Studies - Spanda DL Bootcamp</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.f2e4d321.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Spanda DL Bootcamp" class="md-header__button md-logo" aria-label="Spanda DL Bootcamp" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Spanda DL Bootcamp
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              17 Federated Learning Use Cases and Case Studies
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="purple"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6zm0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4zM7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="teal" data-md-color-accent="lime"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-hidden="true"  type="radio" name="__palette" id="__palette_2">
+    
+  
+</form>
+      
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+    
+  
+  The Complete Generative AI Bootcamp
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../01_Course_Vision_and_Running_a_Local_LLM/" class="md-tabs__link">
+          
+  
+  Lecturewise mkdocs
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Spanda DL Bootcamp" class="md-nav__button md-logo" aria-label="Spanda DL Bootcamp" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Spanda DL Bootcamp
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    The Complete Generative AI Bootcamp
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Lecturewise mkdocs
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Lecturewise mkdocs
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01_Course_Vision_and_Running_a_Local_LLM/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    01 Course Vision and Running a Local LLM
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02_Software_Engineering_for_AI/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    02 Software Engineering for AI
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03_Ops_-_DevOps%2C_MLOps%2C_AIOps/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    03 Ops   DevOps, MLOps, AIOps
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04_Data_Collection%2C_Data_Labeling%2C_Data_Management%2C_Analytics/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    04 Data Collection, Data Labeling, Data Management, Analytics
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05_Testing_and_Deployment/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    05 Testing and Deployment
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06.5/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    06.5
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06_LLM_Serving_and_Reinforcement_Learning/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    06 LLM Serving and Reinforcement Learning
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07_Distributed_Systems_Patterns/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    07 Distributed Systems Patterns
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../08_Workflow_Patterns/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    08 Workflow Patterns
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../09_Scheduling_%26amp%3B_Metadata_Patterns/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    09 Scheduling &amp; Metadata Patterns
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10_Data_Lakes_%26amp%3B_Intro_to_Federated_Learning/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    10 Data Lakes &amp; Intro to Federated Learning
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11_Federated_Learning/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    11 Federated Learning
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../12_Federated_Learning_System_Details/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    12 Federated Learning System Details
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../13_Federated_Learning_Implementation_-_Server_Side/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    13 Federated Learning Implementation   Server Side
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../14_Federated_Learning_Implementation_-_Client_Side/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    14 Federated Learning Implementation   Client Side
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../15_Federated_Learning_Running_the_System_%26amp%3B_Analyzing_Results/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    15 Federated Learning Running the System &amp; Analyzing Results
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../16_Introducing_Existing_Federated_Learning_Frameworks/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    16 Introducing Existing Federated Learning Frameworks
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    17 Federated Learning Use Cases and Case Studies
+  </span>
+  
+
+      </a>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../18_Federated_Learning_Future_Directions/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    18 Federated Learning Future Directions
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../19_LLMs_and_NLP_Introduction/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    LLM's & NLP Introduction
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../20_Retrieval_Augmented_Generation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Retrieval Augmented Generation (RAG)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../21_RAG_Pipeline_Implementation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    RAG Pipeline Implementation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../22_From_Simple_to_Advanced_RAG/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    From Simple to Advanced RAG
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../23_RAG_Observability/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Observability Tools for RAG
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  <h1>17 Federated Learning Use Cases and Case Studies</h1>
+
+<p><strong>Case Studies with Key Use Cases of Federated Learning Applications</strong></p>
+<ul>
+<li>
+<p><strong>Federated learning</strong> (<strong>FL</strong>) has met with a variety of AI
+    applications so far in various contexts and integration has been
+    explored with trials and errors in those fields. One of the most
+    popular areas has been in the medical and healthcare fields where
+    the concept of privacy-preserving AI naturally fits with the current
+    needs and challenges of healthcare AI.</p>
+</li>
+<li>
+<p>FL has also been applied to the financial services industry, edge
+    computing devices, and the <strong>Internet of Things</strong> (<strong>IoT</strong>),
+    through which FL has been shown to have significant benefits in
+    quite a few applications, which will resolve many important social
+    problems.</p>
+</li>
+<li>
+<p>Here, we will be discussing some of the major use cases of FL in
+    different fields. It is our hope that by the end of This section,
+    you'll be familiar with some of the applications of FL in different
+    industries.</p>
+</li>
+<li>
+<p>We\'ll start by exploring the use of FL in the healthcare and
+    financial industries before making the transition to the edge
+    computing and IoT sectors. Finally, we will conclude the section by
+    discussing the intersection of FL and distributed learning for big
+    data.</p>
+</li>
+<li>
+<p>Here, we will cover the following topics:</p>
+</li>
+</ul>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>&lt;!-- --&gt;
+</code></pre></div>
+-   Applying FL to the healthcare sector</p>
+<ul>
+<li>
+<p>Applying FL to the financial sector</p>
+</li>
+<li>
+<p>FL meets edge computing</p>
+</li>
+<li>
+<p>Moving towards the Internet of Intelligence</p>
+</li>
+<li>
+<p>Applying FL to distributed learning for big data</p>
+</li>
+</ul>
+<p>Applying FL to the healthcare sector</p>
+<ul>
+<li>
+<p>FL used in healthcare is a topic that gained quite a lot of
+    attention in the last couple of years. Healthcare advances can have
+    an enormous effect on our lives.</p>
+</li>
+<li>
+<p>However, several challenges make these advances perhaps more
+    difficult than in other domains. Let's begin by discussing some of
+    the common challenges that exist and are preventing the further
+    development of AI in healthcare.</p>
+</li>
+</ul>
+<p>Challenges in healthcare</p>
+<ul>
+<li>
+<p>One of the primary challenges is data accessibility. </p>
+</li>
+<li>
+<p><em>Data accessibility</em> is not an issue unique to healthcare. It is a
+    huge problem across the AI industry and will only become a greater
+    challenge as time goes on.</p>
+</li>
+<li>
+<p>It is a core problem in the development of AI in healthcare and we
+    will touch briefly on some of the reasons why it is an issue here.
+    We will also continue to revisit this major hurdle, addressing
+    problems and solutions from many different angles and applications.</p>
+</li>
+<li>
+<p>This strategy will allow you to understand the many different
+    aspects, complexity, and drivers of the problem.</p>
+</li>
+<li>
+<p>The data accessibility problem has many components:</p>
+</li>
+</ul>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>&lt;!-- --&gt;
+</code></pre></div>
+-   <strong>Privacy regulations</strong>: The main bottleneck of the data
+    accessibility issue is centered around the privacy regulations put
+    in place to protect personal data; these regulations are absolutely
+    necessary and should be in place. Rather than circumventing these
+    regulations, we'll be discussing how we can work in parallel with
+    them, keeping these valuable regulations in place, and at the same
+    time, making use of the intelligence that this data can provide. You
+    can think of this as a best-of-both-worlds scenario. Several
+    important privacy regulations are discussed in the <em>Data privacy as
+    a bottleneck</em> section of <a href="https://subscription.packtpub.com/book/data/9781803247106/12/ch12lvl1sec68/B18369_01.xhtml#_idTextAnchor017"><em>section
+    1</em></a>, <em>Challenges
+    in Big Data and Traditional AI</em>.</p>
+<ul>
+<li>
+<p><strong>Lack of data/need for real data</strong>: Few areas hold as much promise
+    for providing a positive societal impact as healthcare does. Yet,
+    the healthcare industry has fallen far behind in capitalizing on all
+    of the many benefits that AI has to offer. One reason for this is
+    that for AI and ML models to learn effectively, they need large
+    amounts of data. We'll discuss more on the need for large amounts of
+    data throughout This section. This is the limiting factor for AI. In
+    healthcare, there are many regulations in place that prevent these
+    models from utilizing the data in any way, and rightfully so.</p>
+</li>
+<li>
+<p><strong>Many data types from many places</strong>: As we'll discuss further,
+    there are many different data types from many different places. Data
+    can be in the form of text, video, images, or speech, which is
+    stored in many different places. Aside from the ability to access
+    data from many different locations, which is a major challenge on
+    its own, these institutions store data in various formats as well.</p>
+</li>
+</ul>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>&lt;!-- --&gt;
+</code></pre></div>
+-   As mentioned, some of the earliest work in the application of FL has
+    been in the healthcare space. Within this large field, there are
+    several ways FL can help solve problems. Let's take a look at just a
+    few of the areas where FL has great potential to transform the
+    healthcare system. Some of these areas include medical imaging, drug
+    discovery, and <strong>Electronic Health Records</strong> (<strong>EHRs</strong>).</p>
+<ul>
+<li>Let's start by taking a closer look at how FL is being used
+    in medical imaging.</li>
+</ul>
+<p>Medical imaging</p>
+<ul>
+<li>
+<p>There is a lot of optimism surrounding FL in the medical imaging
+    space as discussed in <em>A Comprehensive Analysis of Recent Deep and
+    Federated-Learning-Based Methodologies for Brain Tumor Diagnosis</em>,
+    which is listed in the <em>Further reading</em> section Here.</p>
+</li>
+<li>
+<p>These high expectations are, in part, due to some of the challenges
+    that need to be addressed and the capability of FL to overcome these
+    hurdles. One of these challenges is needing large amounts of data.</p>
+</li>
+<li>
+<p>Large amounts of medical imaging data are created every day as the
+    medical imaging industry continues to develop better equipment,
+    procedures, and facilities. The exponential growth of this data is a
+    huge opportunity for healthcare providers to develop better ML
+    models and increase the quality of healthcare.</p>
+</li>
+<li>
+<p>Another reason for the optimism around FL having a positive impact
+    on medical imaging is the already proven success of <strong>machine
+    learning</strong> (<strong>ML</strong>) -- more
+    specifically, <strong>deep learning</strong> (<strong>DL</strong>).</p>
+</li>
+<li>
+<p>Let's take a brief look at DL to understand better why it is so
+    important when dealing with large amounts of data. DL is a subspace
+    of ML encompassed by the AI umbrella.</p>
+</li>
+<li>
+<p>DL is different from ML in that it uses several layers of what are
+    known as neural networks. Several books have been written on DL and
+    neural networks as a singular subject, so we won't attempt to
+    explain these in greater detail in this book. For more in-depth
+    coverage of DL and neural networks, <em>Advanced Deep Learning with
+    Python</em> is a great book to read.</p>
+</li>
+<li>
+<p>For our general discussion, we'll provide a very basic explanation.</p>
+</li>
+<li>
+<p>The following figure, <em>Figure 9.1</em>, shows a simple example of a
+    neural network being used to help classify types of brain tumors
+    using medical imaging:</p>
+</li>
+</ul>
+<p><img alt="Figure 9.1 -- Tumor classification with a neural network
+" src="../images/media/image33.jpg" />{width="6.268055555555556in"
+height="3.765277777777778in"}</p>
+<p>Figure 9.1 -- Tumor classification with a neural network</p>
+<ul>
+<li>
+<p>On the left-hand side of the figure, we have an image of a brain
+    that has one of two types of tumors. The image is broken down into
+    numbers that represent the image pixels.</p>
+</li>
+<li>
+<p>These numbers are added to the neural network. The hidden layers
+    utilize different weights for these numbers and produce different
+    outputs through activation functions. Finally, we can see the two
+    output layers. In this case, there are two possible outputs. One
+    is <strong>Tumor is Type 1</strong> and the other is <strong>Tumor is Type 2</strong>.</p>
+</li>
+</ul>
+<p><strong>Single location data is limited</strong></p>
+<ul>
+<li>As you can see, DL models require a lot of data to train. Generally,
+    a single data repository has only a small amount of data, limiting
+    the ability of any model to generalize well.</li>
+</ul>
+<p><strong>Possible solutions to data accessibility challenges</strong></p>
+<ul>
+<li>
+<p>One solution is to utilize privacy-preserving FL, which can make use
+    of all the data available in multiple centers while keeping
+    sensitive data private.</p>
+</li>
+<li>
+<p>FL enables the deployment of large-scale ML models trained in
+    different data centers without sharing sensitive data.</p>
+</li>
+<li>
+<p>In FL, rather than moving the data to the model to be trained, we
+    move the model to the data and only bring back the intelligence
+    gathered from the data, referred to as <strong>Intelligence from
+    Data</strong> (<strong>IfD</strong>), discussed later in the <em>Potential of IfD</em> section
+    in This section.</p>
+</li>
+</ul>
+<p><strong>Example use case -- ML in hospitals</strong></p>
+<ul>
+<li>
+<p>Let's walk through an example of how FL could be applied to medical
+    imaging data. This example is actually what was done in an
+    international challenge focused on brain tumors. The goal here is to
+    segment the tumor using MRI scans.</p>
+</li>
+<li>
+<p>For this example, we're going to use three hospitals. We will label
+    them Hospital A, Hospital B, and Hospital C. Each hospital has
+    anonymized private medical imaging data that is stored locally. Each
+    hospital begins with a learning model, which you can see in
+    the following diagram:</p>
+</li>
+</ul>
+<p><img alt="Figure 9.2 -- Hospitals sharing ML models for FL
+" src="../images/media/image32.jpg" />{width="6.268055555555556in"
+height="5.235416666666667in"}</p>
+<p>Figure 9.2 -- Hospitals sharing ML models for FL</p>
+<ul>
+<li>
+<p>Each hospital runs the model locally; this creates what is referred
+    to as a local model. It's important to note that each one of the
+    hospital's local models will be different at this point. Each of
+    them has only trained on the data that resides at their hospital.</p>
+</li>
+<li>
+<p>The intelligence from training these three local models is sent to a
+    centralized server in the form of model parameters. The server
+    gathers the local models and combines them to create a global model.
+    This global model, a combination of the intelligence from all three
+    local models, is then sent back to each hospital and is again
+    trained locally only on that hospital's data.</p>
+</li>
+<li>
+<p>Again, only the intelligence from these models is sent back to the
+    server for aggregation. This process is repeated until the model has
+    learned all it can (known as convergence).</p>
+</li>
+<li>
+<p>Utilizing FL, you can train models that perform as if all the data
+    came from a single location even when data resides at different
+    locations. As you can see, the implementation of privacy-preserving
+    methods such as this one has the power to revolutionize the field of
+    medicine.</p>
+</li>
+<li>
+<p>Let's now take a look at how FL can improve the drug discovery
+    space.</p>
+</li>
+</ul>
+<p>Drug discovery</p>
+<ul>
+<li>Data has become somewhat of a new currency in our modern world. For
+    pharmaceutical companies, especially, the use of this data to
+    provide <em>personalized medicine</em> has become a major focus. In the
+    years ahead, companies that can make use of more data will be far
+    more competitive. This will be one of the defining strategies for
+    the future success of any organization.</li>
+</ul>
+<p><strong>Precision medicine</strong></p>
+<ul>
+<li>Personalized medicine, also known as <em>precision medicine</em>, relies
+    heavily on large amounts of <em>real-world data </em>to make this possible.
+    In addition, ML algorithms are needed to process and analyze this
+    data in order to extract meaningful insights. As we will discuss,
+    accessing significant amounts of real data is currently very
+    difficult, if not impossible.</li>
+</ul>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>&lt;!-- --&gt;
+</code></pre></div>
+-   In <em>Figure 9.3</em>, we show some of the areas where precision medicine
+    will have an immediate impact:</p>
+<p><img alt="Figure 9.3 -- Precision medicine impacting many areas
+" src="../images/media/image41.jpg" />{width="6.268055555555556in"
+height="6.09375in"}</p>
+<p>Figure 9.3 -- Precision medicine impacting many areas</p>
+<ul>
+<li>As you can see from <em>Figure 9.3</em>, precision medicine covers a vast
+    area of different fields and disciplines, such as oncology,
+    wellness, diagnostics, research, and health monitoring.</li>
+</ul>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>&lt;!-- --&gt;
+</code></pre></div>
+-   Currently, many AI solutions that are deployed in the healthcare
+    systems fail due to being created with small datasets that only
+    represent a fraction of the patient population. Researchers and
+    developers can validate and improve models using data from many
+    sources without ownership.</p>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>&lt;!-- --&gt;
+</code></pre></div>
+-   To access this data so that it can be processed and analyzed, a new
+    approach is needed. This is where FL comes in. As we've covered
+    throughout this book, FL provides access to the intelligence needed,
+    and not the data itself.</p>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>&lt;!-- --&gt;
+</code></pre></div>
+-   Precision medicine is a model that proposes that rather than
+    utilizing a <em>one-size-fits-all</em> approach, it should customize
+    healthcare to individuals for better results in terms of drug
+    effectiveness and cancer treatment outcomes, among other things. To
+    do this, precision medicine relies heavily on large amounts of
+    real-world data. Accessing large amounts of real-world data is the
+    first hurdle that must be overcome to realize precision medicine at
+    scale.</p>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>&lt;!-- --&gt;
+</code></pre></div>
+-   Let's look at the current approach to see how FL can provide
+    the needed answer.</p>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>&lt;!-- --&gt;
+</code></pre></div>
+-   Shown in <em>Figure 9.4</em> is the current common approach to ML system
+    implementation. Here, the data is transmitted to a central server,
+    where all of the data is gathered together, and algorithms are then
+    trained on this aggregated data. This is known as the <em>bringing the
+    data to the model</em> approach:</p>
+<p><img alt="Figure 9.4 -- Precision medicine now
+" src="../images/media/image38.jpg" />{width="5.467361111111111in"
+height="4.206944444444445in"}</p>
+<p>Figure 9.4 -- Precision medicine now</p>
+<ul>
+<li>It's easy to imagine the immense cost of moving data from many
+    hospitals into one centralized place in this fashion. Processing
+    data in this way also compromises data security and makes regulatory
+    compliance difficult, if not impossible.</li>
+</ul>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>&lt;!-- --&gt;
+</code></pre></div>
+-   As shown in <em>Figure 9.5</em>, the FL approach is quite different.
+    Instead of <em>bringing the data to the model</em>, the <em>model is moved to
+    the data</em>. This means that the ML model trains on local data and
+    only sends the intelligence to the FL server for aggregation, thus
+    allowing the various local models to benefit from updates to
+    the global model:</p>
+<p><img alt="Figure 9.5 -- Precision medicine with FL
+" src="../images/media/image54.jpg" />{width="5.177777777777778in"
+height="3.7395833333333335in"}</p>
+<p>Figure 9.5 -- Precision medicine with FL</p>
+<ul>
+<li>The FL approach allows for efficient model transfers and data
+    security while being compliance-friendly.</li>
+</ul>
+<p><strong>Potential of IfD</strong></p>
+<ul>
+<li>
+<p>Utilizing FL to gain access to real-world data has huge potential to
+    improve all of the clinical research stages. Accessing this kind of
+    data allows us to utilize the intelligence gathered and IfD can
+    dramatically accelerate the processes and steps in drug discovery.</p>
+</li>
+<li>
+<p>One important idea to keep in mind when discussing how FL works is
+    that the training data never leaves the device.</p>
+</li>
+</ul>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>&lt;!-- --&gt;
+</code></pre></div>
+-   <em>Figure 9.6</em> describes the process of extracting the ML model from
+    training data through the training process:</p>
+<p><img alt="Figure 9.6 -- An IfD diagram
+" src="../images/media/image53.jpg" />{width="6.268055555555556in"
+height="1.8090277777777777in"}</p>
+<p>Figure 9.6 -- An IfD diagram</p>
+<ul>
+<li>As you can see in <em>Figure 9.6</em>, the data is used locally to train
+    the ML model. In FL, the model is located on the device itself,
+    where it is trained, and only the model weights are sent for
+    aggregation -- so only the intelligence from the data, not the data
+    itself.</li>
+</ul>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>&lt;!-- --&gt;
+</code></pre></div>
+-   The ability to gather IfD collected from multiple sources, as well
+    as a wide range of data types, including video, text, speech, and
+    other sensory data, can help improve enrollment processes, both in
+    terms of the speed of doing so and finding the right match for the
+    research and development of treatments.</p>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>&lt;!-- --&gt;
+</code></pre></div>
+-   This is especially important for rare diseases and cancers. When
+    identifications are made in this way, subjects can be notified
+    of trial opportunities.</p>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>&lt;!-- --&gt;
+</code></pre></div>
+-   Federated access to data and the collection of IfD can open up
+    access to a substantial amount of data worldwide. This allows for
+    aggregated data repositories to mine a sufficient number of patients
+    fulfilling the protocol criteria. Potentially, this could allow all
+    participants in a trial to receive the actual drug and not the
+    placebo.</p>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>&lt;!-- --&gt;
+</code></pre></div>
+-   Ultimately, precision medicine at scale is not possible without
+    robust AI and robust AI can only be trained with large amounts of
+    real-world data. Using FL could allow for improved outcome
+    measurements. In the coming years, a federated approach has the
+    potential to drive advancements and innovation in the discovery of
+    new medical treatments in new ways that have not been possible
+    before.</p>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>&lt;!-- --&gt;
+</code></pre></div>
+-   In the following figure, <em>Figure 9.7</em>, we show a generalized view of
+    how FL collects IfD:</p>
+<p><img alt="Figure 9.7 -- A generalized view of how FL collects IfD
+" src="../images/media/image40.jpg" />{width="6.268055555555556in"
+height="4.642361111111111in"}</p>
+<p>Figure 9.7 -- A generalized view of how FL collects IfD</p>
+<ul>
+<li>
+<p>As shown in <em>Figure 9.7</em> here, all the data remains isolated within
+    each organization and is not transferred to the federated server.</p>
+</li>
+<li>
+<p>Let's now move forward and discuss an FL application with EHRs.</p>
+</li>
+</ul>
+<p>EHRs</p>
+<ul>
+<li>An EHR is a collection of health information that is systematically
+    and digitally stored. These records are designed to be shared
+    with <strong>healthcare providers</strong> (<strong>HCPs</strong>) when appropriate. According
+    to <em>HealthIT.gov</em> statistics, as of 2017, 86% of office-based
+    physicians have adopted EHRs in the United States.</li>
+</ul>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>&lt;!-- --&gt;
+</code></pre></div>
+-   <em>Figure 9.8</em> depicts the EHRs collected from various sources, such
+    as hospitals and insurers. In this figure, we use the
+    terms <strong>Electronic Medical Records</strong> (<strong>EMRs</strong>) and <strong>Personal
+    Health Records</strong> (<strong>PHRs</strong>):</p>
+<p><img alt="Figure 9.8 -- EHRs
+" src="../images/media/image48.jpg" />{width="6.268055555555556in"
+height="4.810416666666667in"}</p>
+<p>Figure 9.8 -- EHRs</p>
+<ul>
+<li>This adoption of EHRs has laid the groundwork for beneficial
+    collaboration between healthcare organizations. As we've discussed
+    throughout the book, the ability to access more real-world data
+    allows AI models trained on this data to be much more robust and
+    effective.</li>
+</ul>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>&lt;!-- --&gt;
+</code></pre></div>
+-   Although this foundation has been put in place, there are still many
+    challenges to the traditional ML approach in terms of sharing EHR
+    data across multiple institutions.</p>
+<ul>
+<li>
+<p>These include privacy concerns and regulations as well as data
+    standardization.</p>
+</li>
+<li>
+<p>One of the major problems is the storage of this data in <strong>Central
+    Data Repositories</strong> (<strong>CDRs</strong>), as shown in <em>Figure 9.9</em>, where
+    various forms of local data are stored to be trained to create an ML
+    model.</p>
+</li>
+</ul>
+<p><img alt="Figure 9.9 -- A centralized data mining method
+" src="../images/media/image36.jpg" />{width="6.268055555555556in"
+height="2.834722222222222in"}</p>
+<p>Figure 9.9 -- A centralized data mining method</p>
+<ul>
+<li>This CDR approach is not ideal because of the data isolation
+    problem, which is discussed in the following section.</li>
+</ul>
+<p><strong>The data isolation problem</strong></p>
+<ul>
+<li>The use of CDRs for data storage brings many problems. Some examples
+    include things such as <em>data leakage</em>, <em>hefty regulations</em>, and
+    a <em>high cost</em> to set up and maintain.</li>
+</ul>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>&lt;!-- --&gt;
+</code></pre></div>
+-   The effect that data storage methods have on the quality and
+    useability of the data itself is just as important. ML models
+    trained on a single center data usually cannot generalize well when
+    compared to data that has been gathered from multiple locations.</p>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>&lt;!-- --&gt;
+</code></pre></div>
+-   FL allows model training collaboration across multiple
+    organizations, resulting in the production of superior model
+    performance without violating data privacy regulations.</p>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>&lt;!-- --&gt;
+</code></pre></div>
+-   Let's take a look at an example of an FL application with EHRs.</p>
+<p><strong>Representation learning in EHRs</strong></p>
+<ul>
+<li>Researchers have applied FL to representation learning in EHRs as
+    mentioned in the <em>Further reading</em> list such as <em>Two-stage federated
+    phenotyping and patient representation learning</em>.</li>
+</ul>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>&lt;!-- --&gt;
+</code></pre></div>
+-   They used FL with <strong>natural language processing</strong> (<strong>NLP</strong>)
+    for phenotyping and representation learning with patient data. In
+    the first stage, a representation of patient data is created based
+    on some medical records from several hospitals without sharing the
+    raw data itself.</p>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>&lt;!-- --&gt;
+</code></pre></div>
+-   The representation that has been learned is not limited to any
+    specific medical task. In the second stage, an ML model for specific
+    phenotyping work is trained in a federated manner using the related
+    features derived from the learned representations.</p>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>&lt;!-- --&gt;
+</code></pre></div>
+-   FL has been showcased as an effective alternative to current
+    methodologies in the advancement of AI developments in healthcare,
+    whether in drug discovery, medical imaging, or the analysis of EHRs.</p>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a>&lt;!-- --&gt;
+</code></pre></div>
+-   Let's move on to the financial sector as another promising use case
+    related to FL in the following section.</p>
+<p>Applying FL to the financial sector</p>
+<ul>
+<li>
+<p>In the US alone, financial services firms spend billions of dollars
+    every year on compliance to combat laundering, yet the current
+    system is so ineffective that less than 1% of money laundering
+    activities are thwarted. In fact, it's estimated that firms spend
+    roughly 100 times more money than they are able to recover from this
+    criminal activity.</p>
+</li>
+<li>
+<p>Only a small percentage of transactions are caught by <strong>anti-money
+    laundering</strong> (<strong>AML</strong>) systems, and an even smaller percentage of
+    those alerts are eventually reported in <strong>suspicious activity
+    reports</strong> (<strong>SARs</strong>), as required by the <strong>Bank Secrecy
+    Act </strong>(<strong>BSA</strong>) of 1970.</p>
+</li>
+</ul>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a>&lt;!-- --&gt;
+</code></pre></div>
+-   Conservatively speaking, the value of information coming from a
+    network of banks is many times higher than the information any one
+    bank has. This is because you can see not just where the money came
+    from, but also where it went.</p>
+<p>Anti-Money Laundering (AML)</p>
+<ul>
+<li>The current AML system needs major improvements, with several
+    challenges that need to be overcome. Many privacy regulations are in
+    place to protect personal financial data. These regulations vary
+    from institution to institution and region to region.</li>
+</ul>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a>&lt;!-- --&gt;
+</code></pre></div>
+-   One solution is a collaboration between financial institutions. This
+    collaboration would allow these institutions to share intelligence
+    gathered from their own data in a mutually beneficial way. Rather
+    than moving data between collaborators, the ML models themselves
+    would be deployed locally at each institution.</p>
+<ul>
+<li>This would allow only the IfD to be shared and benefit each
+    collaborator that could utilize the intelligence gathered. As we've
+    discussed, FL has this capability.</li>
+</ul>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a>&lt;!-- --&gt;
+</code></pre></div>
+-   In FL, the models themselves move from institution to institution.
+    While doing so, the models adjust parameters and become more
+    intelligent as they learn from more data. This is different from
+    these two alternatives to FL:</p>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a>&lt;!-- --&gt;
+</code></pre></div>
+-   One option is to collect the data from the collaborating financial
+    institutions into one central repository. However, this approach
+    isn't possible due to customer privacy regulations.</p>
+<ul>
+<li>Another approach is to share some kind of identifier as necessary.
+    However, again due to privacy laws and regulations, this is not
+    possible and could only be used as part of an investigation process.</li>
+</ul>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a>&lt;!-- --&gt;
+</code></pre></div>
+-   To be able to use FL, we need to be able to ensure that the privacy
+    and security of data remain intact. To do so, we must ensure that
+    the models are being trained in a financial institution without
+    privacy violations. Lastly, we need to ensure that all communication
+    related to model parameter updates sent to the federated server is
+    safe and secure.</p>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a>&lt;!-- --&gt;
+</code></pre></div>
+-   FL can improve the effectiveness, efficiency, and fairness of the
+    global BSA and AML regimes. In the following section, we will look
+    at using FL in the context of transaction monitoring implementation
+    across AML disciplines.</p>
+<p>Proposed solutions to the existing AML approach</p>
+<ul>
+<li>The development of FL approaches across AML disciplines includes the
+    essential topic of customer onboarding and it may help to use
+    non-traditional information to verify the identities of potential
+    customers.</li>
+</ul>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a>&lt;!-- --&gt;
+</code></pre></div>
+-   A new approach is needed that can leverage sophisticated technology
+    to increase the awareness and efficiency of risk detection systems.</p>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a>&lt;!-- --&gt;
+</code></pre></div>
+-   This approach should enable the following:</p>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a>&lt;!-- --&gt;
+</code></pre></div>
+-   Enable firms and regulators to learn from each other without sharing
+    sensitive or protected data</p>
+<ul>
+<li>
+<p>Enhance the ability of firms to identify accurately real risks and
+    reduce unfounded risk reporting</p>
+</li>
+<li>
+<p>Improve the risk-reward calculi of firms when making decisions about
+    whether to serve specific markets</p>
+</li>
+</ul>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a>&lt;!-- --&gt;
+</code></pre></div>
+-   The AML framework serves a vital national interest in preventing any
+    intent of harm, whether through terrorism, money laundering, fraud,
+    or human trafficking, using the global financial system for
+    those illegal purposes.</p>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-35-1" name="__codelineno-35-1" href="#__codelineno-35-1"></a>&lt;!-- --&gt;
+</code></pre></div>
+-   Although there has been enormous investment in and attention to
+    money laundering risk detection systems, the system is broken. Firms
+    invest considerable resources to satisfy AML requirements but get
+    little feedback on the quality of their risk reporting.</p>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-36-1" name="__codelineno-36-1" href="#__codelineno-36-1"></a>&lt;!-- --&gt;
+</code></pre></div>
+-   Two key factors have driven firms out of operating in specific
+    markets:</p>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-37-1" name="__codelineno-37-1" href="#__codelineno-37-1"></a>&lt;!-- --&gt;
+</code></pre></div>
+-   The first is the costs of risk rating activity that occurs within
+    the money services industry</p>
+<ul>
+<li>The second key factor is the regulatory risks and reputational
+    impact for financial firms connected to illicit financial activities</li>
+</ul>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-38-1" name="__codelineno-38-1" href="#__codelineno-38-1"></a>&lt;!-- --&gt;
+</code></pre></div>
+-   As a result, globally, correspondent banking relationships have
+    fallen by 25%. Since 2009, 25% of banks in emerging markets have
+    reported correspondent banking losses.</p>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-39-1" name="__codelineno-39-1" href="#__codelineno-39-1"></a>&lt;!-- --&gt;
+</code></pre></div>
+-   In <em>Figure 9.10</em>, transaction reporting is depicted and each
+    institution's database of risk patterns reflects its experience
+    with illicit activities:</p>
+<p><img alt="Figure 9.10 -- Institutional reporting of suspected illicit activity
+" src="../images/media/image28.jpg" />{width="6.268055555555556in"
+height="4.373611111111111in"}</p>
+<p>Figure 9.10 -- Institutional reporting of suspected illicit activity</p>
+<ul>
+<li>Institutions won't necessarily know about patterns their competitors
+    are picking up or what the government knows about which transactions
+    flagged are suspicious or genuine. Firms get little timely feedback
+    on the accuracy of the reports they submit. The result is that firms
+    lack the most vital information for improving their risk detection
+    capabilities: timely information about confirmed problems.</li>
+</ul>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-40-1" name="__codelineno-40-1" href="#__codelineno-40-1"></a>&lt;!-- --&gt;
+</code></pre></div>
+-   So, imagine transaction monitoring that is more effective,
+    efficient, and fair in this scenario. The bank acts as a
+    utility-like hub.</p>
+<ul>
+<li>
+<p>Powerful computers combined with smart algorithms could be deployed
+    to evaluate data at different institutions.</p>
+</li>
+<li>
+<p>The ML model that has learned the risk patterns would then move
+    between the participating firms to pick up the patterns and learn
+    from the risk at each institution. All of this could be done without
+    sharing sensitive or protected data.</p>
+</li>
+<li>
+<p>This is depicted in <em>Figure 9.11</em>:</p>
+</li>
+</ul>
+<p><img alt="Figure 9.11 -- The data and intelligence flow within a banking
+ecosystem " src="../images/media/image73.jpg" />{width="6.268055555555556in"
+height="4.429861111111111in"}</p>
+<p>Figure 9.11 -- The data and intelligence flow within a banking ecosystem</p>
+<ul>
+<li>
+<p>In the FL approach, the bank creates a classification algorithm that
+    trains on each participating firm's data.</p>
+</li>
+<li>
+<p>The bank develops a key model and model parameters that reflect
+    insights from all participating firms and the data in the
+    government's possession.</p>
+</li>
+<li>
+<p>The bank distributes the key model and model parameters to the
+    participating firms while the data stays in each institution. These
+    distributed models adopt the risk patterns in those firms by
+    learning from their local data and then sending them back to the
+    bank.</p>
+</li>
+</ul>
+<p>Demo of FL in the AML space</p>
+<ul>
+<li>
+<p>The researchers at TieSet, Inc. have conducted an experiment of
+    applying FL to the AML space over STADLE, using some synthetic
+    transaction data generated by the PaySim mobile money simulator
+    (<a href="https://www.kaggle.com/ealaxi/paysim1">[https://www.kaggle.com/ealaxi/paysim1]{.underline}</a>).</p>
+</li>
+<li>
+<p>They have used supervised learning with logistic regression where
+    model features include time, amount, and the new and old balance of
+    the original account and the destination account.</p>
+</li>
+<li>
+<p>The dataset has 636,2620 transactions (8,213 fraud transactions and
+    635,4407 valid transactions), which are split into 10 separate local
+    agents.</p>
+</li>
+<li>
+<p><em>Figure 9.12</em> is the outcome of applying FL to AML where the
+    precision score and F1 score are plotted at each round of training.
+    In the figure, the thicker line is the performance of the aggregated
+    model, and the thin lines are the results of individual agents
+    training separately only using local data:</p>
+</li>
+</ul>
+<p><img alt="Figure 9.12 -- Outcome of applying FL to AML (thicker line: aggregated
+model, thin lines: individual agent training separately)
+" src="../images/media/image58.jpg" />{width="6.268055555555556in"
+height="3.0034722222222223in"}</p>
+<p>Figure 9.12 -- Outcome of applying FL to AML (thicker line: aggregated
+model, thin lines: individual agent training separately)</p>
+<ul>
+<li>
+<p>As in <em>Figure 9.12</em>, the aggregated model performs in a quite stable
+    manner, constantly achieving more than 90% in terms of precision and
+    F1 score. FL could reduce the fraud transactions down from the total
+    fraud transactions of $1,241,770,000 to $65,780,000, meaning only
+    5.3% of fraud transactions are missing.</p>
+</li>
+<li>
+<p>Let's conclude this section by looking at a list of benefits that FL
+    provides for risk detection.</p>
+</li>
+</ul>
+<p>Benefits of FL for risk detection systems</p>
+<ul>
+<li>There are several benefits in financial sectors for applying FL to
+    risk detection systems as follows:</li>
+</ul>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-41-1" name="__codelineno-41-1" href="#__codelineno-41-1"></a>&lt;!-- --&gt;
+</code></pre></div>
+-   FL can create a larger dataset of risk detection algorithms to train
+    on</p>
+<ul>
+<li>
+<p>Improved accuracy of illicit activity detection</p>
+</li>
+<li>
+<p>Provides a way for organizations to collaborate</p>
+</li>
+<li>
+<p>Firms can enter new markets</p>
+</li>
+</ul>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-42-1" name="__codelineno-42-1" href="#__codelineno-42-1"></a>&lt;!-- --&gt;
+</code></pre></div>
+-   The ability to identify money laundering tactics within your own
+    financial institution is limited by the data you have access to.
+    Data sharing restrictions make collaboration difficult, if not
+    impossible.</p>
+<ul>
+<li>
+<p>The solutions and advantages that FL brings to the finance industry
+    are numerous. Additional advantages include better operational
+    efficiency and better allocation of human capital.</p>
+</li>
+<li>
+<p>There is no limit to the application of FL, especially in the
+    financial space, due to the ability to extract intelligence
+    from client data.</p>
+</li>
+<li>
+<p>We'll now be switching gears a bit as we move on to discussing the
+    use of FL in several emerging technologies in the following section.</p>
+</li>
+</ul>
+<p>FL meets edge computing</p>
+<ul>
+<li>
+<p>The section in this section is a mixture of different areas, some of
+    which are emergent technologies.</p>
+</li>
+<li>
+<p>These areas are all very interconnected, as we will cover. Many of
+    these technologies depend on one another to overcome their own
+    challenges and limitations.</p>
+</li>
+<li>
+<p>Combining these technologies alongside FL is an especially potent
+    combination of technology that is sure to be key to advancements and
+    innovation in the coming years.</p>
+</li>
+</ul>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-43-1" name="__codelineno-43-1" href="#__codelineno-43-1"></a>&lt;!-- --&gt;
+</code></pre></div>
+-   In the decade ahead, we will see several changes brought about by
+    the expansion of edge computing capabilities, IoT, and 5G
+    connectivity.</p>
+<ul>
+<li>
+<p>We will see an exponential increase in both the amount of data and
+    the speed at which it is transmitted.</p>
+</li>
+<li>
+<p>We will continue to see more privacy regulations put in place to
+    protect private user data and an explosion in the automation
+    and analytics areas.</p>
+</li>
+</ul>
+<p>Edge computing with IoT over 5G</p>
+<ul>
+<li>
+<p>The foundation for realizing the full potential of smart devices is
+    only possible if these devices are able to connect with a
+    much-improved network, such as 5G.</p>
+</li>
+<li>
+<p>In fact, by the end of 2023, it is expected that there will be 1.3
+    billion subscribers to 5G services worldwide. Alongside edge
+    computing, 5G networks are essential for IoT connectivity. Combining
+    these technologies will help pave the way for smart devices.</p>
+</li>
+<li>
+<p><em>Figure 9.13</em> depicts a variety of things, with edge computing
+    capability connected to the cloud and data centers within an IoT
+    framework:</p>
+</li>
+</ul>
+<p><img alt="Figure 9.13 -- Edge computing and the Internet
+" src="../images/media/image65.jpg" />{width="6.268055555555556in"
+height="4.565277777777778in"}</p>
+<p>Figure 9.13 -- Edge computing and the Internet</p>
+<ul>
+<li>
+<p>Many of these IoT devices, however, lack adequate security
+    capabilities. In addition to laws and regulations such as
+    the <strong>General Data Protection Regulation</strong> (<strong>GDPR</strong>), we can also
+    expect additional policies to be implemented to protect user data.
+    Essentially the need for a solution that extracts IfD will continue
+    to build as more time passes.</p>
+</li>
+<li>
+<p>Let's take a look at an example of FL applied to edge computing.</p>
+</li>
+</ul>
+<p>Edge FL example -- object detection</p>
+<ul>
+<li>Edge computing is an architecture that uses distributed computing to
+    bring computation and data storage as close to the sources of data
+    as possible. Ideally, this should reduce latency and save bandwidth.
+    Here's an example of how FL can be utilized with different types
+    of edge devices.</li>
+</ul>
+<p>Technical settings</p>
+<ul>
+<li>
+<p>In this example, three devices were used to demonstrate object
+    detection with FL using edge devices.</p>
+</li>
+<li>
+<p>One was an EIS200 edge microserver that ran on Nvidia's Jetson with
+    an Ubuntu OS.</p>
+</li>
+<li>
+<p>The second device was a Raspberry Pi, using Raspberry Pi OS, and the
+    third device was simply a regular PC, whose OS was Ubuntu as well.
+    These machines individually trained an object detection model
+    with unique datasets.</p>
+</li>
+</ul>
+<p>How to do it</p>
+<ul>
+<li>
+<p>The EIS200 trained on pictures of fish, meat, and tomatoes with the
+    labels <em>fish</em>, <em>meat</em>, and <em>vegetable</em>. The Raspberry Pi trained on
+    pictures of fish, meat, and eggplants. Evidently, here, tomatoes
+    were replaced with eggplants.</p>
+</li>
+<li>
+<p>The labels, however, remained the same -- fish, meat, and vegetable.
+    Likewise, the regular PC trained on pictures of fish, meat, and
+    leeks, still with the labels fish, meat, and vegetable.</p>
+</li>
+<li>
+<p>As you would expect, each environment had biased data containing
+    different vegetables -- as in, tomatoes, eggplants, and leeks --
+    with an identical label, vegetable, for all of them.</p>
+</li>
+</ul>
+<p>How it works</p>
+<ul>
+<li>
+<p>First, the model was trained with pictures of tomatoes by EIS200. As
+    you would expect, only tomatoes were correctly labeled as
+    vegetables, whereas eggplants and leeks were mislabeled.</p>
+</li>
+<li>
+<p>In the same manner, the Raspberry Pi's model trained with pictures
+    of eggplants only identified eggplants correctly. One of the two
+    leeks was labeled as a vegetable as well, but the other one was
+    identified as fish. As expected, the regular PC's model only
+    identified leeks as vegetables.</p>
+</li>
+<li>
+<p>None of the three agents could label all three vegetables correctly,
+    as we would have anticipated. Next, they were connected to an FL
+    platform called STADLE, developed by TieSet, Inc:</p>
+</li>
+</ul>
+<p><img alt="Figure 9.14 -- Demo of detecting tomatoes, eggplants, and leeks using
+FL where the distribution of the datasets is different on each machine
+" src="../images/media/image59.jpg" />{width="6.268055555555556in"
+height="3.2736111111111112in"}</p>
+<p>Figure 9.14 -- Demo of detecting tomatoes, eggplants, and leeks using FL
+where the distribution of the datasets is different on each machine</p>
+<ul>
+<li>
+<p>The STADLE aggregator was run as an instance in AWS. Here, again,
+    each environment had a uniquely biased dataset containing only one
+    type of vegetable.</p>
+</li>
+<li>
+<p>Connected with the STADLE platform, each agent trained with local
+    data. After several training epochs, the weights of the models were
+    sent from the agents to the aggregator.</p>
+</li>
+<li>
+<p>Those weights were then aggregated and sent back to the agents to
+    continue training. The repetition of this aggregation cycle
+    generated unbiased weights.</p>
+</li>
+</ul>
+<p>Examining the results</p>
+<ul>
+<li>The FL model was able to detect and label all three types of
+    vegetables correctly as in <em>Figure 9.15</em>. This is a straightforward
+    example of the power of FL in terms of bias elimination:</li>
+</ul>
+<p><img alt="Figure 9.15 -- Results of the demo using three edge devices
+" src="../images/media/image62.jpg" />{width="6.268055555555556in"
+height="3.8965277777777776in"}</p>
+<p>Figure 9.15 -- Results of the demo using three edge devices</p>
+<ul>
+<li>
+<p>As mentioned previously, all of the model training took place at the
+    local storage of the edge device itself.</p>
+</li>
+<li>
+<p>The model trained on the local data and then only sent the parameter
+    weights to the federated server for aggregation.</p>
+</li>
+<li>
+<p>The federated server averaged the model. If you recall from earlier
+    sections, this is called FedAvg.</p>
+</li>
+<li>
+<p>The federated server then sent back the improved and updated model
+    to the edge device. So, again, only IfD is collected, not the data
+    itself.</p>
+</li>
+<li>
+<p>Now, let's look at another edge example in the automotive sector in
+    the following section.</p>
+</li>
+</ul>
+<p>Making autonomous driving happen with FL</p>
+<ul>
+<li>
+<p>Edge computing with ML gains significant interest in AI industries
+    at scale, especially in the automotive field. Use cases such as
+    autonomous driving require low latency and real-time responses to
+    operate correctly. Therefore, FL becomes one of the best solutions
+    for the automotive field in terms of distributed data processing and
+    training.</p>
+</li>
+<li>
+<p>Offloading computation and storage to edge IoT devices makes the
+    cloud systems for managing autonomous driving applications much
+    smaller and cheaper. That's the most powerful benefit of moving on
+    to the FL paradigm from central cloud-based ML.</p>
+</li>
+<li>
+<p>Modern cars already have edge devices with complex computing
+    capabilities. <strong>Advanced Driver Assistance Systems</strong> (<strong>ADASs</strong>) are
+    the essential functions for autonomous cars where calculations
+    happen onboard. They also require significant computation power.</p>
+</li>
+<li>
+<p>The model is trained and prepared using regular, costly training
+    systems within on-premises servers or in the cloud even if the
+    prediction happens in the autonomous vehicle.</p>
+</li>
+<li>
+<p>The training process will become more computationally expensive and
+    slower if the data becomes bigger and will require significant
+    storage as well.</p>
+</li>
+<li>
+<p>FL needs to be used to avoid those issues because updated ML models
+    are passed between the vehicles and the server where the car stores
+    the user driving patterns and streaming images from the onboard
+    camera. FL, again, can work in accordance with user consent and
+    adherence to privacy and regional regulations.</p>
+</li>
+<li>
+<p><em>Figure 9.16</em> is about decentralized FL with multiple aggregators to
+    improve ADASs for safe driving, conducted as a real use case by
+    TieSet, Inc. with its technological partner:</p>
+</li>
+</ul>
+<p><img alt="Figure 9.16 -- Decentralized FL with multiple aggregators to improve
+ADASs for safe driving
+" src="../images/media/image61.jpg" />{width="6.268055555555556in"
+height="4.0777777777777775in"}</p>
+<p>Figure 9.16 -- Decentralized FL with multiple aggregators to improve
+ADASs for safe driving</p>
+<ul>
+<li>
+<p>The ADAS integrated into the STADLE of TieSet, Inc., tailored to
+    provide comfort and personal safety measures, especially to senior
+    citizens, delivered optimized steering controlling assistance for
+    car products.</p>
+</li>
+<li>
+<p>Via advanced computer vision and <strong>Reinforcement Learning</strong> (<strong>RL</strong>)
+    technologies, they achieved a design that provides prompt danger
+    situation awareness and intelligently learns about the
+    best-personalized driving strategies.</p>
+</li>
+<li>
+<p>While personalization is a principal focus of the design,
+    substantial privacy issues come with personal data usage. The FL
+    framework enabled by the STADLE platform provided a realistic
+    solution to overcome this barrier.</p>
+</li>
+<li>
+<p>The architecture, presenting a collaborative form of ML training
+    distributed among edge users via AI intelligence exchanges, avoids
+    data transferal and ensures data privacy.</p>
+</li>
+<li>
+<p>Furthermore, the aggregated models can cope with various risky and
+    unpredictable situations beyond the personal experience of drivers.</p>
+</li>
+<li>
+<p>During the proof of concept using real cars, they successfully
+    demonstrated that the designed RL model could efficiently generate
+    the desirable steering strategy customized for the drivers using
+    STADLE's aggregation framework.</p>
+</li>
+<li>
+<p>In the following section, we will talk about how FL could be applied
+    to the robotics domain.</p>
+</li>
+</ul>
+<p>Applying FL to robotics</p>
+<ul>
+<li>
+<p>In robotics systems and applications, ML has already become an
+    integral and essential part of completing necessary tasks. Computer
+    vision has evolved to make robotics systems perform very well for
+    many tasks, such as image segmentation and object detection and
+    classification as well as NLP and signal processing tasks.</p>
+</li>
+<li>
+<p>ML can handle many robotics tasks, including perception, path
+    planning, sensor fusion, and grasping detected objects
+    in manufacturing settings.</p>
+</li>
+<li>
+<p>However, ML in robotics also has many challenges. The first is the
+    training time. Even when the amount of data is enough to train the
+    ML models to solve the aforementioned problems, it takes weeks or
+    months to train an authentic robotics system.</p>
+</li>
+<li>
+<p>Equally, if the data is not sufficient, it can restrict the ML model
+    performance significantly. Often, data privacy and accessibility
+    become an issue for collecting enough data to train the ML models
+    for the robots.</p>
+</li>
+<li>
+<p>That is why the FL framework is considered an essential solution to
+    the domain of robotics.</p>
+</li>
+<li>
+<p>Researchers at TieSet, Inc. developed a system and methods that
+    allow robotic manipulators and tools to share their manipulation
+    skills (including reaching, pick-and-place, holding, and grasping)
+    for objects of various types and shapes with other robots, as well
+    as use the skills of other robots to improve and expand their own.</p>
+</li>
+<li>
+<p>This system covers the methods to create a general manipulation
+    model for robots that continuously improves by crowdsourcing skills
+    from various robotic agents while keeping the data private.</p>
+</li>
+<li>
+<p>They propose a new architecture where multiple AI-powered robotic
+    agents collaboratively train a global manipulation model by
+    submitting their models to an aggregator. This communication enables
+    each agent to utilize the training results of the agents by
+    receiving an optimally updated global model.</p>
+</li>
+<li>
+<p><em>Figure 9.17</em> is the architecture showing how the federated
+    crowdsourced global manipulation framework for robotics works:</p>
+</li>
+</ul>
+<p><img alt="Figure 9.17 -- Architecture of the federated crowdsourced global
+manipulation framework for robotics
+" src="../images/media/image63.jpg" />{width="6.268055555555556in"
+height="5.684027777777778in"}</p>
+<p>Figure 9.17 -- Architecture of the federated crowdsourced global
+manipulation framework for robotics</p>
+<ul>
+<li>
+<p>Based on the architecture of the preceding figure, in the simulation
+    settings, they prepare five robotic arms for the individual tasks of
+    grabbing boxes, balls, ducks, and teddies.</p>
+</li>
+<li>
+<p>Using the STADLE platform by TieSet, Inc., which can conduct
+    asynchronous FL, the ML models from those arms are aggregated
+    continuously. In the end, the federated robotics ML model can grab
+    all these objects, whether boxes, balls, ducks, or teddies, with a
+    higher performance (an 80% success rate) in grabbing those objects,
+    as seen in <em>Figure 9.18</em>:</p>
+</li>
+</ul>
+<p><img alt="Figure 9.18 -- Arm robots can cross-train with different tasks for
+accuracy and efficiency
+" src="../images/media/image71.jpg" />{width="6.268055555555556in"
+height="3.0875in"}</p>
+<p>Figure 9.18 -- Arm robots can cross-train with different tasks for
+accuracy and efficiency</p>
+<ul>
+<li>
+<p>The FL based on STADLE could significantly reduce the time taken to
+    train robots and ML for production lines using computer vision.
+    Federated performance is much better than training individual robots
+    and the learning time is much faster than when training individual
+    robots.</p>
+</li>
+<li>
+<p>In the following section, we will talk about AI at scale, where
+    learning should constantly happen even with numerous devices with
+    connected environments and the IoT should evolve into the
+    Internet of Intelligence.</p>
+</li>
+</ul>
+<p>Moving toward the Internet of Intelligence</p>
+<ul>
+<li>
+<p>In this section, we will talk about why FL is quite important in the
+    context of the latest development of scalable technologies, such as
+    the IoT and 5G.</p>
+</li>
+<li>
+<p>As in the previous section, the areas in which AI needs to keep
+    learning at scale include autonomous driving, retail systems, energy
+    management, robotics, and manufacturing, all of which generate a
+    huge amount of data on the edge side, and most of the data needs to
+    be fully learned to generate performant ML models.</p>
+</li>
+<li>
+<p>Following this trend, let us look into the world of the Internet of
+    Intelligence, in which learning can happen on the edge side to cope
+    with dynamic environments and numerous devices connected to the
+    Internet.</p>
+</li>
+</ul>
+<p>Introducing the IoFT</p>
+<ul>
+<li>
+<p>The IoT involves intelligent and connected systems. They are
+    intelligent because the information is shared and intelligence is
+    extracted and used for some purpose -- for example, prediction or
+    control of a device. They are often connected to the cloud and are
+    able to collect data from many endpoints.</p>
+</li>
+<li>
+<p><em>Figure 9.19</em> shows the current IoT system with more and more
+    data over time:</p>
+</li>
+</ul>
+<p><img alt="Figure 9.19 -- A current IoT system
+" src="../images/media/image66.jpg" />{width="6.268055555555556in"
+height="3.9027777777777777in"}</p>
+<p>Figure 9.19 -- A current IoT system</p>
+<ul>
+<li>
+<p>As shown in <em>Figure 9.19</em>, in the current IoT flow, large amounts of
+    data must be uploaded and stored in the cloud.</p>
+</li>
+<li>
+<p>The models train for specific purposes, such as predictive
+    maintenance and text prediction. Finally, the trained models are
+    sent back to the edge devices.</p>
+</li>
+<li>
+<p>As you can see, there are several issues with the current approach:</p>
+</li>
+</ul>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-44-1" name="__codelineno-44-1" href="#__codelineno-44-1"></a>&lt;!-- --&gt;
+</code></pre></div>
+-   A large amount of storage space is needed</p>
+<ul>
+<li>
+<p>Latency is affected due to the amount of data</p>
+</li>
+<li>
+<p>Privacy issues due to the movement of data</p>
+</li>
+</ul>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-45-1" name="__codelineno-45-1" href="#__codelineno-45-1"></a>&lt;!-- --&gt;
+</code></pre></div>
+-   To overcome these issues, FL plays an important role.</p>
+<ul>
+<li>
+<p>The <strong>Internet of Federated Things</strong> (<strong>IoFT</strong>) is an idea
+    originally presented by researchers at the University of Michigan,
+    whose paper <em>The Internet of Federated Things </em>(<em>IoFT</em>) is listed in
+    the <em>Further reading</em> section of This section. The IoFT is an
+    extended framework combining IoT with the concept of FL.</p>
+</li>
+<li>
+<p>As the computational power on the edge side has improved
+    significantly, AI chips have been penetrating the market rapidly.
+    Even smartphones have a really strong computing capability these
+    days and small but powerful computers are often attached to
+    most edge devices.</p>
+</li>
+<li>
+<p>Therefore, the ML model training process is brought down to the edge
+    due to the increased computational capability of edge devices, and
+    the IoT's functionality of sending data to the server can be used to
+    transmit ML models to the cloud. This is also a very effective
+    approach to protecting private data on edge devices, such as mobile
+    phones.</p>
+</li>
+<li>
+<p>Let's take a look at an example of the IoFT shown in <em>Figure 9.20</em>.</p>
+</li>
+</ul>
+<p><img alt="Figure 9.20 -- An example of the IoFT
+" src="../images/media/image68.jpg" />{width="6.268055555555556in"
+height="5.33125in"}</p>
+<p>Figure 9.20 -- An example of the IoFT</p>
+<ul>
+<li>Potential applications of the IoFT include distributed
+    manufacturing, traffic intersection control, and energy control, to
+    name a few.</li>
+</ul>
+<p>Understanding the role of FL in Web 3.0</p>
+<ul>
+<li>
+<p>FL can be integrated into Web 3.0 technologies to accelerate the
+    adoption of the Internet of Intelligence.</p>
+</li>
+<li>
+<p>The intelligence represented by ML models could be the property of
+    particular individuals or industries. At the same time, it could be
+    considered a public asset if it is something that could contribute
+    to the entire learning process of that ML model for people
+    worldwide.</p>
+</li>
+<li>
+<p>Whether private intellectual property or public assets, by utilizing
+    Web 3.0 technology, intelligence can be managed and evolved in a
+    decentralized manner.</p>
+</li>
+<li>
+<p>Therefore, more and more people will receive the benefits of
+    intelligence that people have collaboratively trained, which leads
+    to the true innovation of our entire society in various domains and
+    with various applications.</p>
+</li>
+</ul>
+<p>Applying FL to distributed learning for big data</p>
+<ul>
+<li>
+<p>In this section, we will discuss how FL can be applied to
+    distributed learning in the context of big data.</p>
+</li>
+<li>
+<p>FL for big data may not be related to privacy-related issues so much
+    because the data needed for intelligence purposes is already
+    possessed. Therefore, it may be more applicable to efficient
+    learning for big data and improving training time significantly, as
+    well as reducing the costs of using huge servers, computation, and
+    storage.</p>
+</li>
+<li>
+<p>There are several ways to conduct distributed learning on big data,
+    such as building a specific end-to-end ML stack applied to different
+    types of servers, such as parameter servers, or utilizing certain ML
+    schemes on top of big data platforms such as Hadoop and Spark.</p>
+</li>
+<li>
+<p>There are also some other platforms, such as GraphLab and Pregel.
+    You can use any libraries, and methods such as stochastic proximal
+    descent and coordinate descent with low-level utilities for ML.</p>
+</li>
+<li>
+<p>These frameworks can support the parallel training of ML models
+    computationally, but will not be able to assign the data source to
+    different machines to train them locally in a distributed way,
+    especially when the training environments are dispersed over the
+    Internet.</p>
+</li>
+<li>
+<p>With FL, you can simply aggregate what different distributed
+    machines learn just by synchronizing the federation of the models,
+    but you do need to develop a well-designed platform to coordinate
+    the continuous operation of distributed learning, with proper model
+    repository and versioning approaches as well.</p>
+</li>
+<li>
+<p>An example of conducting distributed learning on big data is
+    depicted in <em>Figure 9.21</em>.</p>
+</li>
+</ul>
+<p><img alt="Figure 9.21 -- Distributed learning integration into big data
+" src="../images/media/image60.jpg" />{width="6.268055555555556in"
+height="3.6145833333333335in"}</p>
+<p>Figure 9.21 -- Distributed learning integration into big data</p>
+<ul>
+<li>
+<p>In the example in <em>Figure 9.21</em>, the data source, which is typically
+    very large, is sharded into multiple data sources to be dispersed
+    even into different machines or instances that are available for
+    training.</p>
+</li>
+<li>
+<p>Within an FL framework, trained models from distributed environments
+    are all aggregated. The trained and aggregated model then goes to
+    the processes of <strong>ML Operations</strong> (<strong>ML Ops</strong>) for performance
+    validation and continuous monitoring with <strong>Model
+    Operations</strong> (<strong>Model Ops</strong>).</p>
+</li>
+<li>
+<p>Another layer on top of the preceding scenario can be to combine the
+    insights from the other data sources. In this case, the FL can
+    elegantly combine the insights from the other data sources and
+    nicely coordinate the integration of the other forms of intelligence
+    directly created in the distributed environments.</p>
+</li>
+<li>
+<p>This way, you can also create the hybrid model of centralized ML and
+    distributed ML as well.</p>
+</li>
+</ul>
+<p>Summary</p>
+<ul>
+<li>
+<p>Here, we discussed many of the challenges facing different
+    industries in terms of AI advancements. The majority of the
+    challenges are related in some way to data accessibility. Issues
+    such as data privacy regulations, lack of real data, and data
+    transmission costs are all unique and challenging problems that we
+    expect to see FL continue to help solve.</p>
+</li>
+<li>
+<p>Here, you learned about the use cases of the areas in which the FL
+    is playing a more and more important role, such as healthcare,
+    financial, edge, and IoT domains. The adherence to privacy that FL
+    offers is particularly important for the healthcare and financial
+    sectors, while FL can add significant value in terms of scalability
+    and learning efficiency to lots of edge AI and IoT scenarios. You
+    also learned how to apply FL to distributed learning for big data to
+    reduce training time and costs.</p>
+</li>
+<li>
+<p>In the next and final section, we will wrap up this work by
+    discussing the very exciting future trends and developments in which
+    FL is expected to play a key role in the coming decade.</p>
+</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var tab,labels=set.querySelector(".tabbed-labels");for(tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      &copy; 2024 <a href="https://spanda.io"  target="_blank" rel="noopener">Spanda.io</a>
+
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://ranga-rangarajan.github.io/spanda-bootcamp/" target="_blank" rel="noopener" title="ranga-rangarajan.github.io" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1zM480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2zm-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3zm-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.sections", "toc.integrate", "navigation.top", "search.suggest", "search.highlight", "content.tabs.link", "content.code.annotation", "content.code.copy"], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.caa56a14.min.js"></script>
+      
+    
+  </body>
+</html>

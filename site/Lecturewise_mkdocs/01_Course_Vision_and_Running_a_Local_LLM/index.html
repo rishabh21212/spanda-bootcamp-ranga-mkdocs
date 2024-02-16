@@ -1,0 +1,1210 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../..">
+      
+      
+        <link rel="next" href="../02_Software_Engineering_for_AI/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.7">
+    
+    
+      
+        <title>01 Course Vision and Running a Local LLM - Spanda DL Bootcamp</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.f2e4d321.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#accessing-models-with-apis" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Spanda DL Bootcamp" class="md-header__button md-logo" aria-label="Spanda DL Bootcamp" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Spanda DL Bootcamp
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              01 Course Vision and Running a Local LLM
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="purple"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6zm0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4zM7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="teal" data-md-color-accent="lime"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-hidden="true"  type="radio" name="__palette" id="__palette_2">
+    
+  
+</form>
+      
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+    
+  
+  The Complete Generative AI Bootcamp
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="./" class="md-tabs__link">
+          
+  
+  Lecturewise mkdocs
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Spanda DL Bootcamp" class="md-nav__button md-logo" aria-label="Spanda DL Bootcamp" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Spanda DL Bootcamp
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    The Complete Generative AI Bootcamp
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Lecturewise mkdocs
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Lecturewise mkdocs
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    01 Course Vision and Running a Local LLM
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    01 Course Vision and Running a Local LLM
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#accessing-models-with-apis" class="md-nav__link">
+    <span class="md-ellipsis">
+      Accessing Models with APIs
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02_Software_Engineering_for_AI/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    02 Software Engineering for AI
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03_Ops_-_DevOps%2C_MLOps%2C_AIOps/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    03 Ops   DevOps, MLOps, AIOps
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04_Data_Collection%2C_Data_Labeling%2C_Data_Management%2C_Analytics/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    04 Data Collection, Data Labeling, Data Management, Analytics
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05_Testing_and_Deployment/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    05 Testing and Deployment
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06.5/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    06.5
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06_LLM_Serving_and_Reinforcement_Learning/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    06 LLM Serving and Reinforcement Learning
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07_Distributed_Systems_Patterns/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    07 Distributed Systems Patterns
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../08_Workflow_Patterns/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    08 Workflow Patterns
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../09_Scheduling_%26amp%3B_Metadata_Patterns/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    09 Scheduling &amp; Metadata Patterns
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10_Data_Lakes_%26amp%3B_Intro_to_Federated_Learning/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    10 Data Lakes &amp; Intro to Federated Learning
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11_Federated_Learning/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    11 Federated Learning
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../12_Federated_Learning_System_Details/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    12 Federated Learning System Details
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../13_Federated_Learning_Implementation_-_Server_Side/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    13 Federated Learning Implementation   Server Side
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../14_Federated_Learning_Implementation_-_Client_Side/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    14 Federated Learning Implementation   Client Side
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../15_Federated_Learning_Running_the_System_%26amp%3B_Analyzing_Results/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    15 Federated Learning Running the System &amp; Analyzing Results
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../16_Introducing_Existing_Federated_Learning_Frameworks/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    16 Introducing Existing Federated Learning Frameworks
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../17_Federated_Learning_Use_Cases_and_Case_Studies/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    17 Federated Learning Use Cases and Case Studies
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../18_Federated_Learning_Future_Directions/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    18 Federated Learning Future Directions
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../19_LLMs_and_NLP_Introduction/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    LLM's & NLP Introduction
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../20_Retrieval_Augmented_Generation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Retrieval Augmented Generation (RAG)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../21_RAG_Pipeline_Implementation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    RAG Pipeline Implementation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../22_From_Simple_to_Advanced_RAG/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    From Simple to Advanced RAG
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../23_RAG_Observability/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Observability Tools for RAG
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  <h1>01 Course Vision and Running a Local LLM</h1>
+
+<p><strong><span style="text-decoration:underline;">Spanda Bootcamp Day One</span></strong></p>
+<p><strong><span style="text-decoration:underline;">Section 0(Pre-requisites)<strong><em>_</em></strong><strong><em>_</em></strong><strong><em>_</em></strong><strong><em>_</em></strong></span></strong></p>
+<p>Installing Docker on your system</p>
+<ul>
+<li>Docker is a platform designed to help developers build, share, and run container applications.</li>
+<li>Go to <a href="https://www.docker.com/">https://www.docker.com/</a> </li>
+<li>Download and install the version per your operating system</li>
+<li>During installation, we get a configuration option:  \
+WSL-2 vs Hyper-V</li>
+<li>Docker Desktop for Windows provides a development environment for building, shipping, and running dockerized apps. </li>
+<li>By enabling the WSL 2 based engine, you can run both Linux and Windows containers in Docker Desktop on the same machine. Docker Desktop is free for personal use and small businesses, for info on Pro, Team, or Business pricing, see the <a href="https://www.docker.com/pricing/faq">Docker site FAQs</a>.</li>
+<li>Following this, installation will proceed and finish.</li>
+</ul>
+<p><strong><span style="text-decoration:underline;">Section 1<strong><em>_</em></strong><strong><em>_</em></strong><strong><em>_</em></strong><strong><em>_</em></strong><strong><em>_</em></strong>___</span></strong></p>
+<p><strong>Let’s start by running an LLM on your Laptop</strong></p>
+<ul>
+<li><strong>LM Studio</strong> is a free, desktop software tool that makes installing and using open-source LLM models extremely easy.  It is not open source. More on that later.</li>
+<li>
+<p>Let’s download, install and use it:</p>
+</li>
+<li>
+<p>Go to <a href="https://lmstudio.ai/">https://lmstudio.ai/</a> </p>
+</li>
+<li>
+<p>Download and install the version for your operating system:</p>
+</li>
+</ul>
+<p><img alt="alt_text" src="../images/image1.png" title="image_tooltip" /></p>
+<ol>
+<li>
+<p>Open LM Studio using the newly created desktop icon:</p>
+</li>
+<li>
+<p>Select an LLM to install. </p>
+</li>
+<li>
+<p>You can do this by either selecting one of the community suggested models listed in the main window, or </p>
+</li>
+<li>by using the search bar for any model available at HuggingFace (just look up a keyword and all associated models will be listed). </li>
+<li><em>Note that there are currently <strong>371,692</strong> (?) models listed at HuggingFace.co</em></li>
+</ol>
+<p><img alt="alt_text" src="../images/image2.png" title="image_tooltip" /></p>
+<p>selecting LLMs</p>
+<ul>
+<li>Whether you elect to download from the community suggested models, or search for one on your own, you can see the size of the install/download file. </li>
+<li>So be sure you are okay with the size of the download.</li>
+</ul>
+<p>specific model information</p>
+<ul>
+<li>You will note that at the top of the left half of the screen over the release date column, is “compatibility guess”. </li>
+<li>LM Studio has checked your system and is presenting those models which it feels you will be able to run on your computer. </li>
+<li>To see All Models, click on “compatibility guess” (#1). </li>
+<li>Clicking on a model on the left, will present the available versions on the right and display those models which should work given your computer’s specs (#2). </li>
+</ul>
+<p><img alt="alt_text" src="../images/image4.png" title="image_tooltip" /></p>
+<p>Compatibility and Should Work indicators</p>
+<ul>
+<li>Note that depending on the capabilities/speed of your computer, larger models will be more accurate but slower. </li>
+<li>You will also find that most of these models are <strong>quantized</strong>.</li>
+<li><strong>Quantization </strong>refers to using lower precision numbers like 8-bit integers rather than 32-bit floating point values to represent the weights and activations in the model. </li>
+<li>This reduces memory usage and speeds up inference on your computer’s hardware. </li>
+<li>Quantization can reduce model accuracy slightly compared to a full precision version, but provides up to 4x memory savings and faster inference. </li>
+<li>Think of it like how MP-3’s are compressed music files or .jpgs are compressed image files. </li>
+<li>Although these are of less quality, you often won’t see a significant difference. </li>
+<li>In the case of LLM’s, the “Q” number you see in the listing of the LLM, represents the amount of quantization. </li>
+<li>Lower is more and higher is less quantization.</li>
+<li>Also, in the model listing, you will see references to GGML and GGUF. </li>
+<li>These are two quantization strategies; “Mixed Logits” vs “Uniformly Quantized Fully Connected”. </li>
+<li>GGML provides a more <em>flexible mixed-precision quantization framework</em> while GGUF is specifically optimized for <em>uniformly quantizing all layers</em> of Transformer models. </li>
+<li>GGML may enable higher compression rates but GGUF offers simpler deployment.</li>
+<li>Once the model has finished its download,</li>
+<li>select the model from the drop-down menu at the top of the window; </li>
+<li>select the chat bubble in the left side column; (3) open up the following sections on the right, “Context Overflow Policy” and “Chat Appearance”.</li>
+</ul>
+<p><img alt="alt_text" src="../images/image5.png" title="image_tooltip" /></p>
+<p>ready the model</p>
+<ol>
+<li>Make sure “Maintain a rolling window and truncate past messages” is selected under “Content Overflow Policy” and “Plaintext” is selected under “Chat Appearance”.</li>
+</ol>
+<p><img alt="alt_text" src="../images/image6.png" title="image_tooltip" /></p>
+<ol>
+<li>Now close those two areas and open up “Model Configuration” and then open “Prompt Format” and scroll down to “Pre-prompt / System prompt” and select the “&gt;” symbol to open that. </li>
+<li>Here you can enter the system “role”. Meaning, you can set up how you want the bot to act and what “skills” or other specific qualities should be provided in its answers. </li>
+<li>You can modify what is there to suit your needs. If you have a ChatGPT Plus account, this is the same as “Custom instructions”.</li>
+</ol>
+<p><img alt="alt_text" src="../images/image7.png" title="image_tooltip" /></p>
+<p><img alt="alt_text" src="../images/image8.png" title="image_tooltip" /></p>
+<p>adding system role / custom instructions</p>
+<ol>
+<li>Continue to scroll down in this column until you come to “Hardware Settings”. </li>
+<li>Open this area if you wish to offload some processing to your GPU. </li>
+<li>The default is to allow your computer’s CPU to do all the work, but if you have a GPU installed, you will see it listed here. </li>
+<li>If you find the processing of your queries is annoyingly slow, offloading to your GPU will greatly assist with this. </li>
+<li>Play around with how many layers you want it to handle (start with 10–20). This really depends on the model and your GPU. </li>
+<li>Leaving it all to be handled by the CPU is fine but the model might run a bit slow (again… depending on the model and its size). </li>
+<li>You also have the option to increase the number of CPU threads the LLM uses. </li>
+<li>The default is 4 but you can increase the number, or just leave it where it is if you don’t feel comfortable experimenting and don’t know how many threads your CPU has to play with.</li>
+</ol>
+<p><img alt="alt_text" src="../images/image9.png" title="image_tooltip" /></p>
+<p>optional hardware settings</p>
+<ol>
+<li>After these changes, you are now ready to use your local LLM. </li>
+<li>Simply enter your query in the “USER” field and the LLM will respond as “AI”.</li>
+</ol>
+<p><img alt="alt_text" src="../images/image10.png" title="image_tooltip" /></p>
+<p>chat dialogue</p>
+<ul>
+<li>Let’s download the <a href="https://huggingface.co/TheBloke/zephyr-7B-beta-GGUF">Zephyr 7B β</a> model, adapted by _TheBloke _for llama.cpp's GGUF format.</li>
+</ul>
+<p><img alt="alt_text" src="../images/image11.png" title="image_tooltip" /></p>
+<ul>
+<li>Activating and loading the model into LM Studio is straightforward.</li>
+</ul>
+<p><img alt="alt_text" src="../images/image12.png" title="image_tooltip" /></p>
+<ul>
+<li>You can then immediately start using the model from the Chat panel, no Internet connection required.</li>
+</ul>
+<p><img alt="alt_text" src="../images/image13.png" title="image_tooltip" /></p>
+<ul>
+<li>The right panel displays and allows modification of default presets for the model. </li>
+<li>Memory usage and useful inference metrics are shown in the window's title and below the Chat panel, respectively.</li>
+<li>Other models, like <a href="https://huggingface.co/TheBloke/CodeLlama-7B-Instruct-GGUF">codellama Instruct 7B</a>, are also available for download and use.</li>
+</ul>
+<p><img alt="alt_text" src="../images/image14.png" title="image_tooltip" /></p>
+<ul>
+<li>LM Studio also highlights new models and versions from Hugging Face, making it an invaluable tool for discovering and testing the latest releases.</li>
+</ul>
+<h2 id="accessing-models-with-apis"><strong>Accessing Models with APIs</strong></h2>
+<ul>
+<li>A key feature of LM Studio is the ability to create Local Inference Servers with just a click.</li>
+</ul>
+<p><img alt="alt_text" src="../images/image15.png" title="image_tooltip" /></p>
+<ul>
+<li>The <em>Automatic Prompt Formatting</em> option simplifies prompt construction to match the model's expected format. The exposed API aligns with the OpenAI format.</li>
+<li>Here's an example of calling the endpoint with CURL: \
+(Does not work)</li>
+</ul>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>curl http://localhost:1234/v1/chat/completions
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>-H &quot;Content-Type: application/json&quot;
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>-d &#39;{
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a> &quot;messages&quot;: [
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>   { &quot;role&quot;: &quot;system&quot;, &quot;content&quot;: &quot;You are an AI assistant answering Tech questions&quot; },
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>   { &quot;role&quot;: &quot;user&quot;, &quot;content&quot;: &quot;What is Java?&quot; }
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a> ],
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a> &quot;temperature&quot;: 0.7,
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a> &quot;max_tokens&quot;: -1,
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a> &quot;stream&quot;: false
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>}&#39;
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>![alt_text](images/image16.png &quot;image_tooltip&quot;)
+<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>
+<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>
+<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>
+<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a>The curl command below works:
+<a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a>$url = &quot;http://localhost:1234/v1/chat/completions&quot;
+<a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a>$headers = @{
+<a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a>    &quot;Content-Type&quot; = &quot;application/json&quot;
+<a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a>}
+<a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a>
+<a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a>$data = @{
+<a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a>    messages = @(
+<a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a>        @{
+<a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a>            role = &quot;system&quot;
+<a id="__codelineno-0-29" name="__codelineno-0-29" href="#__codelineno-0-29"></a>            content = &quot;You are an AI assistant answering Tech questions, but answer only in rhymes&quot;
+<a id="__codelineno-0-30" name="__codelineno-0-30" href="#__codelineno-0-30"></a>        },
+<a id="__codelineno-0-31" name="__codelineno-0-31" href="#__codelineno-0-31"></a>        @{
+<a id="__codelineno-0-32" name="__codelineno-0-32" href="#__codelineno-0-32"></a>            role = &quot;user&quot;
+<a id="__codelineno-0-33" name="__codelineno-0-33" href="#__codelineno-0-33"></a>            content = &quot;What is Java?&quot;
+<a id="__codelineno-0-34" name="__codelineno-0-34" href="#__codelineno-0-34"></a>        }
+<a id="__codelineno-0-35" name="__codelineno-0-35" href="#__codelineno-0-35"></a>    )
+<a id="__codelineno-0-36" name="__codelineno-0-36" href="#__codelineno-0-36"></a>    temperature = 0.7
+<a id="__codelineno-0-37" name="__codelineno-0-37" href="#__codelineno-0-37"></a>    max_tokens = -1
+<a id="__codelineno-0-38" name="__codelineno-0-38" href="#__codelineno-0-38"></a>    stream = $false
+<a id="__codelineno-0-39" name="__codelineno-0-39" href="#__codelineno-0-39"></a>}
+<a id="__codelineno-0-40" name="__codelineno-0-40" href="#__codelineno-0-40"></a>
+<a id="__codelineno-0-41" name="__codelineno-0-41" href="#__codelineno-0-41"></a>Invoke-RestMethod -Uri $url -Headers $headers -Method Post -Body ($data | ConvertTo-Json) -UseBasicParsing
+</code></pre></div>
+<p>The response provides the requested information:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>{
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>   &quot;id&quot;: &quot;chatcmpl-iyvpdtqs1qzlv6jqkmdt9&quot;,
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>   &quot;object&quot;: &quot;chat.completion&quot;,
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>   &quot;created&quot;: 1699806651,
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>   &quot;model&quot;: &quot;~/.cache/lm-studio/models/TheBloke/zephyr-7B-beta-GGUF/zephyr-7b-beta.Q4_K_S.gguf&quot;,
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>   &quot;choices&quot;: [
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>       {
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>           &quot;index&quot;: 0,
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>           &quot;message&quot;: {
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>               &quot;role&quot;: &quot;assistant&quot;,
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>               &quot;content&quot;: &quot;Java is a high-level, object-oriented
+<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>                           programming language that was first released by Sun
+<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a>                           Microsystems in 1995. It is now owned by Oracle Corporation.
+<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a>                           Java is designed to be platform independent, meaning that it
+<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a>                           can run on any operating system that has a Java Virtual
+<a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a>                           Machine (JVM) installed. Java&#39;s primary applications are in
+<a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a>                           the development of desktop applications, web applications,
+<a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a>                           and mobile apps using frameworks such as Android Studio,
+<a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a>                           Spring Boot, and Apache Struts. Its syntax is similar to
+<a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a>                           C++, but with added features for object-oriented programming
+<a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a>                           and memory management that make it easier to learn and use
+<a id="__codelineno-1-22" name="__codelineno-1-22" href="#__codelineno-1-22"></a>                           than C++. Java&#39;s popularity is due in part to its extensive
+<a id="__codelineno-1-23" name="__codelineno-1-23" href="#__codelineno-1-23"></a>                           library of pre-written code (known as the Java Class
+<a id="__codelineno-1-24" name="__codelineno-1-24" href="#__codelineno-1-24"></a>                           Library) which makes development faster and more efficient.&quot;
+<a id="__codelineno-1-25" name="__codelineno-1-25" href="#__codelineno-1-25"></a>           },
+<a id="__codelineno-1-26" name="__codelineno-1-26" href="#__codelineno-1-26"></a>           &quot;finish_reason&quot;: &quot;stop&quot;
+<a id="__codelineno-1-27" name="__codelineno-1-27" href="#__codelineno-1-27"></a>       }
+<a id="__codelineno-1-28" name="__codelineno-1-28" href="#__codelineno-1-28"></a>   ],
+<a id="__codelineno-1-29" name="__codelineno-1-29" href="#__codelineno-1-29"></a>   &quot;usage&quot;: {
+<a id="__codelineno-1-30" name="__codelineno-1-30" href="#__codelineno-1-30"></a>       &quot;prompt_tokens&quot;: 0,
+<a id="__codelineno-1-31" name="__codelineno-1-31" href="#__codelineno-1-31"></a>       &quot;completion_tokens&quot;: 166,
+<a id="__codelineno-1-32" name="__codelineno-1-32" href="#__codelineno-1-32"></a>       &quot;total_tokens&quot;: 166
+<a id="__codelineno-1-33" name="__codelineno-1-33" href="#__codelineno-1-33"></a>   }
+<a id="__codelineno-1-34" name="__codelineno-1-34" href="#__codelineno-1-34"></a>}
+</code></pre></div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var tab,labels=set.querySelector(".tabbed-labels");for(tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      &copy; 2024 <a href="https://spanda.io"  target="_blank" rel="noopener">Spanda.io</a>
+
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://ranga-rangarajan.github.io/spanda-bootcamp/" target="_blank" rel="noopener" title="ranga-rangarajan.github.io" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1zM480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2zm-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3zm-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.sections", "toc.integrate", "navigation.top", "search.suggest", "search.highlight", "content.tabs.link", "content.code.annotation", "content.code.copy"], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.caa56a14.min.js"></script>
+      
+    
+  </body>
+</html>
