@@ -1,3 +1,5 @@
+## **<span style="text-decoration:underline;">Section 19</span>**
+
 **Case Studies with Key Use Cases of Federated Learning Applications**
 
 -   **Federated learning** (**FL**) has met with a variety of AI

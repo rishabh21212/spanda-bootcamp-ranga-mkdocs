@@ -1,3 +1,4 @@
+## **<span style="text-decoration:underline;">Section 25</span>**
 # Observability Tools for RAG
 
 > An observability tool is a software or platform designed to help

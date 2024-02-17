@@ -1,3 +1,4 @@
+## **<span style="text-decoration:underline;">Section 24</span>**
 # From Simple to Advanced RAG
 
 > **4.1 Introduction**

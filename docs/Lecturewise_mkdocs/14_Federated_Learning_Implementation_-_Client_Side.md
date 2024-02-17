@@ -1,3 +1,5 @@
+## **<span style="text-decoration:underline;">Section 16</span>**
+
 **FL Client Side Implementation**
 
 -   The client-side modules of a **federated learning** (**FL**) system

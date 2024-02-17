@@ -1,4 +1,4 @@
-**<span style="text-decoration:underline;">Section 6________________________________________</span>**
+## **<span style="text-decoration:underline;">Section 6</span>**
 
 **Model Training, Model Serving and ML Ops**
 
@@ -45,7 +45,7 @@
 
 
 ### 
-**LLMOps Capabilities **
+**LLMOps Capabilities**
 
 
 #### 

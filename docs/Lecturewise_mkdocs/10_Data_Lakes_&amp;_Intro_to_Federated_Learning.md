@@ -1,5 +1,5 @@
-**[Section 1:
-Overview\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_]{.underline}**
+## **<span style="text-decoration:underline;">Section 12</span>**
+
 
 **Data Lakes, Federated Learning and Big Data**
 
@@ -217,8 +217,7 @@ Overview\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_]{.underline}**
     comprise *data protection*, as shown in the following diagram:
 
 ![Figure 1.2 -- Data security versus data privacy
-](.\\images\\/media/image80.jpg){width="6.268055555555556in"
-height="2.182638888888889in"}
+](.\\images\\/media/image80.jpg)
 
 Figure 1.2 -- Data security versus data privacy
 

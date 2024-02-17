@@ -1,5 +1,7 @@
-# LLM's & NLP Introduction
-# 1 Introduction
+## **<span style="text-decoration:underline;">Section 21</span>**
+
+## LLM's & NLP Introduction
+## 1 Introduction
 
 > In this chapter, we will lay the foundation for building a chat-to-PDF
 > app using Large Language Models (LLMs) with a focus on the

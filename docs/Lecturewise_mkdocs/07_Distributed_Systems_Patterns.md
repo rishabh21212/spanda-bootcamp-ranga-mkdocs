@@ -1,7 +1,4 @@
-## Spanda Boot Camp Day 2 {#spanda-boot-camp-day-2 .unnumbered}
-
-[**Part
-1**\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_]{.underline}
+## **<span style="text-decoration:underline;">Section 7</span>**
 
 **We will cover:**
 

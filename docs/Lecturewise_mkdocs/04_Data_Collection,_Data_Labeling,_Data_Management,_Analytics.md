@@ -1,4 +1,4 @@
-**<span style="text-decoration:underline;">Section 4________________________________________</span>**
+## **<span style="text-decoration:underline;">Section 4</span>**
 
 **Back to the Basics: Data Collection and Data Management**
 
@@ -126,9 +126,9 @@ The Data Submission Process
 * The entirety of the code for AI4Edu will be available under a permissive open-source software license (MIT License) at github.
 * This enables any researcher who wishes to reuse part or all of the code or to run their own instance of the platform.
 
-**<span style="text-decoration:underline;">Section 5________________________________________</span>**
+## **<span style="text-decoration:underline;">Section 5</span>**
 
-**Data Analysis, Data Visualization, Data Lake Houses and Analytics Dashboards **
+**Data Analysis, Data Visualization, Data Lake Houses and Analytics Dashboards**
 
 
 
@@ -300,7 +300,7 @@ Despite the many benefits of cloud data lakes, there are also some potential dra
 * The future of data lake houses will also be influenced by the increasing importance of data privacy and security, and we can expect to see data lake houses evolving to meet these new requirements, including better data masking and data encryption capabilities. 
 * Overall, the future of data lake houses looks bright, and they are likely to play an increasingly critical role in helping organizations extract value from their big data.
 
-**<span style="text-decoration:underline;">Section 5________________________________________</span>**
+## **<span style="text-decoration:underline;">Section 5</span>**
 
 **Data Analysis, Data Visualization, Data Lake Houses and Analytics Dashboards**
 

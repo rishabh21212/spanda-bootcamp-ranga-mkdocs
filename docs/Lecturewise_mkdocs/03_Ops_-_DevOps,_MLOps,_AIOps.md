@@ -1,5 +1,5 @@
 
-**<span style="text-decoration:underline;">Section 3________________________________________</span>**
+## **<span style="text-decoration:underline;">Section 3</span>**
 
 **The ML Process and DevOps vs MLOps vs AIOps**
 

@@ -1,7 +1,5 @@
 
-**<span style="text-decoration:underline;">Spanda Bootcamp Day One</span>**
-
-**<span style="text-decoration:underline;">Section 0(Pre-requisites)____________________________</span>**
+## **<span style="text-decoration:underline;">Section 0(Pre-requisites)</span>**
 
 Installing Docker on your system
 
@@ -16,7 +14,7 @@ WSL-2 vs Hyper-V
 * By enabling the WSL 2 based engine, you can run both Linux and Windows containers in Docker Desktop on the same machine. Docker Desktop is free for personal use and small businesses, for info on Pro, Team, or Business pricing, see the [Docker site FAQs](https://www.docker.com/pricing/faq).
 * Following this, installation will proceed and finish.
 
-**<span style="text-decoration:underline;">Section 1______________________________________</span>**
+## **<span style="text-decoration:underline;">Section 1</span>**
 
 **Let’s start by running an LLM on your Laptop**
 

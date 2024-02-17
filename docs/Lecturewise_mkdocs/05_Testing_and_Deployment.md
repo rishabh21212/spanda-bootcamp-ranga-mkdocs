@@ -1,4 +1,4 @@
-**<span style="text-decoration:underline;">Section 7________________________________________</span>**
+## **<span style="text-decoration:underline;">Section 7</span>**
 
 ** Pipeline Debt, Data Testing, Model Testing in MLOps **
 
@@ -418,7 +418,7 @@ The MLOps toolstack **including testing tools**
 * In addition, they can tune their models using their real customers and measure how they react to the model predictions. 
 * This test also helps the team avoid introducing complexity from newly trained that are difficult to maintain and add no value to their users.
 
-** Performing  model engineering and statistical tests for machine learning applications**
+**Performing  model engineering and statistical tests for machine learning applications**
 
 
 
@@ -457,7 +457,7 @@ The MLOps toolstack **including testing tools**
 * You also need to perform thorough testing of your models to ensure they are robust enough for real-world encounters.
 * Developing tests for ML models can help teams systematically analyze model errors and detect failure modes, so resolution plans are made and implemented before deploying the models to production.
 
-**Automated testing with Great Expectations **
+**Automated testing with Great Expectations**
 
 
 
@@ -643,7 +643,7 @@ A few specific use cases in which investing time in GE pays back a great deal ar
 * The better developer version: [https://www.youtube.com/watch?v=rkjFFx_nXhU](https://www.youtube.com/watch?v=rkjFFx_nXhU)
 
 
-#### **W&B Traces for Debugging LLMs: **
+#### **W&B Traces for Debugging LLMs:**
 
 
 

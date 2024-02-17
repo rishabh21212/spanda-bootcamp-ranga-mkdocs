@@ -1,5 +1,5 @@
-[**Part
-4**\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_]{.underline}
+## **<span style="text-decoration:underline;">Section 11</span>**
+
 
 **What is covered:**
 
@@ -29,7 +29,7 @@
     workflows and help us handle failures more appropriately to reduce
     any negative effects on users.
 
-#### **Operations in machine learning systems** {#operations-in-machine-learning-systems .unnumbered}
+#### **Operations in machine learning systems** 
 
 -   The focus here is on operational techniques and patterns that are
     commonly seen in more than one component or step in a machine
@@ -178,7 +178,7 @@ effectively in a shared cluster***
     could assign the computational resources more effectively in a
     shared cluster?
 
-#### **The solution approach** {#the-solution-approach .unnumbered}
+#### **The solution approach**
 
 -   An intuitive solution approach would be to limit how much of the
     total computational resources each user is allotted.
@@ -447,7 +447,7 @@ B).**
     systems to make sure the applications run efficiently and reasonably
     share resources.
 
-####  **Points to Note** {#points-to-note-4 .unnumbered}
+####  **Points to Note** 
 
 -   Fair-share scheduling can help solve the problem of multiple users
     running distributed training jobs concurrently.
@@ -510,15 +510,15 @@ B).**
     discuss patterns that will make debugging and handling failures
     easier.
 
-#### **Quiz:** {#quiz-3 .unnumbered}
+#### **Quiz:** 
 
 1.  Can we only apply fair-share scheduling at the user level?
 
 2.  Is gang scheduling suitable for all distributed model training jobs?
 
-### **Metadata pattern:**  {#metadata-pattern .unnumbered}
+### **Metadata pattern:**  
 
-### **Handle failures appropriately minimize negative effects** {#handle-failures-appropriately-minimize-negative-effects .unnumbered}
+### **Handle failures appropriately minimize negative effects** 
 
 -   In simple ML workflows, we can retry the failed step and easily
     continue model training without rerunning the entire data ingestion
@@ -567,7 +567,7 @@ B).**
 -   ***Question: Is there a better way to handle such kinds of
     failures?***
 
-####  {#section-6 .unnumbered}
+
 
 ####  **The Challenge: To find a way to handle these failures appropriately so the negative effect on users can be minimized.** {#the-challenge-to-find-a-way-to-handle-these-failures-appropriately-so-the-negative-effect-on-users-can-be-minimized. .unnumbered}
 
@@ -748,12 +748,10 @@ runtime
 
 -   
 
-> **This model training step was progressing very slowly
-> ^As\ a\ result,\ we\ can^ due to smaller amount of allocated
-> computational ^disregard\ this\ model^ resources or more complex model
-> architecture. ^training\ step\ in\ favor^**
->
-> **of allocating more computational resources to the model training
+> **This model training step was progressing very slowly.
+> As a result, we can due to smaller amount of allocated
+> computational disregard this model resources or more complex model
+> architecture training step in favor of allocating more computational resources to the model training
 > steps with more potential, which leads to more accurate models
 > faster.**
 >
@@ -761,7 +759,7 @@ runtime
 > One is disregarded because it is progressing very slowly, and the
 > model will likely have low accuracy given the limited time.
 
-#### **Points To Note:** {#points-to-note-5 .unnumbered}
+#### **Points To Note:** 
 
 -   With the help of the metadata pattern, we can gain additional
     insights into the individual steps in machine learning workflows.
@@ -801,7 +799,7 @@ runtime
     trained models and visualize what individual steps/factors
     contributed to the model artifacts.
 
-#### **Quiz**:  {#quiz-4 .unnumbered}
+#### **Quiz**:  
 
 1.  If the training step failed due to the loss of training data source,
     what should we do?
@@ -809,9 +807,9 @@ runtime
 2.  What type of metadata can be collected if we look at individual
     workers or parameter servers?
 
-###  {#section-7 .unnumbered}
 
-### **Summary** {#summary-1 .unnumbered}
+
+### **Summary** 
 
 -   There are different areas of improvement related to operations in
     machine learning systems, such as job scheduling and metadata.

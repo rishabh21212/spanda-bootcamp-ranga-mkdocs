@@ -1,3 +1,4 @@
+## **<span style="text-decoration:underline;">Section 23</span>**
 # RAG Pipeline Implementation
 
 > **3.1 Preprocessing PDF documents**

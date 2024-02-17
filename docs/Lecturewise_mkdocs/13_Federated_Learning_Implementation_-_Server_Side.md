@@ -1,3 +1,5 @@
+## **<span style="text-decoration:underline;">Section 15</span>**
+
 **FL Server - Python Implementation**
 -   The server-side implementation of a **federated learning** (**FL**)
     system is critical for realizing authentic FL-enabled applications.

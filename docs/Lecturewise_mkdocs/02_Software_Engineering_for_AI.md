@@ -1,4 +1,4 @@
-**<span style="text-decoration:underline;">Section 2________________________________________</span>**
+## **<span style="text-decoration:underline;">Section 2</span>**
 
 Let’s explore some relevant sections in the SEAI course material:**  **
 

@@ -1,3 +1,5 @@
+## **<span style="text-decoration:underline;">Section 22</span>**
+
 #  Retrieval Augmented Generation (RAG)
 
 > Generative AI, a subset of artificial intelligence, has revolutionized

@@ -1,6 +1,6 @@
 
-[**Part
-2**\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_]{.underline}
+## **<span style="text-decoration:underline;">Section 8</span>**
+
 
 **We will cover:**
 
@@ -826,8 +826,8 @@ to authenticated and unauthenticated users
 
 3.  Is event-driven processing stateless or stateful?
 
-[**Part
-3**\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_]{.underline}
+## **<span style="text-decoration:underline;">Section 9</span>**
+
 
 **What we will cover:**
 
@@ -1227,9 +1227,8 @@ serving steps.
     spend less time waiting for workflows to complete, thus reducing
     infrastructure costs.
 
-#####  {#section-2 .unnumbered}
 
-##### Questions: {#questions .unnumbered}
+### Questions: 
 
 1.  If the steps are not independent of each other, can we use the
     fan-in or fan-out patterns?
@@ -1276,7 +1275,6 @@ three model training steps
     training steps that take one week to complete instead of wasting
     time waiting for one step!
 
-####  {#section-3 .unnumbered}
 
 **The Challenge:** Accelerate workflows so it will not be affected by
 the duration of individual steps
@@ -1299,7 +1297,6 @@ the duration of individual steps
     long-running step. Is there a way to accelerate this workflow so it
     will not be affected by the duration of individual steps?
 
-####   {#section-4 .unnumbered}
 
 **The solution:**
 
@@ -1365,7 +1362,6 @@ waiting for the rest of the model training steps to complete**
 > model training step is applied directly to our model serving system
 > without waiting for the remaining model training steps to complete
 
-#####  {#section-5 .unnumbered}
 
 > **After a second model training step finishes, we can pass the two
 > trained models directly to be used for model serving, and the
@@ -1522,7 +1518,7 @@ time the dataset is updated
     long time to complete depending on the size of the dataset. Is there
     a way to make this workflow more efficient?
 
-####  **The solution** {#the-solution-1 .unnumbered}
+####  **The solution** 
 
 -   We would like to execute the data ingestion step only when we know
     that the dataset has been updated, as shown in figure 5.21.
@@ -1598,7 +1594,7 @@ ingestion step and execute the model training step directly.
     re-executed and thus greatly accelerate the execution of the
     end-to-end workflow. We'll apply this pattern in section 9.4.2.
 
-#### **Points to Note:** {#points-to-note-3 .unnumbered}
+#### **Points to Note:** 
 
 -   In real-world machine learning applications, many workloads besides
     data ingestion are computationally heavy and time-consuming.
@@ -1649,7 +1645,7 @@ ingestion step and execute the model training step directly.
     existing caches periodically to clean up those that are not used or
     hit after a long time.
 
-#### **Quiz:** {#quiz-2 .unnumbered}
+#### **Quiz:** 
 
 1.  What type of steps can most benefit from step memoization?
 
@@ -1659,7 +1655,7 @@ ingestion step and execute the model training step directly.
 3.  What do we need to manage and maintain once we've used the pattern
     to apply the pattern at scale?
 
-#### **Summary** {#summary .unnumbered}
+#### **Summary**
 
 -   Workflow is an essential component in machine learning systems as it
     connects all other components in a machine learning system. A
@@ -1675,8 +1671,8 @@ ingestion step and execute the model training step directly.
 -   The step memoization pattern improves the performance of workflows
     by skipping duplicate workloads.
 
-[**Part
-5**\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_]{.underline}
+## **<span style="text-decoration:underline;">Section 10</span>**
+
 
 **Distributed machine learning workflow (Overview & Architecture)**
 
@@ -1694,10 +1690,8 @@ ingestion step and execute the model training step directly.
 
 -   Accelerating the end-to-end workflow of our machine learning system
 
-####  {#section-8 .unnumbered}
 
-### **Overview** {#overview .unnumbered}
-
+### **Overview** 
 -   For this project, we will build an image classification system that
     takes raw images downloaded from the data source, performs necessary
     data cleaning steps, builds a machine learning model in a
@@ -1708,7 +1702,7 @@ ingestion step and execute the model training step directly.
     and reusable. Next, I will introduce the project background and the
     overall system architecture and components.
 
-### **Background** {#background .unnumbered}
+### **Background**
 
 -   We will build an end-to-end machine learning system to apply what we
     learned previously.
@@ -1735,9 +1729,8 @@ ingestion step and execute the model training step directly.
     into the actual implementation of the project in chapter 9. In the
     next section, we'll examine the project's system components.
 
-####  {#section-9 .unnumbered}
 
-####  **System components** {#system-components .unnumbered}
+####  **System components**
 
 -   Figure 7.1 is the architecture diagram of the system we will be
     building. First, we will build the data ingestion component
@@ -1768,7 +1761,7 @@ ingestion step and execute the model training step directly.
 Figure 7.1 The architecture diagram of the end-to-end machine learning
 system we will be building
 
-#### **Data ingestion** {#data-ingestion .unnumbered}
+#### **Data ingestion** 
 
 -   For this project, we will use the Fashion-MNIST dataset, introduced
     in section 2.2, to build the data ingestion component, as shown in
@@ -1798,9 +1791,8 @@ machine learning system
 -   The downloaded Fashion-MNIST dataset should only take 30 MBs on disk
     if compressed and can be fully loaded into memory.
 
-####  {#section-10 .unnumbered}
 
-#### **The Challenge: Reduce Sequential Training Inefficiency** {#the-challenge-reduce-sequential-training-inefficiency .unnumbered}
+#### **The Challenge: Reduce Sequential Training Inefficiency**
 
 **Context:**
 
@@ -1934,14 +1926,14 @@ Figure 7.7 A diagram of model training for multiple epochs at time t0,
 t1, etc. using cache, making reading from the data source repeatedly
 unnecessary
 
-#### **Quiz** {#quiz-5 .unnumbered}
+#### **Quiz** 
 
 1.  Where do we store the cache?
 
 2.  Can we use the batching pattern when the Fashion-MNIST dataset gets
     large?
 
-### **Model training** {#model-training .unnumbered}
+### **Model training** 
 
 -   Figure 7.8 is a diagram of the model training component in the
     overall architecture.
@@ -1957,7 +1949,6 @@ unnecessary
 > component in figure 7.8 and discuss potential problems when
 > implementing this component.
 
-####  {#section-11 .unnumbered}
 
 > **Three model training steps**
 >
@@ -1967,7 +1958,7 @@ unnecessary
 Figure 7.8 The model training component (dark boxes) in the end-to-end
 machine learning system
 
-####  **The Challenge:**  {#the-challenge .unnumbered}
+####  **The Challenge:**  
 
 -   We discussed the parameter server and the collective communication
     patterns earlier.
@@ -1983,7 +1974,7 @@ machine learning system
 ***Question: Which pattern should we select for our model training
 component?***
 
-####  **The solution** {#the-solution-2 .unnumbered}
+####  **The solution** 
 
 -   With the help of parameter servers, we can effectively resolve the
     challenge of building an extremely large machine learning model that
@@ -2078,7 +2069,7 @@ servers
 2.  Does each worker store different parts of the model when using the
     collective communication pattern?
 
-###  **Model serving** {#model-serving-1 .unnumbered}
+###  **Model serving** 
 
 -   We've talked about both the data ingestion and model training
     components of the system we are building. Next, let's discuss the
@@ -2089,7 +2080,7 @@ servers
 -   Next, let's take a look at a potential problem and its solution we
     will encounter when we begin building this component.
 
-####  **The Challenge** {#the-challenge-1 .unnumbered}
+####  **The Challenge** 
 
 -   The model serving system needs to take raw images uploaded by users
     and send the requests to the model server to make inferences using
@@ -2173,12 +2164,12 @@ services
     serving service with multiple replicas to handle model serving
     traffic for different models.
 
-#### **Quiz:** {#quiz-6 .unnumbered}
+#### **Quiz:** 
 
 > 1 What happens when we don't have a load balancer as part of the model
 > serving system?
 
-### **End-to-end workflow** {#end-to-end-workflow .unnumbered}
+### **End-to-end workflow** 
 
 -   Now that we've looked at the individual components, let's see how to
     compose an end-to-end workflow that consists of all those components
@@ -2196,7 +2187,7 @@ system we will build
 -   We now examine the entire machine learning system, which chains all
     the components together in an end-to-end workflow.
 
-####  **The Challenges** {#the-challenges .unnumbered}
+####  **The Challenges** 
 
 -   First, the Fashion-MNIST dataset is static and does not change over
     time. However, to design a more realistic system, let's assume we'll
@@ -2240,7 +2231,7 @@ system we will build
 -   ***Question: Is there a way to accelerate this workflow so it will
     not be affected by the duration of individual steps?***
 
-####  **The solutions** {#the-solutions .unnumbered}
+####  **The solutions** 
 
 -   For the first problem, we can use the step memoization pattern
     discussed earlier.
@@ -2341,14 +2332,14 @@ execute the model training step directly.
     steps in the model serving system. Thus, it can start handling
     users' model serving requests.
 
-####  **Quiz:** {#quiz-7 .unnumbered}
+####  **Quiz:** 
 
 1.  Which component can benefit the most from step memoization?
 
 2.  How do we tell whether a step's execution can be skipped if its
     workflow has been triggered to run again?
 
-### **Summary** {#summary-2 .unnumbered}
+### **Summary**
 
 -   The data ingestion component uses the caching pattern to speed up
     the processing of multiple epochs of the dataset.
