@@ -1,0 +1,2059 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../05_Testing_and_Deployment/">
+      
+      
+        <link rel="next" href="../06_LLM_Serving_and_Reinforcement_Learning/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.9">
+    
+    
+      
+        <title>06.5 - Spanda DL Bootcamp</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.f2e4d321.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#section-8" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Spanda DL Bootcamp" class="md-header__button md-logo" aria-label="Spanda DL Bootcamp" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Spanda DL Bootcamp
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              06.5
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="purple"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6zm0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4zM7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="teal" data-md-color-accent="lime"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-hidden="true"  type="radio" name="__palette" id="__palette_2">
+    
+  
+</form>
+      
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+    
+  
+  The Complete Generative AI Bootcamp
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../01_Course_Vision_and_Running_a_Local_LLM/" class="md-tabs__link">
+          
+  
+  Lecturewise mkdocs
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Spanda DL Bootcamp" class="md-nav__button md-logo" aria-label="Spanda DL Bootcamp" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Spanda DL Bootcamp
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    The Complete Generative AI Bootcamp
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Lecturewise mkdocs
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Lecturewise mkdocs
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01_Course_Vision_and_Running_a_Local_LLM/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    01 Course Vision and Running a Local LLM
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02_Software_Engineering_for_AI/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    02 Software Engineering for AI
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03_Ops_-_DevOps%2C_MLOps%2C_AIOps/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    03 Ops   DevOps, MLOps, AIOps
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04_Data_Collection%2C_Data_Labeling%2C_Data_Management%2C_Analytics/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    04 Data Collection, Data Labeling, Data Management, Analytics
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05_Testing_and_Deployment/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    05 Testing and Deployment
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    06.5
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    06.5
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#section-8" class="md-nav__link">
+    <span class="md-ellipsis">
+      Section 8
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Section 8">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#training-tuning-and-serving-up-llms-in-production" class="md-nav__link">
+    <span class="md-ellipsis">
+      Training, Tuning and Serving up LLMs in production:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#serving-up-llms-in-production" class="md-nav__link">
+    <span class="md-ellipsis">
+      Serving up LLMs in production:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#trainingfine-tuning-large-language-models-llms-the-first-pass" class="md-nav__link">
+    <span class="md-ellipsis">
+      Training/Fine-Tuning Large Language Models (LLMs) - The First Pass
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#consider-the-huggingface-transformers-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      Consider the HuggingFace Transformers Example
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#from-torchtextdatasets-import-ag_news" class="md-nav__link">
+    <span class="md-ellipsis">
+      from torchtext.datasets import AG_NEWS
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#from-transformers-import-automodelwithlmhead-adamw" class="md-nav__link">
+    <span class="md-ellipsis">
+      from transformers import AutoModelWithLMHead, AdamW
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#from-transformers-import-autotokenizer" class="md-nav__link">
+    <span class="md-ellipsis">
+      from transformers import AutoTokenizer
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#epochs-50" class="md-nav__link">
+    <span class="md-ellipsis">
+      EPOCHS = 50
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#def-preprocess_datadata_iter" class="md-nav__link">
+    <span class="md-ellipsis">
+      def preprocess_data(data_iter):
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#data-tokenizerencodetext-for-_-text-in-data_iter" class="md-nav__link">
+    <span class="md-ellipsis">
+      data = [tokenizer.encode(text) for _, text in data_iter]
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#return-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      return data
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#train_iter-ag_newssplittrain" class="md-nav__link">
+    <span class="md-ellipsis">
+      train_iter = AG_NEWS(split='train')
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#train_data-preprocess_datatrain_iter" class="md-nav__link">
+    <span class="md-ellipsis">
+      train_data = preprocess_data(train_iter)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#model-automodelwithlmheadfrom_pretrainedgpt2" class="md-nav__link">
+    <span class="md-ellipsis">
+      model = AutoModelWithLMHead.from_pretrained("gpt2")
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#optimizer-adamwmodelparameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      optimizer = AdamW(model.parameters())
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#modeltrain" class="md-nav__link">
+    <span class="md-ellipsis">
+      model.train()
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#for-epoch-in-rangeepochs" class="md-nav__link">
+    <span class="md-ellipsis">
+      for epoch in range(EPOCHS):
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#for-batch-in-train_data" class="md-nav__link">
+    <span class="md-ellipsis">
+      for batch in train_data:
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#outputs-modelbatch" class="md-nav__link">
+    <span class="md-ellipsis">
+      outputs = model(batch)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#loss-outputsloss" class="md-nav__link">
+    <span class="md-ellipsis">
+      loss = outputs.loss
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lossbackward" class="md-nav__link">
+    <span class="md-ellipsis">
+      loss.backward()
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#optimizerstep" class="md-nav__link">
+    <span class="md-ellipsis">
+      optimizer.step()
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#optimizerzero_grad" class="md-nav__link">
+    <span class="md-ellipsis">
+      optimizer.zero_grad()
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prompt-tokenizerencodewrite-a-summary-of-the-new-features-in-the-latest-release-of-the-julia-programming-language-return_tensorspt" class="md-nav__link">
+    <span class="md-ellipsis">
+      prompt = tokenizer.encode("Write a summary of the new features in the latest release of the Julia Programming Language", return_tensors="pt")
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#generated-modelgenerateprompt" class="md-nav__link">
+    <span class="md-ellipsis">
+      generated = model.generate(prompt)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#generated_text-tokenizerdecodegenerated0" class="md-nav__link">
+    <span class="md-ellipsis">
+      generated_text = tokenizer.decode(generated[0])
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#with-opengeneratedtxt-w-as-f" class="md-nav__link">
+    <span class="md-ellipsis">
+      with open("generated.txt", "w") as f:
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fwritegenerated_text" class="md-nav__link">
+    <span class="md-ellipsis">
+      f.write(generated_text)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#from-torchtextdatasets-import-ag_news_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      from torchtext.datasets import AG_NEWS
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#from-transformers-import-automodelwithlmhead-adamw_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      from transformers import AutoModelWithLMHead, AdamW
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#from-transformers-import-autotokenizer_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      from transformers import AutoTokenizer
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tokenizer-autotokenizerfrom_pretrainedgpt2" class="md-nav__link">
+    <span class="md-ellipsis">
+      tokenizer = AutoTokenizer.from_pretrained("gpt2")
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#epochs-50_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      EPOCHS = 50
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#def-preprocess_datadata_iter_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      def preprocess_data(data_iter):
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#data-tokenizerencodetext-for-_-text-in-data_iter_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      data = [tokenizer.encode(text) for _, text in data_iter]
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#return-data_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      return data
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#train_iter-ag_newssplittrain_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      train_iter = AG_NEWS(split='train')
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#train_data-preprocess_datatrain_iter_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      train_data = preprocess_data(train_iter)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#model-automodelwithlmheadfrom_pretrainedgpt2_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      model = AutoModelWithLMHead.from_pretrained("gpt2")
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#optimizer-adamwmodelparameters_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      optimizer = AdamW(model.parameters())
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#modeltrain_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      model.train()
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#for-epoch-in-rangeepochs_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      for epoch in range(EPOCHS):
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#for-batch-in-train_data_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      for batch in train_data:
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#outputs-modelbatch_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      outputs = model(batch)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#loss-outputsloss_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      loss = outputs.loss
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lossbackward_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      loss.backward()
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#optimizerstep_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      optimizer.step()
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#optimizerzero_grad_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      optimizer.zero_grad()
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prompt-tokenizerencodewrite-a-summary-of-the-new-features-in-the-latest-release-of-the-julia-programming-language-return_tensorspt_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      prompt = tokenizer.encode("Write a summary of the new features in the latest release of the Julia Programming Language", return_tensors="pt")
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#generated-modelgenerateprompt_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      generated = model.generate(prompt)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#generated_text-tokenizerdecodegenerated0_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      generated_text = tokenizer.decode(generated[0])
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#with-opengeneratedtxt-w-as-f_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      with open("generated.txt", "w") as f:
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fwritegenerated_text_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      f.write(generated_text)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#there-are-two-packaged-solutions-for-local-llms-and-many-more-popping-up-everyday-two-of-them-are-the-best-one-is-lm-studio-the-other-is-httpsgpt4allioindexhtml" class="md-nav__link">
+    <span class="md-ellipsis">
+      There are two packaged solutions for Local LLMs (and many more popping up, everyday). Two of them are the best. One is LM-Studio. The other is https://gpt4all.io/index.html
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#audio-llms" class="md-nav__link">
+    <span class="md-ellipsis">
+      Audio LLMs
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#image-llms" class="md-nav__link">
+    <span class="md-ellipsis">
+      Image LLMs
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#multimodal-llms" class="md-nav__link">
+    <span class="md-ellipsis">
+      Multimodal LLMs
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#general-llm-resources" class="md-nav__link">
+    <span class="md-ellipsis">
+      General LLM Resources
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06_LLM_Serving_and_Reinforcement_Learning/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    06 LLM Serving and Reinforcement Learning
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07_Distributed_Systems_Patterns/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    07 Distributed Systems Patterns
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../08_Workflow_Patterns/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    08 Workflow Patterns
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../09_Scheduling_%26amp%3B_Metadata_Patterns/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    09 Scheduling &amp; Metadata Patterns
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10_Data_Lakes_%26amp%3B_Intro_to_Federated_Learning/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    10 Data Lakes &amp; Intro to Federated Learning
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11_Federated_Learning/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    11 Federated Learning
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../12_Federated_Learning_System_Details/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    12 Federated Learning System Details
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../13_Federated_Learning_Implementation_-_Server_Side/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    13 Federated Learning Implementation   Server Side
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../14_Federated_Learning_Implementation_-_Client_Side/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    14 Federated Learning Implementation   Client Side
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../15_Federated_Learning_Running_the_System_%26amp%3B_Analyzing_Results/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    15 Federated Learning Running the System &amp; Analyzing Results
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../16_Introducing_Existing_Federated_Learning_Frameworks/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    16 Introducing Existing Federated Learning Frameworks
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../17_Federated_Learning_Use_Cases_and_Case_Studies/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    17 Federated Learning Use Cases and Case Studies
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../18_Federated_Learning_Future_Directions/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    18 Federated Learning Future Directions
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../19_LLMs_and_NLP_Introduction/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    19 LLMs and NLP Introduction
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../20_Retrieval_Augmented_Generation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    20 Retrieval Augmented Generation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../21_RAG_Pipeline_Implementation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    21 RAG Pipeline Implementation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../22_From_Simple_to_Advanced_RAG/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    22 From Simple to Advanced RAG
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../23_RAG_Observability/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    23 RAG Observability
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  <h1>06.5</h1>
+
+<h2 id="section-8"><strong><span style="text-decoration:underline;">Section 8</span></strong></h2>
+<h4 id="training-tuning-and-serving-up-llms-in-production"><strong>Training, Tuning and Serving up LLMs in production:</strong></h4>
+<h4 id="serving-up-llms-in-production"><strong>Serving up LLMs in production:</strong></h4>
+<ul>
+<li>OpenLLM is an open-source platform designed to facilitate the deployment and operation of large language models (LLMs) in real-world applications. </li>
+<li>With OpenLLM, you can run inference on any open-source LLM, deploy them on the cloud or on-premises, and build powerful AI applications.</li>
+<li><a href="https://github.com/bentoml/OpenLLM?tab=readme-ov-file">https://github.com/bentoml/OpenLLM?tab=readme-ov-file</a></li>
+</ul>
+<h4 id="trainingfine-tuning-large-language-models-llms-the-first-pass"><strong>Training/Fine-Tuning Large Language Models (LLMs) - The First Pass</strong></h4>
+<p><img alt="alt_text" src="../images/image48.png" title="image_tooltip" /></p>
+<div class="highlight"><pre><span></span><code>Comparison of the number of parameters of models. Just look at how big GPT-3 is. And nobody knows about GPT-4…
+</code></pre></div>
+<p><img alt="alt_text" src="../images/image49.png" title="image_tooltip" /></p>
+<div class="highlight"><pre><span></span><code>LLMs capabilities
+</code></pre></div>
+<ul>
+<li>Creating a local large language model (LLM) is a significant undertaking.</li>
+<li>It requires substantial computational resources and expertise in machine learning. </li>
+<li>It was not feasible to run local LLMs on your own local system because of the computational costs involved. </li>
+<li>However, with the advent of new software, GPT4All and LM-Studio can be used to create complete software packages that work locally. </li>
+<li>But let’s start with a HuggingFace Transformers source code example that shows you how to use the HuggingFace Libraries and PyTorch for LLMs (cloud-based, not local in this case):</li>
+</ul>
+<h2 id="consider-the-huggingface-transformers-example"><strong>Consider the HuggingFace Transformers Example</strong></h2>
+<ul>
+<li>This is a complete program that uses the GPT-2 model, GPT-2 tokenizer, and is fine-tuned on the AG NEWS dataset (a small dataset used for utility purposes) is given below and explained in code snippets. </li>
+<li>We can leverage the power of pre-trained models and fine-tune them on specific tasks.</li>
+<li>
+<p>Importing necessary libraries and modules: </p>
+<ul>
+<li>The script starts by importing the necessary libraries and modules. AG_NEWS is a news classification dataset from the “torchtext.datasets” package. AutoModelWithLMHead and AdamW are imported from the transformers library. </li>
+<li>AutoModelWithLMHead is a class that provides automatic access to pre-trained models with a language modeling head, and AdamW is a class that implements the AdamW optimizer, a variant of the Adam optimizer with weight decay.</li>
+</ul>
+<p>```</p>
+</li>
+</ul>
+<h2 id="from-torchtextdatasets-import-ag_news">from torchtext.datasets import AG_NEWS</h2>
+<h2 id="from-transformers-import-automodelwithlmhead-adamw">from transformers import AutoModelWithLMHead, AdamW</h2>
+<h2 id="from-transformers-import-autotokenizer">from transformers import AutoTokenizer</h2>
+<div class="highlight"><pre><span></span><code>```
+
+
+* **Setting up the tokenizer:** The script uses the AutoTokenizer class from the transformers library to load the tokenizer associated with the “gpt2” model. The tokenizer is responsible for converting input text into a format that the model can understand. This includes splitting the text into tokens (words, subwords, or characters), mapping the tokens to their corresponding IDs in the model’s vocabulary, and creating the necessary inputs for the model (like attention masks).
+* tokenizer = AutoTokenizer.from_pretrained(&quot;gpt2&quot;)
+* **Setting the number of epochs:** The script sets the number of epochs for training to 50. An epoch is one complete pass through the entire training dataset. The number of epochs is a hyperparameter that you can tune. Training for more epochs can lead to better results, but it also increases the risk of overfitting and requires more computational resources.
+
+```
+</code></pre></div>
+<h2 id="epochs-50">EPOCHS = 50</h2>
+<div class="highlight"><pre><span></span><code>```
+
+
+* **Preprocessing the data: **The preprocess_data function is defined to preprocess the data. It takes an iterator over the data and encodes the text in each item using the tokenizer. The AG_NEWS dataset is then loaded and preprocessed. The dataset is split into ‘train’ and the text from each item is encoded. Encoding the text involves splitting it into tokens, mapping the tokens to their IDs in the model’s vocabulary, and creating the necessary inputs for the model.
+
+```
+</code></pre></div>
+<h2 id="def-preprocess_datadata_iter">def preprocess_data(data_iter):</h2>
+<h2 id="data-tokenizerencodetext-for-_-text-in-data_iter">data = [tokenizer.encode(text) for _, text in data_iter]</h2>
+<h2 id="return-data">return data</h2>
+<h2 id="train_iter-ag_newssplittrain">train_iter = AG_NEWS(split='train')</h2>
+<h2 id="train_data-preprocess_datatrain_iter">train_data = preprocess_data(train_iter)</h2>
+<div class="highlight"><pre><span></span><code>```
+</code></pre></div>
+<ul>
+<li>
+<p><strong>Setting up the model and optimizer:</strong> </p>
+<ul>
+<li>The script loads the pre-trained “gpt2” model using the AutoModelWithLMHead class and sets up the AdamW optimizer with the model’s parameters. The model is a transformer-based model with a language modeling head, which means it’s designed to generate text. The AdamW optimizer is a variant of the Adam optimizer with weight decay, which can help prevent overfitting.</li>
+</ul>
+<p>```</p>
+</li>
+</ul>
+<h2 id="model-automodelwithlmheadfrom_pretrainedgpt2">model = AutoModelWithLMHead.from_pretrained("gpt2")</h2>
+<h2 id="optimizer-adamwmodelparameters">optimizer = AdamW(model.parameters())</h2>
+<h2 id="modeltrain">model.train()</h2>
+<h2 id="for-epoch-in-rangeepochs">for epoch in range(EPOCHS):</h2>
+<h2 id="for-batch-in-train_data">for batch in train_data:</h2>
+<h2 id="outputs-modelbatch">outputs = model(batch)</h2>
+<h2 id="loss-outputsloss">loss = outputs.loss</h2>
+<h2 id="lossbackward">loss.backward()</h2>
+<h2 id="optimizerstep">optimizer.step()</h2>
+<h2 id="optimizerzero_grad">optimizer.zero_grad()</h2>
+<div class="highlight"><pre><span></span><code>```
+</code></pre></div>
+<ul>
+<li><strong>Training the model:</strong> The script trains the model for the specified number of epochs. In each epoch, it iterates over the batches of training data, feeds each batch to the model, computes the loss, performs backpropagation with loss.backward(), and updates the model’s parameters with optimizer.step(). It also resets the gradients with optimizer.zero_grad(). This is a standard training loop for PyTorch models.</li>
+<li>
+<p><strong>Generating text:</strong> After training, the script uses the model to generate text. It starts by encoding a prompt using the tokenizer, then feeds this encoded prompt to the model’s generate method. The output of the generate() method is a sequence of token IDs, which is then decoded back into text using the tokenizer.</p>
+<p>```</p>
+</li>
+</ul>
+<h2 id="prompt-tokenizerencodewrite-a-summary-of-the-new-features-in-the-latest-release-of-the-julia-programming-language-return_tensorspt">prompt = tokenizer.encode("Write a summary of the new features in the latest release of the Julia Programming Language", return_tensors="pt")</h2>
+<h2 id="generated-modelgenerateprompt">generated = model.generate(prompt)</h2>
+<h2 id="generated_text-tokenizerdecodegenerated0">generated_text = tokenizer.decode(generated[0])</h2>
+<div class="highlight"><pre><span></span><code>```
+</code></pre></div>
+<ul>
+<li>
+<p><strong>Saving the generated text: </strong>Finally, the script saves the generated text to a file named “generated.txt”. This is done using Python’s built-in file handling functions.</p>
+<p>```</p>
+</li>
+</ul>
+<h2 id="with-opengeneratedtxt-w-as-f">with open("generated.txt", "w") as f:</h2>
+<h2 id="fwritegenerated_text">f.write(generated_text)</h2>
+<div class="highlight"><pre><span></span><code>```
+</code></pre></div>
+<ul>
+<li>This script is a good example of how to fine-tune a pre-trained language model on a specific task. </li>
+<li>Fine-tuning a large model like GPT-2 can be computationally intensive and may require a powerful machine or cloud-based resources. </li>
+<li><em>This script doesn’t include some important steps like splitting the data into training and validation sets, shuffling the data, and batching the data.</em> _These steps are crucial for training a robust model. _</li>
+<li>
+<p>The entire program is given below:</p>
+<p>```</p>
+</li>
+</ul>
+<h2 id="from-torchtextdatasets-import-ag_news_1">from torchtext.datasets import AG_NEWS</h2>
+<h2 id="from-transformers-import-automodelwithlmhead-adamw_1">from transformers import AutoModelWithLMHead, AdamW</h2>
+<h2 id="from-transformers-import-autotokenizer_1">from transformers import AutoTokenizer</h2>
+<h2 id="tokenizer-autotokenizerfrom_pretrainedgpt2">tokenizer = AutoTokenizer.from_pretrained("gpt2")</h2>
+<h2 id="epochs-50_1">EPOCHS = 50</h2>
+<h2 id="def-preprocess_datadata_iter_1">def preprocess_data(data_iter):</h2>
+<h2 id="data-tokenizerencodetext-for-_-text-in-data_iter_1">data = [tokenizer.encode(text) for _, text in data_iter]</h2>
+<h2 id="return-data_1">return data</h2>
+<h2 id="train_iter-ag_newssplittrain_1">train_iter = AG_NEWS(split='train')</h2>
+<h2 id="train_data-preprocess_datatrain_iter_1">train_data = preprocess_data(train_iter)</h2>
+<h2 id="model-automodelwithlmheadfrom_pretrainedgpt2_1">model = AutoModelWithLMHead.from_pretrained("gpt2")</h2>
+<h2 id="optimizer-adamwmodelparameters_1">optimizer = AdamW(model.parameters())</h2>
+<h2 id="modeltrain_1">model.train()</h2>
+<h2 id="for-epoch-in-rangeepochs_1">for epoch in range(EPOCHS):</h2>
+<h2 id="for-batch-in-train_data_1">for batch in train_data:</h2>
+<h2 id="outputs-modelbatch_1">outputs = model(batch)</h2>
+<h2 id="loss-outputsloss_1">loss = outputs.loss</h2>
+<h2 id="lossbackward_1">loss.backward()</h2>
+<h2 id="optimizerstep_1">optimizer.step()</h2>
+<h2 id="optimizerzero_grad_1">optimizer.zero_grad()</h2>
+<h2 id="prompt-tokenizerencodewrite-a-summary-of-the-new-features-in-the-latest-release-of-the-julia-programming-language-return_tensorspt_1">prompt = tokenizer.encode("Write a summary of the new features in the latest release of the Julia Programming Language", return_tensors="pt")</h2>
+<h2 id="generated-modelgenerateprompt_1">generated = model.generate(prompt)</h2>
+<h2 id="generated_text-tokenizerdecodegenerated0_1">generated_text = tokenizer.decode(generated[0])</h2>
+<h2 id="with-opengeneratedtxt-w-as-f_1">with open("generated.txt", "w") as f:</h2>
+<h2 id="fwritegenerated_text_1">f.write(generated_text)</h2>
+<div class="highlight"><pre><span></span><code>```
+</code></pre></div>
+<h2 id="there-are-two-packaged-solutions-for-local-llms-and-many-more-popping-up-everyday-two-of-them-are-the-best-one-is-lm-studio-the-other-is-httpsgpt4allioindexhtml">There are two packaged solutions for Local LLMs (and many more popping up, everyday). Two of them are the best. One is LM-Studio. The other is <a href="https://gpt4all.io/index.html">https://gpt4all.io/index.html</a></h2>
+<ul>
+<li><em>This is the best for those if you want a completely open-source on-premises system. But you need to have at least 32 GB of local RAM, 16 GB GPU RAM, a 3+ Ghz multicore(the more, the better) processor, and a local SSD.  LLMs are computationally, extremely expensive!</em></li>
+<li>There’s a lot more to LLM models than just chat</li>
+<li>Given the expensive;y daunting computational requirements for fine-tuning musical and pictures and audio for LLMs we are not going to run them. </li>
+<li>Some popular, already built and ready-to-go solutions as well as some interesting source material are:</li>
+</ul>
+<h2 id="audio-llms"><strong>Audio LLMs</strong></h2>
+<ul>
+<li><a href="https://www.assemblyai.com/docs/guides/processing-audio-with-llms-using-lemur">https://www.assemblyai.com/docs/guides/processing-audio-with-llms-using-lemur</a></li>
+<li>AudioGPT Research Paper — <a href="https://arxiv.org/abs/2304.12995">https://arxiv.org/abs/2304.12995</a></li>
+<li>Tango <a href="https://tango-web.github.io/">https://tango-web.github.io/</a></li>
+<li><a href="https://blog.google/technology/ai/musiclm-google-ai-test-kitchen/">https://blog.google/technology/ai/musiclm-google-ai-test-kitchen/</a></li>
+</ul>
+<h2 id="image-llms"><strong>Image LLMs</strong></h2>
+<ul>
+<li><a href="https://www.linkedin.com/pulse/generating-images-large-language-model-gill-arun-krishnan">https://www.linkedin.com/pulse/generating-images-large-language-model-gill-arun-krishnan</a></li>
+<li><strong>Stable Diffusion</strong></li>
+<li><strong>DALL E-1,2,3</strong></li>
+<li><strong>MidJourney</strong></li>
+<li>Bing Image Creator</li>
+</ul>
+<h2 id="multimodal-llms"><strong>Multimodal LLMs</strong></h2>
+<ul>
+<li><a href="https://arxiv.org/abs/2306.09093">https://arxiv.org/abs/2306.09093</a> Macaw-LLM research paper. </li>
+<li><a href="https://github.com/BradyFU/Awesome-Multimodal-Large-Language-Models">https://github.com/BradyFU/Awesome-Multimodal-Large-Language-Models</a></li>
+<li><a href="https://openai.com/research/gpt-4">https://openai.com/research/gpt-4</a> </li>
+</ul>
+<h2 id="general-llm-resources"><strong>General LLM Resources</strong></h2>
+<ul>
+<li><a href="https://beebom.com/best-large-language-models-llms/">https://beebom.com/best-large-language-models-llms/</a></li>
+<li><a href="https://roadmap.sh/guides/free-resources-to-learn-llms">https://roadmap.sh/guides/free-resources-to-learn-llms</a></li>
+<li><a href="https://github.com/Hannibal046/Awesome-LLM">https://github.com/Hannibal046/Awesome-LLM</a></li>
+<li><a href="https://medium.com/@abonia/best-llm-and-llmops-resources-for-2023-75e96ac37feb">https://medium.com/@abonia/best-llm-and-llmops-resources-for-2023-75e96ac37feb</a></li>
+<li><a href="https://learn.deeplearning.ai/">https://learn.deeplearning.ai/</a> </li>
+</ul>
+<h2 id="_1"></h2>
+<div class="highlight"><pre><span></span><code>**Fine-Tuning Your LLM - A Revisit**
+</code></pre></div>
+<ul>
+<li>Again. fine-tuning is the process of continuing the training of a pre-trained LLM on a specific dataset. </li>
+<li>You might ask why we need to train the model further if we can already add data using RAG. </li>
+<li>
+<p>The simple answer is that only fine-tuning can tailor your model to understand a specific domain or define its “style”. </p>
+<p>:</p>
+</li>
+</ul>
+<p><img alt="alt_text" src="../images/image50.png" title="image_tooltip" /></p>
+<div class="highlight"><pre><span></span><code>Classical approach of fine-tuning on domain specific data (all icons from [flaticon](http://flaticon.com/))
+</code></pre></div>
+<ol>
+<li>Take a trained LLM, sometimes called Base LLM. You can download them from <a href="https://huggingface.co/spaces/HuggingFaceH4/open_llm_leaderboard">HuggingFace</a>.</li>
+<li>Prepare your training data. You only need to compile instructions and responses. <a href="https://huggingface.co/datasets/databricks/databricks-dolly-15k">Here’s an example</a> of such a dataset. You can also <a href="https://www.promptingguide.ai/applications/generating">generate synthetic data</a> using GPT-4.</li>
+<li>Choose a suitable fine-tuning method. <a href="https://github.com/microsoft/LoRA">LoRA</a> and <a href="https://github.com/artidoro/qlora">QLoRA</a> are currently popular.</li>
+<li>Fine-tune the model on new data.</li>
+</ol>
+<h3 id="_2"></h3>
+<div class="highlight"><pre><span></span><code>**When to Use**
+</code></pre></div>
+<ul>
+<li><strong>Niche Applications:</strong> When the application deals with specialized or unconventional topics. For example, legal document applications that need to understand and handle legal jargon.</li>
+<li><strong>Custom Language Styles:</strong> For applications requiring a specific tone or style. For example, creating an <a href="https://beta.character.ai/">AI character</a> whether it’s a celebrity or a character from a book.</li>
+</ul>
+<h3 id="_3"></h3>
+<div class="highlight"><pre><span></span><code>**When NOT to Use**
+</code></pre></div>
+<ul>
+<li><strong>Broad Applications:</strong> Where the scope of the application is general and doesn’t require specialized knowledge.</li>
+<li><strong>Limited Data:</strong> Fine-tuning requires a significant amount of relevant data. However, you can always <a href="https://www.confident-ai.com/blog/how-to-generate-synthetic-data-using-llms-part-1">generate them with another LLM</a>. For example, the <a href="https://github.com/gururise/AlpacaDataCleaned">Alpaca dataset</a> of 52k LLM-generated instruction-response pairs was used to create the first finetuning <a href="https://arxiv.org/abs/2302.13971">Llama v1</a> model earlier this year.</li>
+</ul>
+<h3 id="_4"></h3>
+<div class="highlight"><pre><span></span><code>**Fine-tuning LLM**
+
+
+Let us look at a high-level library, [Lit-GPT](https://github.com/Lightning-AI/lit-gpt), which hides all complexities, hence doesn’t allow for much customization of the training process, but one can quickly conduct experiments and get initial results.
+
+
+You’ll need just a few lines of code:
+
+
+```
+# 1. Download the model:
+python scripts/download.py --repo_id meta-llama/Llama-2-7b
+
+# 2. Convert the checkpoint to the lit-gpt format:
+python scripts/convert_hf_checkpoint.py --checkpoint_dir checkpoints/llama
+
+# 3. Generate an instruction tuning dataset:
+python scripts/prepare_alpaca.py  # it should be your dataset
+
+# 4. Run the finetuning script
+python finetune/lora.py \
+   --checkpoint_dir checkpoints/llama/
+   --data_dir your_data_folder/
+   --out_dir my_finetuned_model/
+```
+
+
+
+And that’s it! Your training process will start:
+</code></pre></div>
+<p><img alt="alt_text" src="../images/image51.png" title="image_tooltip" /></p>
+<div class="highlight"><pre><span></span><code>_This  takes approximately **10 hours** and **30 GB** memory to fine-tune Falcon-7B on a single A100 GPU._
+</code></pre></div>
+<ul>
+<li>The fine-tuning process is quite complex and to get better results, you’ll need to understand various adapters, their parameters, and much more. </li>
+<li>However, even after such a simple iteration, you will have a new model that follows your instructions.</li>
+</ul>
+<h3 id="_5"></h3>
+<div class="highlight"><pre><span></span><code>**Some References to chase down:**
+</code></pre></div>
+<ul>
+<li><a href="https://medium.com/better-programming/unleash-your-digital-twin-how-fine-tuning-llm-can-create-your-perfect-doppelganger-b5913e7dda2e">Create a Clone of Yourself With a Fine-tuned LLM</a> — an article about collecting datasets, using parameters, and  useful tips on fine-tuning.</li>
+<li><a href="https://lightning.ai/pages/community/article/understanding-llama-adapters/">Understanding Parameter-Efficient Fine-tuning of Large Language Models</a> — an excellent tutorial to get into the details of the concept of fine-tuning and popular parameter-efficient alternatives.</li>
+<li><a href="https://lightning.ai/pages/community/lora-insights/">Fine-tuning LLMs with LoRA and QLoRA: Insights from Hundreds of Experiments</a> — one of my favorite articles for understanding the capabilities of LoRA.</li>
+<li><a href="https://platform.openai.com/docs/guides/fine-tuning">OpenAI Fine-tuning</a> — if you want to fine-tune GPT-3.5 with minimal effort.</li>
+</ul>
+<h2 id="_6"></h2>
+<div class="highlight"><pre><span></span><code>**Deploying Your LLM Application in Production**
+</code></pre></div>
+<p><img alt="alt_text" src="images/image52.png" title="image_tooltip" /></p>
+<ul>
+<li>There are a huge number of frameworks that specialize in deploying large language models with</li>
+<li>Lots of pre-built wrappers and integrations.</li>
+<li>A vast selection of available models.</li>
+<li>A multitude of internal optimizations.</li>
+<li>Rapid prototyping.</li>
+</ul>
+<h3 id="_7"></h3>
+<div class="highlight"><pre><span></span><code>**Choosing the Right Framework**
+</code></pre></div>
+<ul>
+<li>The choice of framework for deploying an LLM application depends on various factors, including the size of the model, the scalability requirements of the application, and the deployment environment. </li>
+<li>Heres a  cheat sheet:</li>
+</ul>
+<p><img alt="alt_text" src="images/image53.png" title="image_tooltip" /></p>
+<div class="highlight"><pre><span></span><code>You can get a more detailed overview of the existing solutions here [7 Frameworks for Serving LLMs](https://medium.com/better-programming/frameworks-for-serving-llms-60b7f7b23407)
+</code></pre></div>
+<p><img alt="alt_text" src="images/image54.png" title="image_tooltip" /></p>
+<div class="highlight"><pre><span></span><code>    Comparison of frameworks for LLMs inference
+</code></pre></div>
+<h3 id="_8"></h3>
+<div class="highlight"><pre><span></span><code>**Example Code for Deployment**
+</code></pre></div>
+<ul>
+<li>Let’s move from theory to practice and try to deploy LLaMA-2 using <a href="https://github.com/huggingface/text-generation-inference">Text Generation Inference</a>. </li>
+<li>
+<p>And, as you might have guessed, you’ll need just a few lines of code:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a># 1. Create a folder where your model will be stored:
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>mkdir data
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a># 2. Run Docker container (launch RestAPI service):
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>docker run --gpus all --shm-size 1g -p 8080:80 \
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>   -v $volume:/data \
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>   ghcr.io/huggingface/text-generation-inference:1.1.0
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>   --model-id meta-llama/Llama-2-7b
+<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>
+<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a># 3. And now you can make requests:
+<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a>curl 127.0.0.1:8080/generate \
+<a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a>   -X POST \
+<a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a>   -d &#39;{&quot;inputs&quot;:&quot;Tell me a joke!&quot;,&quot;parameters&quot;:{&quot;max_new_tokens&quot;:20}}&#39; \
+<a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a>   -H &#39;Content-Type: application/json&#39;
+</code></pre></div>
+<ul>
+<li>That’s it! You’ve set up a RestAPI service with built-in logging, Prometheus endpoint for monitoring, token streaming, and your model is fully optimized. </li>
+</ul>
+</li>
+</ul>
+<p><img alt="alt_text" src="images/image55.png" title="image_tooltip" /></p>
+<div class="highlight"><pre><span></span><code>API Documentation
+</code></pre></div>
+<h3 id="_9"></h3>
+<div class="highlight"><pre><span></span><code>**References:**
+</code></pre></div>
+<ul>
+<li><a href="https://medium.com/better-programming/frameworks-for-serving-llms-60b7f7b23407">7 Frameworks for Serving LLMs </a>— comprehensive guide into LLMs inference and serving with detailed comparison.</li>
+<li><a href="https://huggingface.co/inference-endpoints">Inference Endpoints</a> — a product from HuggingFace that will allow you to deploy any LLMs in a few clicks. A good choice when you need rapid prototyping.</li>
+</ul>
+<h2 id="_10"></h2>
+<div class="highlight"><pre><span></span><code>**To get in a little deeper**
+</code></pre></div>
+<ul>
+<li>We’ve covered the basic concepts needed for developing LLM-based applications, there are still some aspects you’ll likely encounter in the future. Here are  a few useful reference:</li>
+</ul>
+<h3 id="_11"></h3>
+<div class="highlight"><pre><span></span><code>**Optimization**
+</code></pre></div>
+<ul>
+<li>When you launch your first model, you inevitably find it’s not as fast as you’d like and consumes a lot of resources and you’ll need to understand how it can be optimized.</li>
+<li><a href="https://medium.com/better-programming/speed-up-llm-inference-83653aa24c47">7 Ways To Speed Up Inference of Your Hosted LLMs</a> — techniques to speed up inference of LLMs to increase token generation speed and reduce memory consumption.</li>
+<li><a href="https://lightning.ai/pages/community/tutorial/pytorch-memory-vit-llm/">Optimizing Memory Usage for Training LLMs in PyTorch</a> — article provides a series of techniques that can reduce memory consumption in PyTorch by approximately 20x without sacrificing modeling performance and prediction accuracy.</li>
+</ul>
+<h3 id="_12"></h3>
+<div class="highlight"><pre><span></span><code>**Evaluating**
+</code></pre></div>
+<ul>
+<li>Suppose you have a fine-tuned model you need to be sure that its quality has improved.  What metrics should we use to check quality?</li>
+<li><a href="https://explodinggradients.com/all-about-evaluating-large-language-models">All about evaluating Large language models</a> — a good overview article about benchmarks and metrics.</li>
+<li><a href="https://github.com/openai/evals">evals</a> — the most popular framework for evaluating LLMs and LLM systems.</li>
+</ul>
+<h3 id="_13"></h3>
+<div class="highlight"><pre><span></span><code>**Vector Databases**
+</code></pre></div>
+<ul>
+<li>If you work with RAG, at some point, you’ll move from storing vectors in memory to a database. </li>
+<li>For this, it’s important to understand what’s currently on the market and its limitations.</li>
+<li><a href="https://towardsdatascience.com/all-you-need-to-know-about-vector-databases-and-how-to-use-them-to-augment-your-llm-apps-596f39adfedb">All You Need to Know about Vector Databases</a> — a step-by-step guide by  \
+<a href="https://medium.com/u/3ab8d3143e32?source=post_page-----5c45708156bc--------------------------------">Dominik Polzer \
+</a> to discover and harness the power of vector databases.</li>
+<li><a href="https://benchmark.vectorview.ai/vectordbs.html">Picking a vector database: a comparison and guide for 2023</a> — comparison of Pinecone, Weviate, Milvus, Qdrant, Chroma, Elasticsearch and PGvector databases.</li>
+</ul>
+<h3 id="_14"></h3>
+<div class="highlight"><pre><span></span><code>**LLM Agents**
+</code></pre></div>
+<ul>
+<li>One of  the most promising developments in LLMs are LLM Agents i f you want multiple models to work together. </li>
+<li>The following links are worth going through</li>
+<li><a href="https://github.com/paitesanshi/llm-agent-survey#-more-comprehensive-summarization">A Survey on LLM-based Autonomous Agents</a> — this is probably the most comprehensive overview of LLM based agents.</li>
+<li><a href="https://github.com/microsoft/autogen">autogen</a> — is a framework that enables the development of LLM applications using multiple agents that can converse with each other to solve tasks.</li>
+<li><a href="https://github.com/xlang-ai/OpenAgents">OpenAgents </a>— an open platform for using and hosting language agents in the wild.</li>
+</ul>
+<h3 id="_15"></h3>
+<div class="highlight"><pre><span></span><code>**Reinforcement Learning from Human Feedback (RLHF)**
+</code></pre></div>
+<ul>
+<li>As soon as you allow users access to your model, you start taking responsibility. </li>
+<li>What if it responds rudely? Or reveals bomb-making ingredients? To avoid this, check out these articles:</li>
+<li><a href="https://huggingface.co/blog/rlhf">Illustrating Reinforcement Learning from Human Feedback (RLHF)</a> — an overview article that details the RLHF technology.</li>
+<li><a href="https://github.com/allenai/RL4LMs">RL4LMs</a> — a modular RL library to fine-tune language models to human preferences.</li>
+<li><a href="https://github.com/huggingface/trl">TRL </a>— a set of tools to train transformer language models with Reinforcement Learning, from the Supervised Fine-tuning step (SFT), Reward Modeling step (RM) to the Proximal Policy Optimization (PPO) step.</li>
+</ul>
+<p><strong>Summary:</strong></p>
+<p><img alt="alt_text" src="images/image56.png" title="image_tooltip" /></p>
+<ul>
+<li>The material covered today is broad but is the technology of the future. </li>
+<li>Junior Programmers, Artists, ML Engineers, Data Processing Analysts, Beginner Data Scientists, and practically every other digital job should be learning this technology. There is a lot of scope and opportunity. </li>
+<li>Generative AI is the future of the Digital Media World. Artists are feeling the impact today. A similar situation is looming for junior-level software engineers. </li>
+<li>But the solution is simple: Skill up! Help someone else Skill up! Regain Control!</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var tab,labels=set.querySelector(".tabbed-labels");for(tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      &copy; 2024 <a href="https://spanda.io"  target="_blank" rel="noopener">Spanda.io</a>
+
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://ranga-rangarajan.github.io/spanda-bootcamp/" target="_blank" rel="noopener" title="ranga-rangarajan.github.io" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1zM480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2zm-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3zm-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.sections", "toc.integrate", "navigation.top", "search.suggest", "search.highlight", "content.tabs.link", "content.code.annotation", "content.code.copy"], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.8fd75fb4.min.js"></script>
+      
+    
+  </body>
+</html>

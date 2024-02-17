@@ -1,0 +1,1702 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../20_Retrieval_Augmented_Generation/">
+      
+      
+        <link rel="next" href="../22_From_Simple_to_Advanced_RAG/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.9">
+    
+    
+      
+        <title>21 RAG Pipeline Implementation - Spanda DL Bootcamp</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.f2e4d321.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#section-23" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Spanda DL Bootcamp" class="md-header__button md-logo" aria-label="Spanda DL Bootcamp" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Spanda DL Bootcamp
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              21 RAG Pipeline Implementation
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="purple"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6zm0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4zM7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="teal" data-md-color-accent="lime"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-hidden="true"  type="radio" name="__palette" id="__palette_2">
+    
+  
+</form>
+      
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+    
+  
+  The Complete Generative AI Bootcamp
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../01_Course_Vision_and_Running_a_Local_LLM/" class="md-tabs__link">
+          
+  
+  Lecturewise mkdocs
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Spanda DL Bootcamp" class="md-nav__button md-logo" aria-label="Spanda DL Bootcamp" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Spanda DL Bootcamp
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    The Complete Generative AI Bootcamp
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Lecturewise mkdocs
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Lecturewise mkdocs
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01_Course_Vision_and_Running_a_Local_LLM/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    01 Course Vision and Running a Local LLM
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02_Software_Engineering_for_AI/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    02 Software Engineering for AI
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03_Ops_-_DevOps%2C_MLOps%2C_AIOps/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    03 Ops   DevOps, MLOps, AIOps
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04_Data_Collection%2C_Data_Labeling%2C_Data_Management%2C_Analytics/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    04 Data Collection, Data Labeling, Data Management, Analytics
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05_Testing_and_Deployment/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    05 Testing and Deployment
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06.5/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    06.5
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06_LLM_Serving_and_Reinforcement_Learning/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    06 LLM Serving and Reinforcement Learning
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07_Distributed_Systems_Patterns/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    07 Distributed Systems Patterns
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../08_Workflow_Patterns/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    08 Workflow Patterns
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../09_Scheduling_%26amp%3B_Metadata_Patterns/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    09 Scheduling &amp; Metadata Patterns
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10_Data_Lakes_%26amp%3B_Intro_to_Federated_Learning/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    10 Data Lakes &amp; Intro to Federated Learning
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11_Federated_Learning/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    11 Federated Learning
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../12_Federated_Learning_System_Details/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    12 Federated Learning System Details
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../13_Federated_Learning_Implementation_-_Server_Side/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    13 Federated Learning Implementation   Server Side
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../14_Federated_Learning_Implementation_-_Client_Side/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    14 Federated Learning Implementation   Client Side
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../15_Federated_Learning_Running_the_System_%26amp%3B_Analyzing_Results/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    15 Federated Learning Running the System &amp; Analyzing Results
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../16_Introducing_Existing_Federated_Learning_Frameworks/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    16 Introducing Existing Federated Learning Frameworks
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../17_Federated_Learning_Use_Cases_and_Case_Studies/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    17 Federated Learning Use Cases and Case Studies
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../18_Federated_Learning_Future_Directions/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    18 Federated Learning Future Directions
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../19_LLMs_and_NLP_Introduction/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    19 LLMs and NLP Introduction
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../20_Retrieval_Augmented_Generation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    20 Retrieval Augmented Generation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    21 RAG Pipeline Implementation
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    21 RAG Pipeline Implementation
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#section-23" class="md-nav__link">
+    <span class="md-ellipsis">
+      Section 23
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rag-pipeline-implementation" class="md-nav__link">
+    <span class="md-ellipsis">
+      RAG Pipeline Implementation
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="RAG Pipeline Implementation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#311-pdf-text-extraction" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.1.1 PDF Text Extraction
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#312-handling-multiple-pages" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.1.2 Handling Multiple Pages
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#313-text-cleanup-and-normalization" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.1.3 Text Cleanup and Normalization
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#314-language-detection" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.1.4 Language Detection
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#341-splitting-by-character" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.4.1 Splitting by Character
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#342-splitting-by-token" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.4.2 Splitting by Token
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#343-finding-the-right-balance" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.4.3 Finding the Right Balance
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#344-hybrid-approaches" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.4.4 Hybrid Approaches
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#351-contextual-clues" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.5.1 Contextual Clues
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#352-improved-document-retrieval" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.5.2 Improved Document Retrieval
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#353-contextual-response-generation" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.5.3 Contextual Response Generation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#354-user-experience-and-trust" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.5.4 User Experience and Trust
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../22_From_Simple_to_Advanced_RAG/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    22 From Simple to Advanced RAG
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../23_RAG_Observability/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    23 RAG Observability
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h2 id="section-23"><strong><span style="text-decoration:underline;">Section 23</span></strong></h2>
+<h1 id="rag-pipeline-implementation">RAG Pipeline Implementation</h1>
+<blockquote>
+<p><strong>3.1 Preprocessing PDF documents</strong></p>
+<p>Before we can harness the power of Large Language Models (LLMs) and
+particularly RAG method for question answering over PDF documents,
+it's essential to prepare our data. PDFs, while a common format for
+documents, pose unique challenges for text extraction and analysis. In
+this section, we'll explore the critical steps involved in
+preprocessing PDF documents to make them suitable for our Chat-to-PDF
+app. These steps are not only essential for PDFs but are also
+applicable to other types of files. However, our primary focus is on
+PDF documents due to their prevalence in various industries and
+applications.</p>
+</blockquote>
+<h4 id="311-pdf-text-extraction">3.1.1 PDF Text Extraction</h4>
+<blockquote>
+<p>PDFs may contain a mix of text, images, tables, and other elements. To
+enable text-based analysis and question answering, we need to extract
+the textual content from PDFs. Here's how you can accomplish this:</p>
+</blockquote>
+<ul>
+<li>
+<p><strong>TextExtraction Tools:</strong> Explore available tools and libraries like
+    PyPDF2, pdf2txt, or PDFMiner to extract text from PDF files
+    programmatically.</p>
+</li>
+<li>
+<p><strong>Handling Scanned Documents:</strong> If your PDFs contain scanned images
+    instead of selectable text, you may need Optical Character
+    Recognition (OCR) software to convert images into machine-readable
+    text.</p>
+</li>
+<li>
+<p><strong>Quality Control:</strong> Check the quality of extracted text and perform
+    any necessary cleanup, such as removing extraneous characters or
+    fixing formatting issues.</p>
+</li>
+</ul>
+<h4 id="312-handling-multiple-pages">3.1.2 Handling Multiple Pages</h4>
+<blockquote>
+<p>PDF documents can span multiple pages, and maintaining context across
+pages is crucial for question answering. Here's how you can address
+this challenge:</p>
+</blockquote>
+<ul>
+<li>
+<p><strong>Page Segmentation:</strong> Segment the document into logical units, such
+    as paragraphs or sections, to ensure that context is preserved.</p>
+</li>
+<li>
+<p><strong>Metadata Extraction:</strong> Extract metadata such as document titles,
+    authors, page numbers, and creation dates. This metadata can aid in
+    improving searchability and answering user queries.</p>
+</li>
+</ul>
+<h4 id="313-text-cleanup-and-normalization">3.1.3 Text Cleanup and Normalization</h4>
+<blockquote>
+<p>PDFs may introduce artifacts or inconsistencies that can affect the
+quality of the extracted text. To ensure the accuracy of question
+answering, perform text cleanup and normalization:</p>
+</blockquote>
+<ul>
+<li>
+<p><strong>Whitespace and Punctuation:</strong> Remove or replace excessive
+    whitespace and special characters to enhance text readability.</p>
+</li>
+<li>
+<p><strong>Formatting Removal:</strong> Eliminate unnecessary formatting, such as
+    font styles, sizes, and colors, which may not be relevant for
+    question answering.</p>
+</li>
+<li>
+<p><strong>Spellchecking:</strong> Check and correct spelling errors that might
+    occur during the extraction process.</p>
+</li>
+</ul>
+<h4 id="314-language-detection">3.1.4 Language Detection</h4>
+<blockquote>
+<p>If your PDF documents include text in multiple languages, it is a good
+idea to implement language detection algorithms to identify the
+language used in each section. This information can be useful when
+selecting appropriate LLM models for question answering.</p>
+<p><strong>3.2 Data Ingestion Pipeline Implementation</strong></p>
+<p>As it has been depicted in Figure 2.3 the first step of the data
+ingestion pipeline is <em>extracting and spliting text from the pdf
+documents</em>. There are several packages for this goal including:</p>
+</blockquote>
+<ul>
+<li>
+<p>PyPDF2</p>
+</li>
+<li>
+<p>pdfminer.six</p>
+</li>
+<li>
+<p>unstructured</p>
+</li>
+</ul>
+<blockquote>
+<p>Additionally, there are data loaders hub like llamahub that contains
+tens of data loaders for reading and connecting a wide variety data
+sources to a Large Language Model (LLM).</p>
+<p>Finally, there are packages like llamaindex, and langchain. These are
+frameworks that faciliates developing applications powered by LLMs.
+Therefore, they have implemented many of these data loaders including
+extracting and spliting text from pdf files.</p>
+<p><strong>Step 1: Install necessary libraries</strong></p>
+<p>pip install llama-index pip install langchain</p>
+<p><strong>Step 2: Load the pdf file and extract the text from it</strong></p>
+<p>Code below will iterate over the pages of the pdf file, extract the
+text and add it to the documents list object, see Figure 3.1.</p>
+<p><img alt="" src="../media/media/image57.jpg" />{width="4.857147856517935in"
+height="2.36549321959755in"}</p>
+<p>Figure 3.1: Load pdf files</p>
+<p>Now every page has become a separate document that we can later <em>embed
+(vectorize)</em> and <em>store</em> in the vector database. However, some pages
+could be very lengthy and other ones could be very short as page
+length varies. This could signaficantly impact the quality of the
+document search and retrieval.</p>
+<p>Additionally, LLMs have a limited context window (token limit), i.e.
+they can handle certain number of tokens (a token roughly equals to a
+word). Therefore, we instead first concatenate all the pages into a
+long text document and then split that document into smaller
+reletively equal size chunks. We then embed each chunk of text and
+insert into the vector database.</p>
+<p>Nevertheless, since we are going to use llamaindex and langchain
+frameworks for the RAG pipeline, Let's utilize the features and
+functions these frameworks offer. They have data loaders and splitters
+that we can use to read and split pdf files. You can see the code in
+Figure 3.2.</p>
+<p>pdf_content[0] contains the entire content of pdf, and has s special
+structure. It is a Document object with some properties including
+page_content and metadata. page_content is the textual content and
+metadata contains some meta-</p>
+<p><img alt="" src="../media/media/image63.jpg" />{width="4.8570811461067365in"
+height="1.9640212160979877in"}</p>
+<p>Figure 3.2: Langchain data loader</p>
+<p>data about the pdf. Here's the partial output the Document object of
+our pdf in Figure 3.3.</p>
+<p><img alt="" src="../media/media/image58.jpg" />{width="4.8570406824146986in"
+height="1.0407939632545933in"}</p>
+<p>Figure 3.3: Langchain data loader output</p>
+<p>A Document object is a generic class for storing a piece of
+unstructured text and its associated metadata. See here for more
+information. <strong>Step 3: Split the text into smaller chunks</strong></p>
+<p>There are several different text splitters. For more information see
+langchain API, or llamaIndex documentation. Two common ones are:</p>
+</blockquote>
+<p>i.  CharacterTextSplitter: Split text based on a certain number
+    characters.</p>
+<p>ii. TokenTextSplitter: Split text to tokens using model tokenizer.</p>
+<blockquote>
+<p>The following code in Figure 3.4 chunks the pdf content into sizes no
+greater than 1000, with a bit of overlap to allow for some continued
+context.</p>
+<p><img alt="" src="../media/media/image56.jpg" />{width="4.856896325459317in"
+height="1.5922495625546806in"}</p>
+<p>Figure 3.4: Langchain text split method</p>
+<p>Here's the number of chunks created from splitting the pdf file.</p>
+<p># Print the number of chunks (list of Document objects)</p>
+<p>print(len(docs))</p>
+<p># 30</p>
+<p><strong>Step 4: Embed and store the documents in the vector database</strong></p>
+<p>In this step we need to convert chunks of text into embedding vectors.
+There are plenty of embedding models we can use including OpenAI
+models, Huggingface models, and Cohere models. You can even define
+your own custom embedding model. Selecting an embedding model depnds
+on several factors:</p>
+</blockquote>
+<ul>
+<li>
+<p><strong>Cost:</strong> Providers such as OpenAI or Cohere charge for embeddings,
+    albeit it's cheap, when you scale to thusands of pdf files, it will
+    become prohibitive.</p>
+</li>
+<li>
+<p><strong>Latency and speed:</strong> Hosting an embedding model on your server
+    reduce the latency, whereas using vendors' API increases the
+    latency.</p>
+</li>
+<li>
+<p><strong>Convenience:</strong> Using your own embedding model needs more compute
+    resource and maintainance whereas using vendors APIs like OpenAI
+    gives you a hassle-free experience.</p>
+</li>
+</ul>
+<blockquote>
+<p>Similar to having several choices for embedding models, there are so
+many options for choosing a vector database, which is out the scope of
+this book.</p>
+<p>Figure 3.5 shows some of the most popular vector database vendors and
+some of the features of their hosting. This blog fully examines these
+vector databases from different perspective.</p>
+<p><img alt="" src="../media/media/image62.jpg" />{width="4.856864610673666in"
+height="3.24830927384077in"}</p>
+<p>Figure 3.5: Various vector databases. Image source</p>
+<p>We are going to use OpenAI models, particularly text-embedding-ada-002
+for embedding. Furthermore, we choose Qdrant as our vector database.
+It's open source, fast, very flexible, and offers a free clould-based
+tier.</p>
+<p>We first install the openai and qdrant package.</p>
+<p>pip install openai pip install qdrant-client</p>
+<p>We also require an API key that we can get it from here.</p>
+<p>If we set OPENAI_API_KEY environment variable to our API key, we can
+easily call the functions that needs it without getting any error.
+Otherwise we can pass the API key parameter to functions requiring it.
+Figure 3.6 shows how to do it.</p>
+<p><img alt="" src="../media/media/image69.jpg" />{width="4.856896325459317in"
+height="3.0135192475940507in"}</p>
+<p>Figure 3.6: Qdrant vector database setup via Langchain</p>
+<p>Please note that there are several different ways to achieve the same
+goal</p>
+<p>(embedding and storing in the vector database). You can use Qdrant
+client library directly instead of using the langchain wrapper for it.
+Also, you can first create embeddings separately and then store them
+in the Qdrant vector database. Here, we embedded the documents and
+stored them all by calling Qdrant.from_documents().</p>
+<p>In addition, you can use Qdrant cloud vector database to store the
+embeddings and use their REST API to interact with it, unlike this
+example where the index is stored locally in the /tmp/local_qdrant
+directory. This approach is suitable for testing and POC
+(Proof-Of-Concept), not for production environment.</p>
+<p>We can try and see how we can search and retrieve relevant documents
+from the vector database. For instance, let's see what the answer to
+the question <em>"what is knearest neighbor?"</em>. See the output in Figure
+3.7.</p>
+<p><img alt="" src="../media/media/image61.jpg" />{width="4.856896325459317in"
+height="2.7089610673665794in"}</p>
+<p>Figure 3.7: Question answering example with output</p>
+<p>Awesome! The retrieved answer seems quite relevant.</p>
+<p>The entire code is displayed in Figure 3.8.</p>
+</blockquote>
+<p><img alt="" src="../media/media/image68.jpg" />{width="4.856896325459317in"
+height="4.43478893263342in"}</p>
+<blockquote>
+<p>Figure 3.8: The entire code for retrieval component</p>
+</blockquote>
+<p>3.3GenerationComponentImplementation</p>
+<blockquote>
+<p><strong>3.3 Generation Component Implementation</strong></p>
+<p>Figure 3.9 illustrates a simplified version of the RAG pipeline we saw
+in Chapter 2. So far our <strong>Retrieval</strong> component of the RAG is
+implemented. In the next section we will implement the <strong>Generation</strong>
+component.</p>
+<p><img alt="" src="../media/media/image60.png" />{width="4.85706583552056in"
+height="2.0912357830271215in"}</p>
+<p>Figure 3.9: RAG pipeline</p>
+<p>The steps for generating a response for a user's question are:</p>
+</blockquote>
+<ul>
+<li>
+<p><strong>Step 1:</strong> Embed the user's query using the same model used for
+    embedding documents</p>
+</li>
+<li>
+<p><strong>Step 2:</strong> Pass the query embedding to vector database, search and
+    retrieve the top-k documents (i.e. context) from the vector database</p>
+</li>
+<li>
+<p><strong>Step 3:</strong> Create a "prompt" and include the user's query and
+    context in it</p>
+</li>
+<li>
+<p><strong>Step 4:</strong> Call the LLM and pass the the prompt</p>
+</li>
+<li>
+<p><strong>Step 5:</strong> Get the generated response from LLM and display it to
+    the user</p>
+</li>
+</ul>
+<blockquote>
+<p>Again, we can follow each step one by one, or utilize the features
+langchain or llamaIndex provide. We are going to use langchain in this
+case.</p>
+<p>Langchain includes several kinds of built-in question-answering
+chains. A <em>chain</em> in LangChain refers to a sequence of calls to
+components, which can include other chains or external tools. In order
+to create a question answering chain, we use:</p>
+</blockquote>
+<ol>
+<li>
+<p><strong>load_qa_chain:</strong> load_qa_chain() is a function in Langchain that
+    loads a pre-configured question answering chain. It takes in a
+    language model like OpenAI, a chain type (e.g. "stuff" for
+    extracting answers from text), and optionally a prompt template and
+    memory object. The function returns a QuestionAnsweringChain
+    instance that is ready to take in documents and questions to
+    generate answers.</p>
+</li>
+<li>
+<p><strong>load_qa_with_sources_chain:</strong> This is very similar to
+    load_qa_chain except it contains sources/metadata along with the
+    returned response.</p>
+</li>
+<li>
+<p><strong>RetrievalQA:</strong> RetrievalQA is a class in Langchain that creates a
+    question answering chain using retrieval. It combines a retriever,
+    prompt template, and LLM together into an end-to-end QA pipeline.
+    The prompt template formats the question and retrieved documents
+    into a prompt for the LLM. This chain retrieves relevant documents
+    from a vector database for a given query, and then generates an
+    answer using those documents.</p>
+</li>
+<li>
+<p><strong>RetrievalQAWithSourcesChain:</strong> It is a variant of RetrievalQA that
+    returns relevant source documents used to generate the answer. This
+    chain returns an AnswerWithSources object containing the answer
+    string and a list of source IDs.</p>
+</li>
+</ol>
+<blockquote>
+<p>Here's the code demonstraing the implementation, Figure 3.10:</p>
+<p>Figure 3.11 shows how to use load_qa_with_sources_chain:</p>
+<p>Similarly, if we use RetrievalQA, we will have Figure 3.12:</p>
+<p>And here's the code when we use RetrievalQAWithSourcesChain, Figure
+3.13:</p>
+<p>As you can see, it's fairly straight forward to implement RAG (or say
+a prototype RAG application) using frameworks like langchain or
+llamaIndex. However, when it comes to deploying RAG to production and
+scaling the system, it becomes notoriously challenging. There are a
+lot of nuances that will affect</p>
+</blockquote>
+<p>3.3GenerationComponentImplementation</p>
+<p><img alt="" src="../media/media/image72.jpg" />{width="4.856896325459317in"
+height="2.607442038495188in"}</p>
+<blockquote>
+<p>Figure 3.10: Response generation using Langchain chain</p>
+</blockquote>
+<p><img alt="" src="../media/media/image67.jpg" />{width="4.856896325459317in"
+height="2.302884951881015in"}</p>
+<blockquote>
+<p>Figure 3.11: Using load_qa_with_sources_chain chain for response
+generation</p>
+</blockquote>
+<p><img alt="" src="../media/media/image37.jpg" />{width="4.856896325459317in"
+height="1.9983267716535433in"}</p>
+<blockquote>
+<p>Figure 3.12: The usage of RetrievalQA chain</p>
+</blockquote>
+<p><img alt="" src="../media/media/image39.jpg" />{width="4.856896325459317in"
+height="2.0998458005249345in"}</p>
+<p>Figure 3.13: Code snippet for using Langchain RetrievalQAWith-</p>
+<blockquote>
+<p>SourcesChain for response generation</p>
+<p>3.4ImpactofTextSplittingonRetrievalAugmentedGeneration(RAG)Quality</p>
+</blockquote>
+<p>the quality of the RAG, and we need to take them into consideration. We
+will discuss some of the main challenges and how to address them in the
+next few sections.</p>
+<blockquote>
+<p><strong>3.4 Impact of Text Splitting on Retrieval Augmented</strong></p>
+<p><strong>Generation (RAG) Quality</strong></p>
+<p>In the context of building a Chat-to-PDF app using Large Language
+Models (LLMs), one critical aspect that significantly influences the
+quality of your Retrieval Augmented Generation (RAG) system is how you
+split text from PDF documents. Text splitting can be done at two
+levels: <em>splitting by character</em> and <em>splitting by token</em>. The choice
+you make between these methods can have a profound impact on the
+effectiveness of your RAG system. Let's delve into the implications of
+each approach.</p>
+</blockquote>
+<h4 id="341-splitting-by-character">3.4.1 Splitting by Character</h4>
+<blockquote>
+<p><strong>Advantages:</strong></p>
+<p><strong>Fine-Grained Context:</strong> Splitting text by character retains the
+finest granularity of context within a document. Each character
+becomes a unit of input, allowing the model to capture minute details.</p>
+<p><strong>Challenges:</strong></p>
+</blockquote>
+<ul>
+<li>
+<p><strong>Long Sequences:</strong> PDF documents often contain long paragraphs or
+    sentences. Splitting by character can result in extremely long input
+    sequences, which may surpass the model's maximum token limit, making
+    it challenging to process and generate responses.</p>
+</li>
+<li>
+<p><strong>Token Limitations:</strong> Most LLMs, such as GPT-3, have token limits,
+    often around 4,000 tokens. If a document exceeds this limit, you'll
+    need to truncate or omit sections, potentially losing valuable
+    context.</p>
+</li>
+<li>
+<p><strong>Increased Inference Time:</strong> Longer sequences require more
+    inference time, which can lead to slower response times and
+    increased computational costs.</p>
+</li>
+</ul>
+<h4 id="342-splitting-by-token">3.4.2 Splitting by Token</h4>
+<blockquote>
+<p><strong>Advantages:</strong></p>
+</blockquote>
+<ul>
+<li>
+<p><strong>Token Efficiency:</strong> Splitting text by token ensures that each
+    input sequence remains within the model's token limit, allowing for
+    efficient processing.</p>
+</li>
+<li>
+<p><strong>Balanced Context:</strong> Each token represents a meaningful unit,
+    striking a balance between granularity and manageability.</p>
+</li>
+<li>
+<p><strong>Scalability:</strong> Splitting by token accommodates documents of
+    varying lengths, making the system more scalable and adaptable.</p>
+</li>
+</ul>
+<blockquote>
+<p><strong>Challenges:</strong></p>
+</blockquote>
+<ul>
+<li><strong>Contextual Information:</strong> Token-based splitting may not capture
+    extremely fine-grained context, potentially missing nuances present
+    in character-level splitting.</li>
+</ul>
+<h4 id="343-finding-the-right-balance">3.4.3 Finding the Right Balance</h4>
+<blockquote>
+<p>The choice between character-level and token-level splitting is not
+always straightforward and may depend on several factors:</p>
+<p>3.5ImpactofMetadataintheVectorDatabaseonRetrievalAugmentedGeneration(RAG)</p>
+</blockquote>
+<ul>
+<li>
+<p><strong>Document Types:</strong> Consider the types of PDF documents in your
+    collection. Technical manuals with precise details may benefit from
+    characterlevel splitting, while general documents could work well
+    with token-level splitting.</p>
+</li>
+<li>
+<p><strong>Model Limitations:</strong> Take into account the token limits of your
+    chosen LLM. If the model's limit is a significant constraint,
+    token-level splitting becomes a necessity.</p>
+</li>
+<li>
+<p><strong>User Experience:</strong> Assess the trade-off between detailed context
+    and response time. Character-level splitting might provide richer
+    context but at the cost of slower responses.</p>
+</li>
+</ul>
+<h4 id="344-hybrid-approaches">3.4.4 Hybrid Approaches</h4>
+<blockquote>
+<p>In practice, you can also explore hybrid approaches to text splitting.
+For instance, you might use token-level splitting for most of the
+document and switch to character-level splitting when a specific
+question requires fine-grained context.</p>
+<p>The impact of text splitting on RAG quality cannot be overstated. It's
+a critical design consideration that requires a balance between
+capturing detailed context and ensuring system efficiency. Carefully
+assess the nature of your PDF documents, the capabilities of your
+chosen LLM, and user expectations to determine the most suitable text
+splitting strategy for your Chat-to-PDF app. Regular testing and user
+feedback can help refine this choice and optimize the overall quality
+of your RAG system.</p>
+<p><strong>3.5 Impact of Metadata in the Vector Database on Retrieval Augmented
+Generation (RAG)</strong></p>
+<p>The inclusion of metadata about the data stored in the vector database
+is another factor that can significantly enhance the quality and
+effectiveness of your</p>
+</blockquote>
+<p>Retrieval Augmented Generation (RAG) system. Metadata provides valuable
+contextual information about the PDF documents, making it easier for the
+RAG model to retrieve relevant documents and generate accurate
+responses. Here, we explore the ways in which metadata can enhance your
+RAG system.</p>
+<h4 id="351-contextual-clues">3.5.1 Contextual Clues</h4>
+<blockquote>
+<p>Metadata acts as contextual clues that help the RAG model better
+understand the content and context of each PDF document. Typical
+metadata includes information such as:</p>
+</blockquote>
+<ul>
+<li>
+<p><strong>Document Title:</strong> The title often provides a high-level summary of
+    the document's content.</p>
+</li>
+<li>
+<p><strong>Author:</strong> Knowing the author can offer insights into the
+    document's perspective and expertise.</p>
+</li>
+<li>
+<p><strong>Keywords and Tags:</strong> Keywords and tags can highlight the main
+    topics or themes of the document.</p>
+</li>
+<li>
+<p><strong>Publication Date:</strong> The date of publication provides a temporal
+    context, which is crucial for understanding the relevance of the
+    document.</p>
+</li>
+<li>
+<p><strong>Document Type:</strong> Differentiating between research papers, user
+    manuals, and other types of documents can aid in tailoring responses
+    appropriately.</p>
+</li>
+</ul>
+<h4 id="352-improved-document-retrieval">3.5.2 Improved Document Retrieval</h4>
+<blockquote>
+<p>With metadata available in the vector database, the retrieval
+component of your RAG system can become more precise and efficient.
+Here's how metadata impacts document retrieval:</p>
+</blockquote>
+<ul>
+<li><strong>Relevance Ranking:</strong> Metadata, such as document titles, keywords,
+    and tags, can be used to rank the documents based on relevance to a
+    user query. Documents with metadata matching the query can be given
+    higher priority during retrieval. For example, if a user asks a
+    question related</li>
+</ul>
+<blockquote>
+<p>3.5ImpactofMetadataintheVectorDatabaseonRetrievalAugmentedGeneration(RAG)</p>
+<p>to "machine learning," documents with "machine learning" in their
+keywords or tags might be given priority during retrieval.</p>
+</blockquote>
+<ul>
+<li>
+<p><strong>Filtering:</strong> Metadata can be used to filter out irrelevant
+    documents early in the retrieval process, reducing the computational
+    load and improving response times. For instance, if a user asks
+    about "biology," documents with metadata indicating they are
+    engineering manuals can be excluded from consideration.</p>
+</li>
+<li>
+<p><strong>Enhanced Query Understanding:</strong> Metadata provides additional
+    context for the user's query, allowing the RAG model to better
+    understand the user's intent and retrieve documents that align with
+    that intent. For example, if the metadata includes the publication
+    date, the RAG model can consider the temporal context when
+    retrieving documents.</p>
+</li>
+</ul>
+<h4 id="353-contextual-response-generation">3.5.3 Contextual Response Generation</h4>
+<blockquote>
+<p>Metadata can also play a crucial role in the generation component of
+your RAG system. Here's how metadata impacts response generation:</p>
+</blockquote>
+<ul>
+<li>
+<p><strong>Context Integration:</strong> Metadata can be incorporated into the
+    response generation process to provide more contextually relevant
+    answers. For example, including the publication date when answering
+    a historical question.</p>
+</li>
+<li>
+<p><strong>Customization:</strong> Metadata can enable response customization. For
+    instance, the tone and style of responses can be adjusted based on
+    the author's information.</p>
+</li>
+<li>
+<p><strong>Enhanced Summarization:</strong> Metadata can aid in the summarization of
+    retrieved documents, allowing the RAG model to provide concise and
+    informative responses. For instance, if the metadata includes the
+    document type as "research paper," the RAG system can generate a
+    summary that highlights the key findings or contributions of the
+    paper.</p>
+</li>
+</ul>
+<h4 id="354-user-experience-and-trust">3.5.4 User Experience and Trust</h4>
+<blockquote>
+<p>Including metadata in the RAG system not only enhances its technical
+capabilities but also improves the overall user experience. Users are
+more likely to trust and find value in a system that provides
+contextually relevant responses. Metadata can help build this trust by
+demonstrating that the system understands and respects the nuances of
+the user's queries.</p>
+<p>Overall, incorporating metadata about data in the vector database of
+your Chatto-PDF app's RAG system can significantly elevate its
+performance and user experience. Metadata acts as a bridge between the
+user's queries and the content of PDF documents, facilitating more
+accurate retrieval and generation of responses.</p>
+<p>As we conclude our exploration of the nuts and bolts of RAG pipelines
+in this Chapter, it's time to move on to more complex topics. In
+Chapter 4, we'll take a deep dive and try to address some of the
+retrieval and generation challenges that come with implementing
+advanced RAG systems.</p>
+<p>We'll discuss the optimal chunk size for efficient retrieval, consider
+the balance between context and efficiency, and introduce additional
+resources for evaluating RAG performance. Furthermore, we'll explore
+retrieval chunks versus synthesis chunks and ways to embed references
+to text chunks for better understanding.</p>
+<p>We'll also investigate how to rethink retrieval methods for
+heterogeneous document corpora, delve into hybrid document retrieval,
+and examine the role of query rewriting in enhancing RAG capabilities.</p>
+</blockquote>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var tab,labels=set.querySelector(".tabbed-labels");for(tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      &copy; 2024 <a href="https://spanda.io"  target="_blank" rel="noopener">Spanda.io</a>
+
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://ranga-rangarajan.github.io/spanda-bootcamp/" target="_blank" rel="noopener" title="ranga-rangarajan.github.io" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1zM480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2zm-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3zm-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.sections", "toc.integrate", "navigation.top", "search.suggest", "search.highlight", "content.tabs.link", "content.code.annotation", "content.code.copy"], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.8fd75fb4.min.js"></script>
+      
+    
+  </body>
+</html>

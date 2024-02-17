@@ -1,0 +1,1370 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../06_LLM_Serving_and_Reinforcement_Learning/">
+      
+      
+        <link rel="next" href="../08_Workflow_Patterns/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.9">
+    
+    
+      
+        <title>07 Distributed Systems Patterns - Spanda DL Bootcamp</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.f2e4d321.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#section-7" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Spanda DL Bootcamp" class="md-header__button md-logo" aria-label="Spanda DL Bootcamp" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Spanda DL Bootcamp
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              07 Distributed Systems Patterns
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="purple"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6zm0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4zM7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="teal" data-md-color-accent="lime"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-hidden="true"  type="radio" name="__palette" id="__palette_2">
+    
+  
+</form>
+      
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+    
+  
+  The Complete Generative AI Bootcamp
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../01_Course_Vision_and_Running_a_Local_LLM/" class="md-tabs__link">
+          
+  
+  Lecturewise mkdocs
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Spanda DL Bootcamp" class="md-nav__button md-logo" aria-label="Spanda DL Bootcamp" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Spanda DL Bootcamp
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    The Complete Generative AI Bootcamp
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Lecturewise mkdocs
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Lecturewise mkdocs
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01_Course_Vision_and_Running_a_Local_LLM/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    01 Course Vision and Running a Local LLM
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02_Software_Engineering_for_AI/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    02 Software Engineering for AI
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03_Ops_-_DevOps%2C_MLOps%2C_AIOps/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    03 Ops   DevOps, MLOps, AIOps
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04_Data_Collection%2C_Data_Labeling%2C_Data_Management%2C_Analytics/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    04 Data Collection, Data Labeling, Data Management, Analytics
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05_Testing_and_Deployment/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    05 Testing and Deployment
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06.5/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    06.5
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06_LLM_Serving_and_Reinforcement_Learning/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    06 LLM Serving and Reinforcement Learning
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    07 Distributed Systems Patterns
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    07 Distributed Systems Patterns
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#section-7" class="md-nav__link">
+    <span class="md-ellipsis">
+      Section 7
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../08_Workflow_Patterns/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    08 Workflow Patterns
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../09_Scheduling_%26amp%3B_Metadata_Patterns/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    09 Scheduling &amp; Metadata Patterns
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10_Data_Lakes_%26amp%3B_Intro_to_Federated_Learning/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    10 Data Lakes &amp; Intro to Federated Learning
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11_Federated_Learning/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    11 Federated Learning
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../12_Federated_Learning_System_Details/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    12 Federated Learning System Details
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../13_Federated_Learning_Implementation_-_Server_Side/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    13 Federated Learning Implementation   Server Side
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../14_Federated_Learning_Implementation_-_Client_Side/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    14 Federated Learning Implementation   Client Side
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../15_Federated_Learning_Running_the_System_%26amp%3B_Analyzing_Results/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    15 Federated Learning Running the System &amp; Analyzing Results
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../16_Introducing_Existing_Federated_Learning_Frameworks/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    16 Introducing Existing Federated Learning Frameworks
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../17_Federated_Learning_Use_Cases_and_Case_Studies/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    17 Federated Learning Use Cases and Case Studies
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../18_Federated_Learning_Future_Directions/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    18 Federated Learning Future Directions
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../19_LLMs_and_NLP_Introduction/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    19 LLMs and NLP Introduction
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../20_Retrieval_Augmented_Generation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    20 Retrieval Augmented Generation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../21_RAG_Pipeline_Implementation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    21 RAG Pipeline Implementation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../22_From_Simple_to_Advanced_RAG/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    22 From Simple to Advanced RAG
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../23_RAG_Observability/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    23 RAG Observability
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  <h1>07 Distributed Systems Patterns</h1>
+
+<h2 id="section-7"><strong><span style="text-decoration:underline;">Section 7</span></strong></h2>
+<p><strong>We will cover:</strong></p>
+<ul>
+<li>
+<p>How to handle the growing scale in large-scale machine learning
+    applications</p>
+</li>
+<li>
+<p>We will identify patterns needed to build scalable and reliable
+    distributed systems</p>
+</li>
+<li>
+<p>We will outline the use of these patterns in distributed systems and
+    building reusable patterns</p>
+</li>
+</ul>
+<p><strong>Part 1 Outcome:</strong></p>
+<ul>
+<li>
+<p>You will be able to choose and apply the correct patterns for
+    building and deploying distributed machine learning systems; use
+    common tooling viz.,</p>
+<ul>
+<li>
+<p>TensorFlow
+    (<a href="https://www.tensorflow.org/">https://www.tensorflow.org)</a>,</p>
+</li>
+<li>
+<p>Kubernetes <a href="https://kubernetes.io/">(https://kubernetes.io)</a>,</p>
+</li>
+<li>
+<p>Kubeflow
+    (<a href="https://www.kubeflow.org/">https://www.kubeflow.org)</a>,</p>
+</li>
+<li>
+<p>Argo Workflows</p>
+</li>
+</ul>
+</li>
+<li>
+<p>appropriately within a machine learning workflow; and gain practical
+    experience in managing and automating machine learning tasks in
+    Kubernetes.</p>
+</li>
+<li>
+<p>The project we will explore later will help us learn to build a
+    real-life distributed machine learning system using the patterns we
+    study.</p>
+</li>
+</ul>
+<p><strong>ML Scale</strong></p>
+<ul>
+<li>
+<p>The scale of machine learning applications has become
+    unprecedentedly large. Case in point: LLMs</p>
+</li>
+<li>
+<p>Users are demanding faster responses to meet real-life requirements,
+    and machine learning pipelines and model architectures are getting
+    more complex.</p>
+</li>
+<li>
+<p>Due to the growing demand and complexity, machine learning systems
+    have to be built with the ability to handle the growing scale,
+    including the increasing volume of historical data; frequent batches
+    of incoming data; complex machine learning architectures; heavy
+    model serving traffic; and complicated end-to-end machine learning
+    pipelines.</p>
+</li>
+</ul>
+<p><strong>What should be done?</strong></p>
+<ul>
+<li>When the dataset is too large to fit in a single machine, we need to
+    store different parts of the dataset on different machines and then
+    train the machine learning model by sequentially looping through the
+    various parts of the dataset on different machines.</li>
+</ul>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>&lt;!-- --&gt;
+</code></pre></div>
+-   If we have a 30 GB dataset, we can divide it into three partitions
+    (fig 1.1).</p>
+<p>Figure 1.1 Dividing a large dataset into three partitions on three
+separate machines that have sufficient disk storage</p>
+<ul>
+<li>
+<p>The question to ask here is "what happens if looping through
+    different parts of the dataset is quite time-consuming?".</p>
+</li>
+<li>
+<p>Assume that the dataset at hand has been divided into three
+    partitions. As in figure 1.2, we initialize the machine learning
+    model on the first machine, and then we train it, using all the data
+    in the first data partition. Next, we transfer the trained model to
+    the second machine, which continues training by using the second
+    data partition.</p>
+</li>
+<li>
+<p>If each partition is large and time-consuming, we'll spend a
+    significant amount of time waiting.</p>
+</li>
+</ul>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>&lt;!-- --&gt;
+</code></pre></div>
+-   We now need to think about adding workers and parallelism</p>
+<ul>
+<li>
+<p>Each worker is <strong><em>responsible</em></strong> for consuming each of the data
+    partitions, and all workers <strong><em>train the same model in parallel</em></strong>
+    without waiting for others.</p>
+</li>
+<li>
+<p>This approach is good for speeding up the model training process
+    but..</p>
+<ul>
+<li>
+<p>What if some workers finish consuming the data partitions that
+    they are responsible for and want to update the model at the
+    same time?</p>
+</li>
+<li>
+<p>Which of the worker's results (gradients) should we use to
+    update the model first?</p>
+</li>
+</ul>
+</li>
+</ul>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>&lt;!-- --&gt;
+</code></pre></div>
+-   <em>What about the conflicts and tradeoffs between performance and
+    model quality?</em></p>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>&lt;!-- --&gt;
+</code></pre></div>
+-   If the data partition that the first worker uses has better quality
+    due to a more rigorous data collection process than the one that the
+    second worker uses, using the first worker's results first would
+    produce a more accurate model.</p>
+<div class="highlight"><pre><span></span><code>-   On the other hand, if the second worker has a smaller partition,
+    it could finish training faster, so we could start using that
+    worker&#39;s computational resources to train a new data partition.
+</code></pre></div>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>&lt;!-- --&gt;
+</code></pre></div>
+-   When more workers are added, the conflicts in completion time for
+    data consumption by different workers become even more obvious.</p>
+<ul>
+<li>
+<p>Q: if the application that uses the trained machine learning model
+    to make predictions observes much heavier traffic, can we simply add
+    servers, with each new server handling a certain percentage of the
+    traffic?</p>
+</li>
+<li>
+<p>A: Not really. This solution would need to take other things into
+    consideration, such as deciding the best load balancer strategy and
+    processing duplicate requests in different servers.</p>
+</li>
+<li>
+<p>The main takeaway for now is that we have established patterns and
+    best practices to deal with certain situations, and we will use
+    those patterns to make the most of our limited computational
+    resources.</p>
+</li>
+<li></li>
+</ul>
+<p><strong>Distributed systems</strong></p>
+<ul>
+<li>
+<p>A <em>distributed system</em> is one in which components are located on
+    different networked computers and can communicate with one another
+    to coordinate workloads and work together via message passing.</p>
+</li>
+<li>
+<p>Figure 1.3 below illustrates a small distributed system consisting
+    of two machines communicating with each other via message passing.
+    One machine contains two CPUs, and the other machine contains three
+    CPUs. Obviously, a machine contains computational resources other
+    than the CPUs; we use only CPUs here for illustration purposes.</p>
+</li>
+<li>
+<p>In real-world distributed systems, the number of machines can be
+    extremely large--- tens of thousands, depending on the use case.</p>
+</li>
+<li>
+<p>Machines with more computational resources can handle larger
+    workloads and share the results with other machines.</p>
+</li>
+</ul>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>&lt;!-- --&gt;
+</code></pre></div>
+-   Many patterns and reusable components are available for distributed
+    systems.</p>
+<ul>
+<li>
+<p>The <em>work-queue pattern</em> in a batch processing system, for example,
+    makes sure that each piece of work is independent of the others and
+    can be processed without any interventions within a certain amount
+    of time.</p>
+</li>
+<li>
+<p>In addition, workers can be scaled up and down to ensure that the
+    workload can be handled properly.</p>
+</li>
+<li>
+<p>Figure 1.4 depicts seven work items, each of which might be an image
+    that needs to be modified to grayscale by the system in the
+    processing queue.</p>
+</li>
+<li>
+<p>Each of the three existing workers takes two to three work items
+    from the processing queue, ensuring that no worker is idle to avoid
+    waste of computational resources and maximizing the performance by
+    processing multiple images at the same time.</p>
+</li>
+<li>
+<p>This performance is possible because each work item is independent
+    of the others.</p>
+</li>
+</ul>
+<p>Figure 1.4 An example of a batch processing system using the work-queue
+pattern to modify images to grayscale</p>
+<p><strong>Distributed machine learning systems</strong></p>
+<ul>
+<li>
+<p>A <em>distributed machine learning system</em> is a distributed system
+    consisting of a pipeline of steps and components that are
+    responsible for different steps in machine learning applications,
+    such as data ingestion, model training, and model serving.</p>
+</li>
+<li>
+<p>It uses patterns and best practices similar to those of a
+    distributed system, as well as patterns designed specifically to
+    benefit machine learning applications.</p>
+</li>
+<li>
+<p>With careful design, a distributed machine learning system is more
+    scalable and reliable for handling large-scale problems, such as
+    large datasets, large models, heavy model serving traffic, and
+    complicated model selection or architecture optimization.</p>
+</li>
+<li>
+<p>There are similar patterns in distributed machine learning systems.
+    As an example, multiple workers can be used to train the machine
+    learning model asynchronously, with each worker being responsible
+    for consuming certain partitions of the dataset. This approach,
+    which is similar to the work-queue pattern used in distributed
+    systems, can speed up the model training process significantly.</p>
+</li>
+<li>
+<p>Figure 1.5 illustrates how we can apply this pattern to distributed
+    machine learning systems by replacing the work items with data
+    partitions. Each worker takes some data partitions from the original
+    data stored in a database and then uses them to train a centralized
+    machine learning model.</p>
+</li>
+</ul>
+<p>Figure 1.5 Applying the work-queue pattern in distributed machine
+learning systems</p>
+<ul>
+<li>
+<p>Another example pattern commonly used in machine learning systems
+    instead of general distributed systems is the <em><strong>parameter server</strong>
+    pattern</em> for distributed model training.</p>
+</li>
+<li>
+<p>As shown in figure 1.6, the parameter servers are responsible for
+    storing and updating a particular part of the trained model.</p>
+</li>
+<li>
+<p>Each worker node is responsible for taking a particular part of the
+    dataset that will be used to update a certain part of the model
+    parameters.</p>
+</li>
+<li>
+<p>This pattern is useful when the model is too large to fit in a
+    single server and dedicated parameter servers for storing model
+    partitions without allocating unnecessary computational resources.</p>
+</li>
+</ul>
+<p>Figure 1.6 An example of applying the parameter server pattern in a
+distributed machine learning system</p>
+<p><strong>When do we use a distributed machine learning system?</strong></p>
+<ul>
+<li>When any of the following scenarios occurs:</li>
+</ul>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>&lt;!-- --&gt;
+</code></pre></div>
+-   The model is large, consisting of millions of parameters that a
+    single machine cannot store and that must be partitioned on
+    different machines.</p>
+<ul>
+<li>
+<p>The machine learning application needs to handle increasing amounts
+    of heavy traffic that a single server can no longer manage.</p>
+</li>
+<li>
+<p>The task at hand involves many parts of the model's life cycle, such
+    as data ingestion, model serving, data/model versioning, and
+    performance monitoring.</p>
+</li>
+</ul>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>&lt;!-- --&gt;
+</code></pre></div>
+-   We want to use many computing resources for acceleration, such as
+    dozens of servers that have many GPUs each.</p>
+<p><strong>When should we not use a distributed machine learning system?</strong></p>
+<blockquote>
+<p>If you encounter any of the following cases:</p>
+</blockquote>
+<ul>
+<li>
+<p>The dataset is small, such as a CSV file smaller than 10 GBs.</p>
+</li>
+<li>
+<p>The model is simple and doesn't require heavy computation, such as
+    linear regression.</p>
+</li>
+<li>
+<p>Computing resources are limited but sufficient for the tasks at
+    hand.</p>
+</li>
+</ul>
+<p><strong>What frameworks will we use?</strong></p>
+<ul>
+<li>We'll use several popular frameworks and cutting-edge technologies
+    to build components of a distributed machine learning workflow,
+    including the following:</li>
+</ul>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>&lt;!-- --&gt;
+</code></pre></div>
+-   TensorFlow
+    (<a href="https://www.tensorflow.org/">https://www.tensorflow.org</a>)</p>
+<ul>
+<li>
+<p>Kubernetes (<a href="https://kubernetes.io/">https://kubernetes.io</a>)</p>
+</li>
+<li>
+<p>Kubeflow (<a href="https://www.kubeflow.org/">https://www.kubeflow.org</a>)</p>
+</li>
+<li>
+<p>Docker (<a href="https://www.docker.com/">https://www.docker.com</a>)</p>
+</li>
+<li>
+<p>Argo Workflows (<a href="https://argoproj.github.io/workflows/">https://argoproj.github.io/workflows/</a>)</p>
+</li>
+</ul>
+<blockquote>
+<p><strong>Three model training</strong></p>
+</blockquote>
+<p><strong>serving steps. to present to users.</strong></p>
+<blockquote>
+<p>Figure 1.7 End-to-end machine learning system that we will be building</p>
+<p>Table 1.1 shows the key technologies that will be covered in this
+course and example uses.</p>
+</blockquote>
+<p>Table 1.1 The technologies covered in this course and their uses</p>
+<p>+-------------+--------------------------------------------------------+
+| Technology  | Use                                                    |
++=============+========================================================+
+| TensorFlow  | Building machine learning and deep learning models     |
++-------------+--------------------------------------------------------+
+| Kubernetes  | &gt; Managing distributed environments and resources      |
++-------------+--------------------------------------------------------+
+| Kubeflow    | &gt; Submitting and managing distributed training jobs    |
+|             | &gt; easily on Kubernetes clusters                        |
++-------------+--------------------------------------------------------+
+| Argo        | &gt; Defining, orchestrating, and managing workflows      |
+| Workflows   |                                                        |
++-------------+--------------------------------------------------------+
+| Docker      | &gt; Building and managing images to be used for starting |
+|             | &gt; containerized environments                           |
++-------------+--------------------------------------------------------+</p>
+<p>https://www.linkedin.com/pulse/install-kubernetes-cluster-your-local-machine-andrea-de-rinaldis</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var tab,labels=set.querySelector(".tabbed-labels");for(tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      &copy; 2024 <a href="https://spanda.io"  target="_blank" rel="noopener">Spanda.io</a>
+
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://ranga-rangarajan.github.io/spanda-bootcamp/" target="_blank" rel="noopener" title="ranga-rangarajan.github.io" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1zM480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2zm-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3zm-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.sections", "toc.integrate", "navigation.top", "search.suggest", "search.highlight", "content.tabs.link", "content.code.annotation", "content.code.copy"], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.8fd75fb4.min.js"></script>
+      
+    
+  </body>
+</html>
